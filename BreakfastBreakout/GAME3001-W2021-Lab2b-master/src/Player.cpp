@@ -74,26 +74,6 @@ bool Player::getGrounded()
 	return m_grounded;
 }
 
-void Player::setLeft(bool onWall)
-{
-	m_onLeft = onWall;
-}
-
-bool Player::getLeft()
-{
-	return m_onLeft;
-}
-
-void Player::setRight(bool onWall)
-{
-	m_onRight = onWall;
-}
-
-bool Player::getRight()
-{
-	return m_onRight;
-}
-
 void Player::setCurPlatform(int platformNum)
 {
 	m_platform = platformNum;

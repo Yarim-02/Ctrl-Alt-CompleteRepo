@@ -71,13 +71,6 @@ void PlayScene::update()
 	CollisionManager::HazardCheck(m_pPlayer, m_pHazard);
 	CollisionManager::ButterCheck(m_pPlayer, m_pButter);
 
-	if (m_pPlayer->getLeft() == true || m_pPlayer->getRight() == true)
-	{
-		std::cout << "touching the wall" << std::endl;
-		m_pPlayer->getRigidBody()->velocity.x = 0;
-	}
-
-	std::cout << m_pPlayer->getButterTime() << std::endl;
 	
 
 }
@@ -96,7 +89,7 @@ void PlayScene::handleEvents()
 		TheGame::Instance()->quit();
 	}
 
-	if (m_pPlayer->getTransform()->position.x > 0 && m_pPlayer->getLeft() == false)
+	if (m_pPlayer->getTransform()->position.x > 0)
 	{
 		if (m_pPlayer->getButter() == false)
 		{
@@ -114,7 +107,7 @@ void PlayScene::handleEvents()
 		}
 	}
 
-	if (m_pPlayer->getTransform()->position.x < (800 - m_pPlayer->getWidth()) && m_pPlayer->getRight() == false)
+	if (m_pPlayer->getTransform()->position.x < (800 - m_pPlayer->getWidth()))
 	{
 		if (m_pPlayer->getButter() == false)
 		{
@@ -179,7 +172,7 @@ void PlayScene::start()
 	
 	m_pPlatform[0]->getTransform()->position = glm::vec2(50.0f, 350.0f);
 	m_pPlatform[1]->getTransform()->position = glm::vec2(100.0f, 350.0f);
-	m_pPlatform[2]->getTransform()->position = glm::vec2(500.0f, 150.0f);
+	m_pPlatform[2]->getTransform()->position = glm::vec2(150.0f, 500.0f);
 
 	m_pFloor = new Floor();
 	m_pFloor->getTransform()->position = glm::vec2(0.0f, 550.0f);
