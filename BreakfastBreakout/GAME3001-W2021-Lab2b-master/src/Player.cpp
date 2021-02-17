@@ -38,7 +38,7 @@ void Player::draw()
 
 void Player::update()
 {
-	if (m_grounded == false)
+	/*if (m_grounded == false)
 	{
 		getRigidBody()->velocity += glm::vec2(0, 0.8);
 	}
@@ -46,7 +46,7 @@ void Player::update()
 
 	if (getRigidBody()->velocity.x >= 9)
 		getRigidBody()->velocity.x = 9;
-
+		*/
 	if (m_butterTime > 0)
 	{
 		m_butter = true;
@@ -72,6 +72,26 @@ void Player::setGrounded(bool onGround)
 bool Player::getGrounded()
 {
 	return m_grounded;
+}
+
+void Player::setLeft(bool onWall)
+{
+	m_onLeft = onWall;
+}
+
+bool Player::getLeft()
+{
+	return m_onLeft;
+}
+
+void Player::setRight(bool onWall)
+{
+	m_onRight = onWall;
+}
+
+bool Player::getRight()
+{
+	return m_onRight;
 }
 
 void Player::setCurPlatform(int platformNum)

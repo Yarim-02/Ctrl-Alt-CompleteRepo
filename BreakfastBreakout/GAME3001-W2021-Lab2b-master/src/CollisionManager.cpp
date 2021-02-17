@@ -100,7 +100,7 @@ bool CollisionManager::AABBCheck(GameObject* object1, GameObject* object2)
 	return false;
 }
 
-bool CollisionManager::PlatformCheck(Player* object1, GameObject* object2)
+bool CollisionManager::PlatformCheck(Player* object1, GameObject* object2, Camera* camera)
 {
 	// prepare relevant variables
 	const auto p1 = object1->getTransform()->position;
@@ -136,33 +136,37 @@ bool CollisionManager::PlatformCheck(Player* object1, GameObject* object2)
 				//std::cout << "hit platform" << std::endl;
 				//object1->setGrounded(true);
 				//std::cout << "hit platform" << std::endl;
-				if ((object1->getTransform()->position.y + object1->getHeight() - object1->getRigidBody()->velocity.y <= object2->getTransform()->position.y))
+				if ((object1->getTransform()->position.y + object1->getHeight() + camera->getRigidBody()->velocity.y <= object2->getTransform()->position.y))
 				{
+					std::cout << "worked" << std::endl;
 					object1->setGrounded(true);
-					object1->getRigidBody()->velocity.y = 0;
-					object1->getTransform()->position.y = object2->getTransform()->position.y;
-					object1->getTransform()->position.y = object2->getTransform()->position.y - object1->getHeight();
+					camera->getRigidBody()->velocity.y = 0;
+					camera->getTransform()->position.y = object1->getTransform()->position.y + object1->getHeight() - object2->getOffset().y;
+					//object1->getTransform()->position.y = object2->getTransform()->position.y - object1->getHeight();
 				}
-				else if (object1->getTransform()->position.y - object1->getRigidBody()->velocity.y >= object2->getTransform()->position.y + object2->getHeight())
+				else if (object1->getTransform()->position.y + camera->getRigidBody()->velocity.y >= object2->getTransform()->position.y + object2->getHeight())
 				{
-					object1->getRigidBody()->velocity.y = 0;
-					object1->getTransform()->position.y = (object2->getTransform()->position.y + object2->getHeight());
+					camera->getRigidBody()->velocity.y = 0;
+					camera->getTransform()->position.y = object1->getTransform()->position.y - object2->getOffset().y - object2->getHeight() - 3;
+					//object1->getTransform()->position.y = (object2->getTransform()->position.y + object2->getHeight());
 				}
 				else if ((object1->getTransform()->position.x + object1->getWidth() + object1->getRigidBody()->velocity.x > object2->getTransform()->position.x) && object1->getTransform()->position.x + object1->getWidth() + object1->getRigidBody()->velocity.x <= object2->getTransform()->position.x + (object2->getWidth() / 2))
 				{
 					std::cout << "touching the left side wall" << std::endl;
-					//object1->setRight(true);
+					object1->setRight(true);
 					//object1->getTransform()->position.y = 50;
-					object1->getRigidBody()->velocity.x = 0;
-					object1->getTransform()->position.x = (object2->getTransform()->position.x - object1->getWidth() - 3);
+					camera->getRigidBody()->velocity.x = 0;
+					camera->getTransform()->position.x = object1->getTransform()->position.x - object2->getOffset().x + object1->getWidth();
+					//object1->getTransform()->position.x = (object2->getTransform()->position.x - object1->getWidth() - 3);
 				}
 				else if ((object1->getTransform()->position.x - object1->getRigidBody()->velocity.x < object2->getTransform()->position.x + object2->getWidth()))
 				{
 					std::cout << "touching the right side wall" << std::endl;
-					//object1->setLeft(true);
+					object1->setLeft(true);
 					//object1->getTransform()->position.y = 50;
-					object1->getRigidBody()->velocity.x = 0;
-					object1->getTransform()->position.x = (object2->getTransform()->position.x + object2->getWidth() + 3);
+					camera->getRigidBody()->velocity.x = 0;
+					camera->getTransform()->position.x = object1->getTransform()->position.x - object2->getOffset().x - object2->getWidth();
+					//object1->getTransform()->position.x = (object2->getTransform()->position.x + object2->getWidth() + 3);
 				}
 				break;
 			}
@@ -174,8 +178,8 @@ bool CollisionManager::PlatformCheck(Player* object1, GameObject* object2)
 	else
 	{
 		object2->getRigidBody()->isColliding = false;
-		//object1->setRight(false);
-		//object1->setLeft(false);
+		object1->setRight(false);
+		object1->setLeft(false);
 		object1->setGrounded(false);
 		return false;
 	}
@@ -183,7 +187,7 @@ bool CollisionManager::PlatformCheck(Player* object1, GameObject* object2)
 	return false;
 }
 
-bool CollisionManager::HazardCheck(Player* object1, GameObject* object2)
+bool CollisionManager::HazardCheck(Player* object1, GameObject* object2, Camera* camera)
 {
 	// prepare relevant variables
 	const auto p1 = object1->getTransform()->position;
@@ -211,7 +215,7 @@ bool CollisionManager::HazardCheck(Player* object1, GameObject* object2)
 			break;
 		case HAZARD:
 			std::cout << "hit hazard" << std::endl;
-			object1->getTransform()->position = glm::vec2(50.0f, 0.0f);
+			camera->getTransform()->position = glm::vec2(0.0f, 0.0f);
 			break;
 				
 		default:
@@ -260,7 +264,7 @@ bool CollisionManager::ButterCheck(Player* object1, Butter* object2)
 			std::cout << "hit butter" << std::endl;
 			object2->setHideTimer(200);
 			object1->setButterTime(200);
-			object2->getTransform()->position.x = -100;
+			object2->setOffset(object2->getOffset());
 			break;
 
 		default:

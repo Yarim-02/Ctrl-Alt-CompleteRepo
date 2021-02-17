@@ -1,29 +1,27 @@
 #pragma once
-#ifndef __BUTTER__
-#define __BUTTER__
+#ifndef __CAMERA__
+#define __CAMERA__
 
 #include "DisplayObject.h"
 #include "TextureManager.h"
 
-class Butter final : public DisplayObject
+class Camera final : public DisplayObject
 {
 public:
-	Butter();
-	~Butter();
+	Camera();
+	~Camera();
 
 	// Life Cycle Methods
 	virtual void draw() override;
 	virtual void update() override;
 	virtual void clean() override;
 
-	// setters
-	void setHideTimer(int time);
-	int getHideTimer();
+	// getters/setters
+
 
 
 private:
-	int m_hideTimer;
-	float m_xPos;
+
 };
 
-#endif
+#endif /* defined (__PLAYER__) */

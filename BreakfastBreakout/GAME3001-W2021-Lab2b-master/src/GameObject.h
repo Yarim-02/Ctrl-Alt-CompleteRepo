@@ -41,6 +41,9 @@ public:
 	void setEnabled(bool state);
 	bool isEnabled() const;
 
+	void setOffset(glm::vec2 position);
+	glm::vec2 getOffset();
+
 private:
 	// transform component
 	Transform m_transform;
@@ -54,6 +57,8 @@ private:
 	GameObjectType m_type;
 
 	bool m_enabled;
+
+	glm::vec2 m_offset;
 };
 
 #endif /* defined (__GAME_OBJECT__) */

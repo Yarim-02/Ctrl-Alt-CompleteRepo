@@ -20,6 +20,10 @@ public:
 
 	void setGrounded(bool onGround);
 	bool getGrounded();
+	void setLeft(bool onWall);
+	bool getLeft();
+	void setRight(bool onWall);
+	bool getRight();
 	void setCurPlatform(int platformNum);
 	int getCurPlatform();
 	void setBullshit(bool bullshit);
@@ -34,6 +38,8 @@ private:
 	void m_buildAnimations();
 
 	bool m_grounded = false;
+	bool m_onLeft = false;
+	bool m_onRight = false;
 	bool m_bullshit;
 	bool m_butter;
 

@@ -1,7 +1,9 @@
 #pragma once
 #ifndef __PLAY_SCENE__
 #define __PLAY_SCENE__
-#define _NUM_OF_PLATFORMS_ 3
+#define NUM_OF_PLATFORMS_ 3
+#define NUM_OF_HAZARDS_ 1
+#define NUM_OF_BUTTER_ 2
 
 #include "Scene.h"
 #include "Button.h"
@@ -14,6 +16,7 @@
 #include "Floor.h"
 #include "Hazard.h"
 #include "Butter.h"
+#include "Camera.h"
 
 class PlayScene : public Scene
 {
@@ -37,13 +40,15 @@ private:
 
 	Player* m_pPlayer;
 
-	Platform* m_pPlatform[_NUM_OF_PLATFORMS_];
+	Platform* m_pPlatform[NUM_OF_PLATFORMS_];
 
 	Floor* m_pFloor;
 
-	Hazard* m_pHazard;
+	Hazard* m_pHazard[NUM_OF_HAZARDS_];
 
-	Butter* m_pButter;
+	Butter* m_pButter[NUM_OF_BUTTER_];
+
+	Camera* m_pCamera;
 	
 	// UI Items
 	

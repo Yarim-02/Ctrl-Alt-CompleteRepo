@@ -31,9 +31,11 @@ void Butter::draw()
 void Butter::update()
 {
 	if (getTransform()->position.x < 0)
+	{
+		std::cout << "hi" << std::endl;
 		m_hideTimer -= 1;
-	if (m_hideTimer <= 0)
-		getTransform()->position = glm::vec2(300.0f, 75.0f);
+	}
+	
 }
 
 void Butter::clean()
