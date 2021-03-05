@@ -92,9 +92,6 @@ void PlayScene::update()
 			case 0:
 				m_pButter[i]->setOffset(glm::vec2(350.0f, 150.0f));
 				break;
-			case 1:
-				m_pButter[i]->setOffset(glm::vec2(200.0f, 150.0f));
-				break;
 			}
 		}
 	}
@@ -202,7 +199,7 @@ void PlayScene::start()
 	
 
 	m_pPlayer = new Player();
-	m_pPlayer->getTransform()->position = glm::vec2(350.0f, 250.0f);
+	m_pPlayer->getTransform()->position = glm::vec2(350.0f, 350.0f);
 	addChild(m_pPlayer);
 
 	for (int i = 0; i < NUM_OF_HAZARDS_; i++)

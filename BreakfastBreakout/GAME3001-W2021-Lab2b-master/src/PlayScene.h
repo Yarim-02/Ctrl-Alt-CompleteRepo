@@ -3,7 +3,7 @@
 #define __PLAY_SCENE__
 #define NUM_OF_PLATFORMS_ 3
 #define NUM_OF_HAZARDS_ 1
-#define NUM_OF_BUTTER_ 2
+#define NUM_OF_BUTTER_ 1
 
 #include "Scene.h"
 #include "Button.h"
