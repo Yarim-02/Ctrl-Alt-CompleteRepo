@@ -47,21 +47,19 @@ void PlayScene::update()
 	}
 
 	m_pFloor->getTransform()->position = m_pCamera->getTransform()->position + m_pFloor->getOffset();
+	
 	for (int i = 0; i < NUM_OF_HAZARDS_; i++)
 	{
 		m_pHazard[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pHazard[i]->getOffset();
 	}
+	
 	for (int i = 0; i < NUM_OF_BUTTER_; i++)
 	{
 		m_pButter[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pButter[i]->getOffset();
 	}
 
-
 	for (int i = 0; i < NUM_OF_PLATFORMS_; i++)
 	{
-
-		
-
 		CollisionManager::PlatformCheck(m_pPlayer, m_pPlatform[i], m_pCamera);
 		
 		if (m_pPlayer->getGrounded() == true)
@@ -107,7 +105,8 @@ void PlayScene::update()
 
 	}
 	else
-		m_pCamera->getRigidBody()->velocity.y -= 0.5f;
+		m_pCamera->getRigidBody()->velocity.y -= 1.0f;
+	
 	for (int i = 0; i < NUM_OF_HAZARDS_; i++)
 	{
 		CollisionManager::HazardCheck(m_pPlayer, m_pHazard[i], m_pCamera);

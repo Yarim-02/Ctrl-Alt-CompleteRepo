@@ -56,6 +56,7 @@ public:
 	
 	bool isRunning() const;
 	void changeSceneState(SceneState new_state);
+	void cleanSceneState(const SceneState new_state);
 	
 private:
 	Game();

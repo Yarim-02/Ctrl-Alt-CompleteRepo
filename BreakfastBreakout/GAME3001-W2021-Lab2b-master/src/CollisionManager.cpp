@@ -3,6 +3,9 @@
 #include <algorithm>
 
 
+#include "Game.h"
+#include "SceneState.h"
+
 
 int CollisionManager::squaredDistance(const glm::vec2 p1, const glm::vec2 p2)
 {
@@ -216,6 +219,7 @@ bool CollisionManager::HazardCheck(Player* object1, GameObject* object2, Camera*
 		case HAZARD:
 			std::cout << "hit hazard" << std::endl;
 			camera->getTransform()->position = glm::vec2(0.0f, 0.0f);
+			TheGame::Instance()->cleanSceneState(PLAY_SCENE);
 			break;
 				
 		default:
