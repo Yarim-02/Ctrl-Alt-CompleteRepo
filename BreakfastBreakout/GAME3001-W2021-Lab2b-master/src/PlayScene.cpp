@@ -118,6 +118,11 @@ void PlayScene::update()
 
 	//std::cout << m_pPlayer->getGrounded() << std::endl;
 
+	if (m_pFloor->getTransform()->position.y + m_pFloor->getHeight() < m_pPlayer->getTransform()->position.y)
+	{
+		TheGame::Instance()->cleanSceneState(PLAY_SCENE);
+	}
+
 }
 
 void PlayScene::clean()
@@ -195,7 +200,8 @@ void PlayScene::start()
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
 
-	
+	m_pBackground = new Background();
+	addChild(m_pBackground);
 
 	m_pPlayer = new Player();
 	m_pPlayer->getTransform()->position = glm::vec2(350.0f, 350.0f);

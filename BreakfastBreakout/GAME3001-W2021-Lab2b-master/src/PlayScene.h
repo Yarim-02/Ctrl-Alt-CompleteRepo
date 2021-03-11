@@ -17,6 +17,7 @@
 #include "Hazard.h"
 #include "Butter.h"
 #include "Camera.h"
+#include "Background.h"
 
 class PlayScene : public Scene
 {
@@ -49,6 +50,8 @@ private:
 	Butter* m_pButter[NUM_OF_BUTTER_];
 
 	Camera* m_pCamera;
+
+	Background* m_pBackground;
 	
 	// UI Items
 	
