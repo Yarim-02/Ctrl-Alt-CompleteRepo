@@ -4,6 +4,7 @@
 #define NUM_OF_PLATFORMS_ 3
 #define NUM_OF_HAZARDS_ 1
 #define NUM_OF_BUTTER_ 1
+#define NUM_OF_WALL_ 1
 
 #include "Scene.h"
 #include "Button.h"
@@ -18,6 +19,7 @@
 #include "Butter.h"
 #include "Camera.h"
 #include "Background.h"
+#include "Wall.h"
 
 class PlayScene : public Scene
 {
@@ -42,6 +44,8 @@ private:
 	Player* m_pPlayer;
 
 	Platform* m_pPlatform[NUM_OF_PLATFORMS_];
+
+	Wall* m_pWall[NUM_OF_WALL_];
 
 	Floor* m_pFloor;
 

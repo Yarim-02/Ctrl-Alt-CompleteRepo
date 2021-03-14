@@ -166,10 +166,16 @@
     <ClCompile Include="..\src\Button.cpp" />
     <ClCompile Include="..\src\Camera.cpp" />
     <ClCompile Include="..\src\CollisionManager.cpp" />
+    <ClCompile Include="..\src\EndBG.cpp" />
     <ClCompile Include="..\src\Floor.cpp" />
     <ClCompile Include="..\src\Hazard.cpp" />
+    <ClCompile Include="..\src\LoadButton.cpp" />
+    <ClCompile Include="..\src\MenuBG.cpp" />
+    <ClCompile Include="..\src\NGButton.cpp" />
     <ClCompile Include="..\src\Obstacle.cpp" />
     <ClCompile Include="..\src\Platform.cpp" />
+    <ClCompile Include="..\src\QuitButton.cpp" />
+    <ClCompile Include="..\src\ResumeButton.cpp" />
     <ClCompile Include="..\src\SpaceShip.cpp" />
     <ClCompile Include="..\src\Sprite.cpp" />
     <ClCompile Include="..\src\UIControl.cpp" />
@@ -194,6 +200,7 @@
     <ClCompile Include="..\src\Target.cpp" />
     <ClCompile Include="..\src\TextureManager.cpp" />
     <ClCompile Include="..\src\Util.cpp" />
+    <ClCompile Include="..\src\Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\IMGUI\imconfig.h" />
@@ -211,10 +218,16 @@
     <ClInclude Include="..\src\CollisionManager.h" />
     <ClInclude Include="..\src\CollisionShape.h" />
     <ClInclude Include="..\src\Config.h" />
+    <ClInclude Include="..\src\EndBG.h" />
     <ClInclude Include="..\src\Floor.h" />
     <ClInclude Include="..\src\Hazard.h" />
+    <ClInclude Include="..\src\LoadButton.h" />
+    <ClInclude Include="..\src\MenuBG.h" />
+    <ClInclude Include="..\src\NGButton.h" />
     <ClInclude Include="..\src\Obstacle.h" />
     <ClInclude Include="..\src\Platform.h" />
+    <ClInclude Include="..\src\QuitButton.h" />
+    <ClInclude Include="..\src\ResumeButton.h" />
     <ClInclude Include="..\src\SoundType.h" />
     <ClInclude Include="..\src\SpaceShip.h" />
     <ClInclude Include="..\src\Sprite.h" />
@@ -248,6 +261,7 @@
     <ClInclude Include="..\src\TextureManager.h" />
     <ClInclude Include="..\src\Transform.h" />
     <ClInclude Include="..\src\Util.h" />
+    <ClInclude Include="..\src\Wall.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

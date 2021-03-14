@@ -46,7 +46,13 @@ void PlayScene::update()
 		m_pPlatform[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pPlatform[i]->getOffset();
 	}
 
+	for (int i = 0; i < NUM_OF_WALL_; i++)
+	{
+		m_pWall[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pWall[i]->getOffset();
+	}
+
 	m_pFloor->getTransform()->position = m_pCamera->getTransform()->position + m_pFloor->getOffset();
+	m_pBackground->getTransform()->position = m_pCamera->getTransform()->position + m_pBackground->getOffset();
 	
 	for (int i = 0; i < NUM_OF_HAZARDS_; i++)
 	{
@@ -64,6 +70,17 @@ void PlayScene::update()
 		
 		if (m_pPlayer->getGrounded() == true)
 			break;
+	}
+
+	if (m_pPlayer->getGrounded() == false)
+	{
+		for (int i = 0; i < NUM_OF_WALL_; i++)
+		{
+			CollisionManager::PlatformCheck(m_pPlayer, m_pWall[i], m_pCamera);
+
+			if (m_pPlayer->getGrounded() == true)
+				break;
+		}
 	}
 
 	
@@ -145,14 +162,14 @@ void PlayScene::handleEvents()
 		{
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
 			{
-				m_pCamera->getTransform()->position += glm::vec2(5, 0);
+				m_pCamera->getTransform()->position += glm::vec2(7, 0);
 			}
 		}
 		else
 		{
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
 			{
-				m_pCamera->getRigidBody()->velocity.x += 0.3f;
+				m_pCamera->getRigidBody()->velocity.x += 0.5f;
 			}
 		}
 	}
@@ -163,14 +180,14 @@ void PlayScene::handleEvents()
 		{
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
 			{
-				m_pCamera->getTransform()->position -= glm::vec2(5, 0);
+				m_pCamera->getTransform()->position -= glm::vec2(7, 0);
 			}
 		}
 		else
 		{
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
 			{
-				m_pCamera->getRigidBody()->velocity.x -= 0.3f;
+				m_pCamera->getRigidBody()->velocity.x -= 0.5f;
 			}
 		}
 	}
@@ -201,10 +218,11 @@ void PlayScene::start()
 	m_guiTitle = "Play Scene";
 
 	m_pBackground = new Background();
+	m_pBackground->setOffset(glm::vec2(-100, -1000));
 	addChild(m_pBackground);
 
 	m_pPlayer = new Player();
-	m_pPlayer->getTransform()->position = glm::vec2(350.0f, 350.0f);
+	m_pPlayer->getTransform()->position = glm::vec2(400.0f, 650.0f);
 	addChild(m_pPlayer);
 
 	for (int i = 0; i < NUM_OF_HAZARDS_; i++)
@@ -232,12 +250,21 @@ void PlayScene::start()
 		m_pPlatform[i]->setPlatformID(i);
 	}
 	
-	m_pPlatform[0]->setOffset(glm::vec2(50.0f, 350.0f));
-	m_pPlatform[1]->setOffset(glm::vec2(400.0f, 350.0f));
+	m_pPlatform[0]->setOffset(glm::vec2(1050.0f, 500.0f));
+	m_pPlatform[1]->setOffset(glm::vec2(1200.0f, 400.0f));
 	m_pPlatform[2]->setOffset(glm::vec2(150.0f, 500.0f));
 
+	for (int i = 0; i < NUM_OF_WALL_; i++)
+	{
+		m_pWall[i] = new Wall();
+		addChild(m_pWall[i]);
+		m_pWall[i]->setPlatformID(i);
+	}
+
+	m_pWall[0]->setOffset(glm::vec2(1400.0f, 200.0f));
+
 	m_pFloor = new Floor();
-	m_pFloor->setOffset(glm::vec2(0.0f, 550.0f));
+	m_pFloor->setOffset(glm::vec2(300.0f, 750.0f));
 	addChild(m_pFloor);
 
 	m_pCamera = new Camera();
