@@ -45,41 +45,98 @@ void StartScene::handleEvents()
 
 void StartScene::start()
 {
+	m_pBackground = new MenuBackground();
+	addChild(m_pBackground);
+
 	const SDL_Color blue = { 0, 0, 255, 255 };
-	m_pStartLabel = new Label("START SCENE", "Consolas", 80, blue, glm::vec2(400.0f, 40.0f));
+	m_pStartLabel = new Label("~BreakFast Breakout~", "Consolas", 80, blue, glm::vec2(750.0f, 40.0f));
 	m_pStartLabel->setParent(this);
 	addChild(m_pStartLabel);
 
-	m_pInstructionsLabel = new Label("Press 1 to Play", "Consolas", 40, blue, glm::vec2(400.0f, 120.0f));
+	m_pInstructionsLabel = new Label("By: Crtl+Alt+Complete", "Consolas", 20, blue, glm::vec2(750.0f, 400.0f));
 	m_pInstructionsLabel->setParent(this);
 	addChild(m_pInstructionsLabel);
 
+	// New Game Button
+	m_pNewGameButton = new NewGameButton();
+	m_pNewGameButton->getTransform()->position = glm::vec2(600.0f, 700.0f);
 
-	m_pShip = new Ship();
-	m_pShip->getTransform()->position = glm::vec2(400.0f, 300.0f); 
-	addChild(m_pShip); 
+	// Resume Button
+	m_pResumeGameButton = new ResumeButton();
+	m_pResumeGameButton->getTransform()->position = glm::vec2(600.0f, 800.0f);
 
-	// Start Button
-	m_pStartButton = new Button();
-	m_pStartButton->getTransform()->position = glm::vec2(400.0f, 400.0f); 
+	// Load Button
+	m_pLoadButton = new LoadButton();
+	m_pLoadButton->getTransform()->position = glm::vec2(910.0f, 700.0f);
 
-	m_pStartButton->addEventListener(CLICK, [&]()-> void
-	{
-		m_pStartButton->setActive(false);
-		TheGame::Instance()->changeSceneState(PLAY_SCENE);
-	});
-	
-	m_pStartButton->addEventListener(MOUSE_OVER, [&]()->void
-	{
-		m_pStartButton->setAlpha(128);
-	});
+	// Quit Button
+	m_pQuitButton = new QuitButton();
+	m_pQuitButton->getTransform()->position = glm::vec2(910.0f, 800.0f);
 
-	m_pStartButton->addEventListener(MOUSE_OUT, [&]()->void
-	{
-		m_pStartButton->setAlpha(255);
-	});
-	addChild(m_pStartButton);
+	//resume
+	m_pResumeGameButton->addEventListener(CLICK, [&]()-> void
+		{
+			m_pResumeGameButton->setActive(false);
+			TheGame::Instance()->changeSceneState(PLAY_SCENE);
+		});
+	m_pResumeGameButton->addEventListener(MOUSE_OVER, [&]()->void
+		{
+			m_pResumeGameButton->setAlpha(128);
+		});
+	m_pResumeGameButton->addEventListener(MOUSE_OUT, [&]()->void
+		{
+			m_pResumeGameButton->setAlpha(255);
+		});
+	addChild(m_pResumeGameButton);
 
-	
+	//new game
+	m_pNewGameButton->addEventListener(CLICK, [&]()-> void
+		{
+			//Go Into Saved Game State
+			m_pNewGameButton->setActive(false);
+			TheGame::Instance()->changeSceneState(PLAY_SCENE);
+		});
+	m_pNewGameButton->addEventListener(MOUSE_OVER, [&]()->void
+		{
+			m_pNewGameButton->setAlpha(128);
+		});
+	m_pNewGameButton->addEventListener(MOUSE_OUT, [&]()->void
+		{
+			m_pNewGameButton->setAlpha(255);
+		});
+	addChild(m_pNewGameButton);
+
+	//load
+	m_pLoadButton->addEventListener(CLICK, [&]()-> void
+		{
+			//Go Into Saved Game State
+			m_pLoadButton->setActive(false);
+			TheGame::Instance()->changeSceneState(PLAY_SCENE);
+		});
+	m_pLoadButton->addEventListener(MOUSE_OVER, [&]()->void
+		{
+			m_pLoadButton->setAlpha(128);
+		});
+	m_pLoadButton->addEventListener(MOUSE_OUT, [&]()->void
+		{
+			m_pLoadButton->setAlpha(255);
+		});
+	addChild(m_pLoadButton);
+
+	//Quit
+	m_pQuitButton->addEventListener(CLICK, [&]()-> void
+		{
+			m_pQuitButton->setActive(false);
+			TheGame::Instance()->changeSceneState(END_SCENE);
+		});
+	m_pQuitButton->addEventListener(MOUSE_OVER, [&]()->void
+		{
+			m_pQuitButton->setAlpha(128);
+		});
+	m_pQuitButton->addEventListener(MOUSE_OUT, [&]()->void
+		{
+			m_pQuitButton->setAlpha(255);
+		});
+	addChild(m_pQuitButton);
 }
 
