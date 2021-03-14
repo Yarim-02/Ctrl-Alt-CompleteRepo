@@ -11,6 +11,11 @@
 PlayScene::PlayScene()
 {
 	PlayScene::start();
+
+	// Background Music
+	SoundManager::Instance().load("../Assets/audio/soundtrack/grand_kitchen.mp3", "BGM_kitchen", SOUND_MUSIC);
+	SoundManager::Instance().playMusic("BGM_kitchen", -1, 0);
+	SoundManager::Instance().setMusicVolume(32);
 }
 
 PlayScene::~PlayScene()
@@ -207,6 +212,10 @@ void PlayScene::handleEvents()
 			std::cout << "jumping" << std::endl;
 			m_pCamera->getRigidBody()->velocity.y += 25.0f;
 			m_pPlayer->setGrounded(false);
+
+			SoundManager::Instance().load("../Assets/audio/sound effects/jump.wav", "jump", SOUND_SFX);
+			SoundManager::Instance().playSound("jump", 0);
+			SoundManager::Instance().setSoundVolume(32);
 		}
 	}
 
