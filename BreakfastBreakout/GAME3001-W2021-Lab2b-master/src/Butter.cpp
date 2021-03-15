@@ -32,7 +32,7 @@ void Butter::update()
 {
 	if (getTransform()->position.x < 0)
 	{
-		std::cout << "hi" << std::endl;
+		//std::cout << "hi" << std::endl;
 		m_hideTimer -= 1;
 	}
 	

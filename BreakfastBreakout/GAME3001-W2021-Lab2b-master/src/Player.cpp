@@ -1,14 +1,24 @@
 #include "Player.h"
 #include "TextureManager.h"
 
-Player::Player()
+Player::Player() : m_currentAnimationState(PLAYER_IDLE_RIGHT)
 {	
-	TextureManager::Instance()->load("../Assets/textures/TheToast.png", "Toast_Plain");
-	TextureManager::Instance()->load("../Assets/textures/Buttery.png", "Toast_Buttery");
+	TextureManager::Instance()->loadSpriteSheet(
+		"../Assets/sprites/atlas.txt",
+		"../Assets/sprites/atlas.png",
+		"spritesheet");
 
-	auto size = TextureManager::Instance()->getTextureSize("Toast_Plain");
-	setWidth(size.x);
-	setHeight(size.y);
+	TextureManager::Instance()->load("../Assets/textures/Player_Walking_0.png", "walking0");
+	TextureManager::Instance()->load("../Assets/textures/Player_Walking_1.png", "walking1");
+	TextureManager::Instance()->load("../Assets/textures/Buttered_Walking_0.png", "buttered0");
+	TextureManager::Instance()->load("../Assets/textures/Buttered_Walking_1.png", "buttered1");
+
+	setSpriteSheet(TextureManager::Instance()->getSpriteSheet("spritesheet"));
+
+	//auto size = TextureManager::Instance()->getTextureSize("Toast_Plain");
+
+	setWidth(46);
+	setHeight(70);
 
 	getTransform()->position = glm::vec2(400.0f, 300.0f);
 	getRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
@@ -16,6 +26,7 @@ Player::Player()
 	getRigidBody()->isColliding = false;
 	setType(PLAYER);
 
+	m_buildAnimations();
 }
 
 Player::~Player()
@@ -23,7 +34,7 @@ Player::~Player()
 
 void Player::draw()
 {
-	if (m_butter == false)
+	/*if (m_butter == false)
 	{
 		TextureManager::Instance()->draw("Toast_Plain",
 			getTransform()->position.x, getTransform()->position.y, 0, 255, false);
@@ -32,6 +43,64 @@ void Player::draw()
 	{
 		TextureManager::Instance()->draw("Toast_Buttery",
 			getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+	}*/
+
+	const auto x = getTransform()->position.x;
+	const auto y = getTransform()->position.y;
+
+	// draw the player according to animation state
+	switch (m_currentAnimationState)
+	{
+	case PLAYER_IDLE_RIGHT:
+		TextureManager::Instance()->draw("walking0",
+			getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		break;
+	case PLAYER_IDLE_LEFT:
+		TextureManager::Instance()->draw("walking0",
+			getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
+		break;
+	case PLAYER_BUTTER_IDLE_RIGHT:
+		TextureManager::Instance()->draw("buttered0",
+			getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		break;
+	case PLAYER_BUTTER_IDLE_LEFT:
+		TextureManager::Instance()->draw("buttered0",
+			getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
+		break;
+	case PLAYER_RUN_RIGHT:
+		if (m_frameCounter % 20 == 0|| m_frameCounter % 20 == 1|| m_frameCounter % 20 == 2)
+			TextureManager::Instance()->draw("walking0",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		else
+			TextureManager::Instance()->draw("walking1",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		break;
+	case PLAYER_RUN_LEFT:
+		if (m_frameCounter % 20 == 0 || m_frameCounter % 20 == 1 || m_frameCounter % 20 == 2)
+			TextureManager::Instance()->draw("walking0",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
+		else
+			TextureManager::Instance()->draw("walking1",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
+		break;
+	case PLAYER_BUTTER_RIGHT:
+		if (m_frameCounter % 20 == 0 || m_frameCounter % 20 == 1 || m_frameCounter % 20 == 2)
+			TextureManager::Instance()->draw("buttered0",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		else
+			TextureManager::Instance()->draw("buttered1",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		break;
+	case PLAYER_BUTTER_LEFT:
+		if (m_frameCounter % 20 == 0 || m_frameCounter % 20 == 1 || m_frameCounter % 20 == 2)
+			TextureManager::Instance()->draw("buttered0",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
+		else
+			TextureManager::Instance()->draw("buttered1",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
+		break;
+	default:
+		break;
 	}
 	
 }
@@ -58,6 +127,39 @@ void Player::update()
 	if(m_butter == false)
 		getRigidBody()->velocity.x = 0;
 
+	if (m_frameCounter > 5000)
+		m_frameCounter = 0;
+
+	m_frameCounter++;
+
+}
+
+void Player::setAnimationState(const PlayerAnimationState new_state)
+{
+	m_currentAnimationState = new_state;
+}
+
+void Player::m_buildAnimations()
+{
+	Animation idleAnimation = Animation();
+
+	idleAnimation.name = "idle";
+	idleAnimation.frames.push_back(getSpriteSheet()->getFrame("islande"));
+	/*idleAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-idle-1"));
+	idleAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-idle-2"));
+	idleAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-idle-3"));*/
+
+	setAnimation(idleAnimation);
+
+	Animation runAnimation = Animation();
+
+	runAnimation.name = "run";
+	runAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-run-0"));
+	runAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-run-1"));
+	runAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-run-2"));
+	runAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-run-3"));
+
+	setAnimation(runAnimation);
 }
 
 void Player::clean()

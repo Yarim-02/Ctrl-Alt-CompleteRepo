@@ -105,7 +105,7 @@ void Game::start()
 
 	//TODO: temporarily commented out
 	//changeSceneState(START_SCENE);
-	changeSceneState(END_SCENE);
+	changeSceneState(START_SCENE);
 }
 
 bool Game::isRunning() const

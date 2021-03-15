@@ -141,7 +141,7 @@ bool CollisionManager::PlatformCheck(Player* object1, GameObject* object2, Camer
 				//std::cout << "hit platform" << std::endl;
 				if ((object1->getTransform()->position.y + object1->getHeight() + camera->getRigidBody()->velocity.y <= object2->getTransform()->position.y))
 				{
-					std::cout << "worked" << std::endl;
+					//std::cout << "worked" << std::endl;
 					object1->setGrounded(true);
 					camera->getRigidBody()->velocity.y = 0;
 					camera->getTransform()->position.y = object1->getTransform()->position.y + object1->getHeight() - object2->getOffset().y;

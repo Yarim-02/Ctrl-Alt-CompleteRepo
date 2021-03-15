@@ -2,10 +2,10 @@
 #ifndef __PLAYER__
 #define __PLAYER__
 
-#include "DisplayObject.h"
-#include "TextureManager.h"
+#include "PlayerAnimationState.h"
+#include "Sprite.h"
 
-class Player final : public DisplayObject
+class Player final : public Sprite
 {
 public:
 	Player();
@@ -18,6 +18,7 @@ public:
 
 	// getters/setters
 
+	void setAnimationState(PlayerAnimationState new_state);
 	void setGrounded(bool onGround);
 	bool getGrounded();
 	void setLeft(bool onWall);
@@ -36,6 +37,7 @@ public:
 
 private:
 	void m_buildAnimations();
+	PlayerAnimationState m_currentAnimationState;
 
 	bool m_grounded = false;
 	bool m_onLeft = false;
@@ -45,6 +47,7 @@ private:
 
 	int m_platform;
 	int m_butterTime;
+	int m_frameCounter;
 
 };
 

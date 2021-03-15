@@ -56,12 +56,20 @@ void PlayScene::update()
 		m_pWall[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pWall[i]->getOffset();
 	}
 
-	m_pFloor->getTransform()->position = m_pCamera->getTransform()->position + m_pFloor->getOffset();
+	for (int i = 0; i < NUM_OF_FLOOR_; i++)
+	{
+		m_pFloor[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pFloor[i]->getOffset();
+	}
 	m_pBackground->getTransform()->position = m_pCamera->getTransform()->position + m_pBackground->getOffset();
 	
 	for (int i = 0; i < NUM_OF_HAZARDS_; i++)
 	{
 		m_pHazard[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pHazard[i]->getOffset();
+	}
+
+	for (int i = 0; i < NUM_OF_BAD_FRUIT_; i++)
+	{
+		m_pBadFruit[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pBadFruit[i]->getOffset();
 	}
 	
 	for (int i = 0; i < NUM_OF_BUTTER_; i++)
@@ -92,7 +100,13 @@ void PlayScene::update()
 
 	if (m_pPlayer->getGrounded() == false)
 	{
-		CollisionManager::PlatformCheck(m_pPlayer, m_pFloor, m_pCamera);
+		for (int i = 0; i < NUM_OF_FLOOR_; i++)
+		{
+			CollisionManager::PlatformCheck(m_pPlayer, m_pFloor[i], m_pCamera);
+
+			if (m_pPlayer->getGrounded() == true)
+				break;
+		}
 		
 	}
 
@@ -110,7 +124,10 @@ void PlayScene::update()
 			switch (i)
 			{
 			case 0:
-				m_pButter[i]->setOffset(glm::vec2(350.0f, 150.0f));
+				m_pButter[i]->setOffset(glm::vec2(2300.0f, -250.0f));
+				break;
+			case 1:
+				m_pButter[i]->setOffset(glm::vec2(4520.0f, -250.0f));
 				break;
 			}
 		}
@@ -133,6 +150,12 @@ void PlayScene::update()
 	{
 		CollisionManager::HazardCheck(m_pPlayer, m_pHazard[i], m_pCamera);
 	}
+
+	for (int i = 0; i < NUM_OF_BAD_FRUIT_; i++)
+	{
+		CollisionManager::HazardCheck(m_pPlayer, m_pBadFruit[i], m_pCamera);
+	}
+
 	for (int i = 0; i < NUM_OF_BUTTER_; i++)
 	{
 		CollisionManager::ButterCheck(m_pPlayer, m_pButter[i]);
@@ -140,10 +163,15 @@ void PlayScene::update()
 
 	//std::cout << m_pPlayer->getGrounded() << std::endl;
 
-	if (m_pFloor->getTransform()->position.y + m_pFloor->getHeight() < m_pPlayer->getTransform()->position.y)
+	if (m_pCamera->getTransform()->position.y < -450)
 	{
 		TheGame::Instance()->cleanSceneState(PLAY_SCENE);
 	}
+
+	if (m_pCamera->getTransform()->position.x < -7700)
+		TheGame::Instance()->changeSceneState(END_SCENE);
+
+	std::cout << m_pCamera->getTransform()->position.x << ", " << m_pCamera->getTransform()->position.y << std::endl;
 
 }
 
@@ -168,6 +196,8 @@ void PlayScene::handleEvents()
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
 			{
 				m_pCamera->getTransform()->position += glm::vec2(7, 0);
+				m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
+				m_playerFacingRight = false;
 			}
 		}
 		else
@@ -175,6 +205,8 @@ void PlayScene::handleEvents()
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
 			{
 				m_pCamera->getRigidBody()->velocity.x += 0.5f;
+				m_pPlayer->setAnimationState(PLAYER_BUTTER_LEFT);
+				m_playerFacingRight = false;
 			}
 		}
 	}
@@ -186,6 +218,8 @@ void PlayScene::handleEvents()
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
 			{
 				m_pCamera->getTransform()->position -= glm::vec2(7, 0);
+				m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
+				m_playerFacingRight = true;
 			}
 		}
 		else
@@ -193,13 +227,32 @@ void PlayScene::handleEvents()
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
 			{
 				m_pCamera->getRigidBody()->velocity.x -= 0.5f;
+				m_pPlayer->setAnimationState(PLAYER_BUTTER_RIGHT);
+				m_playerFacingRight = true;
 			}
 		}
 	}
-	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_1))
+
+	if (!EventManager::Instance().isKeyDown(SDL_SCANCODE_D) && !EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
 	{
-		m_pPlayer->getTransform()->position = glm::vec2(100.0f, 0.0f);
+		if (m_playerFacingRight)
+		{
+			if(m_pPlayer->getButter())
+			m_pPlayer->setAnimationState(PLAYER_BUTTER_IDLE_RIGHT);
+			
+			else
+				m_pPlayer->setAnimationState(PLAYER_IDLE_RIGHT);
+		}
+		else
+		{
+			if (m_pPlayer->getButter())
+				m_pPlayer->setAnimationState(PLAYER_BUTTER_IDLE_LEFT);
+
+			else
+				m_pPlayer->setAnimationState(PLAYER_IDLE_LEFT);
+		}
 	}
+	
 
 	
 
@@ -231,7 +284,7 @@ void PlayScene::start()
 	addChild(m_pBackground);
 
 	m_pPlayer = new Player();
-	m_pPlayer->getTransform()->position = glm::vec2(400.0f, 650.0f);
+	m_pPlayer->getTransform()->position = glm::vec2(400.0f, 600.0f);
 	addChild(m_pPlayer);
 
 	for (int i = 0; i < NUM_OF_HAZARDS_; i++)
@@ -239,8 +292,18 @@ void PlayScene::start()
 		m_pHazard[i] = new Hazard();
 		addChild(m_pHazard[i]);
 	}
+	m_pHazard[0]->setOffset(glm::vec2(1550.0f, 230.0f));
+	m_pHazard[1]->setOffset(glm::vec2(1600.0f, 230.0f));
+	m_pHazard[2]->setOffset(glm::vec2(1650.0f, 230.0f));
 
-	m_pHazard[0]->setOffset(glm::vec2(650.0f, 400.0f));
+	for (int i = 0; i < NUM_OF_BAD_FRUIT_; i++)
+	{
+		m_pBadFruit[i] = new BadFruit();
+		addChild(m_pBadFruit[i]);
+	}
+	m_pBadFruit[0]->setOffset(glm::vec2(750.0f, 600.0f));
+	m_pBadFruit[1]->setOffset(glm::vec2(4200.0f, -300.0f));
+	
 
 
 
@@ -261,7 +324,16 @@ void PlayScene::start()
 	
 	m_pPlatform[0]->setOffset(glm::vec2(1050.0f, 500.0f));
 	m_pPlatform[1]->setOffset(glm::vec2(1200.0f, 400.0f));
-	m_pPlatform[2]->setOffset(glm::vec2(150.0f, 500.0f));
+	m_pPlatform[2]->setOffset(glm::vec2(1950.0f, 0.0f));
+	m_pPlatform[3]->setOffset(glm::vec2(3750.0f, 50.0f));
+	m_pPlatform[4]->setOffset(glm::vec2(3500.0f, -150.0f));
+	m_pPlatform[5]->setOffset(glm::vec2(4000.0f, -300.0f));
+	m_pPlatform[6]->setOffset(glm::vec2(4100.0f, -250.0f));
+	m_pPlatform[7]->setOffset(glm::vec2(4200.0f, -200.0f));
+	m_pPlatform[8]->setOffset(glm::vec2(4300.0f, -150.0f));
+	m_pPlatform[9]->setOffset(glm::vec2(4500.0f, -150.0f));
+	m_pPlatform[10]->setOffset(glm::vec2(5800.0f, -150.0f));
+
 
 	for (int i = 0; i < NUM_OF_WALL_; i++)
 	{
@@ -271,10 +343,18 @@ void PlayScene::start()
 	}
 
 	m_pWall[0]->setOffset(glm::vec2(1400.0f, 200.0f));
+	m_pWall[1]->setOffset(glm::vec2(1700.0f, 200.0f));
+	m_pWall[2]->setOffset(glm::vec2(3850.0f,-350.0f));
 
-	m_pFloor = new Floor();
-	m_pFloor->setOffset(glm::vec2(300.0f, 750.0f));
-	addChild(m_pFloor);
+	for (int i = 0; i < NUM_OF_FLOOR_; i++)
+	{
+		m_pFloor[i] = new Floor();
+		addChild(m_pFloor[i]);
+	}
+
+	m_pFloor[0]->setOffset(glm::vec2(300.0f, 750.0f));
+	m_pFloor[1]->setOffset(glm::vec2(2150.0f, 0.0f));
+	m_pFloor[2]->setOffset(glm::vec2(7300.0f, -150.0f));
 
 	m_pCamera = new Camera();
 	m_pCamera->getTransform()->position = glm::vec2(0.0f, 0.0f);

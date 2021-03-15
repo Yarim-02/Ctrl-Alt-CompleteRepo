@@ -1,10 +1,12 @@
 #pragma once
 #ifndef __PLAY_SCENE__
 #define __PLAY_SCENE__
-#define NUM_OF_PLATFORMS_ 3
-#define NUM_OF_HAZARDS_ 1
-#define NUM_OF_BUTTER_ 1
-#define NUM_OF_WALL_ 1
+#define NUM_OF_PLATFORMS_ 11
+#define NUM_OF_HAZARDS_ 3
+#define NUM_OF_BUTTER_ 2
+#define NUM_OF_WALL_ 3
+#define NUM_OF_FLOOR_ 3
+#define NUM_OF_BAD_FRUIT_ 2
 
 #include "Scene.h"
 #include "Button.h"
@@ -20,6 +22,7 @@
 #include "Camera.h"
 #include "Background.h"
 #include "Wall.h"
+#include "BadFruit.h"
 
 class PlayScene : public Scene
 {
@@ -42,16 +45,19 @@ private:
 	glm::vec2 m_mousePosition;
 
 	Player* m_pPlayer;
+	bool m_playerFacingRight;
 
 	Platform* m_pPlatform[NUM_OF_PLATFORMS_];
 
 	Wall* m_pWall[NUM_OF_WALL_];
 
-	Floor* m_pFloor;
+	Floor* m_pFloor[NUM_OF_FLOOR_];
 
 	Hazard* m_pHazard[NUM_OF_HAZARDS_];
 
 	Butter* m_pButter[NUM_OF_BUTTER_];
+
+	BadFruit* m_pBadFruit[NUM_OF_BAD_FRUIT_];
 
 	Camera* m_pCamera;
 
