@@ -3,7 +3,7 @@
 
 Background::Background()
 {
-	TextureManager::Instance()->load("../Assets/textures/Background.png", "Background");
+	TextureManager::Instance()->load("../Assets/textures/Background2.png", "Background");
 
 	auto size = TextureManager::Instance()->getTextureSize("Background");
 	setWidth(size.x);

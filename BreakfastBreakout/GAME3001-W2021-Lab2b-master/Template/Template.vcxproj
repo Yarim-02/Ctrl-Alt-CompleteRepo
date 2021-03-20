@@ -173,6 +173,7 @@
     <ClCompile Include="..\src\LoadButton.cpp" />
     <ClCompile Include="..\src\MenuBG.cpp" />
     <ClCompile Include="..\src\NGButton.cpp" />
+    <ClCompile Include="..\src\NonInteractiveObject.cpp" />
     <ClCompile Include="..\src\Obstacle.cpp" />
     <ClCompile Include="..\src\Platform.cpp" />
     <ClCompile Include="..\src\QuitButton.cpp" />
@@ -228,6 +229,7 @@
     <ClInclude Include="..\src\LoadButton.h" />
     <ClInclude Include="..\src\MenuBG.h" />
     <ClInclude Include="..\src\NGButton.h" />
+    <ClInclude Include="..\src\NonInteractiveObject.h" />
     <ClInclude Include="..\src\Obstacle.h" />
     <ClInclude Include="..\src\Platform.h" />
     <ClInclude Include="..\src\QuitButton.h" />

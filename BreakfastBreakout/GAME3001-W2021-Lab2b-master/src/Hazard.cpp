@@ -1,11 +1,12 @@
 #include "Hazard.h"
 #include "TextureManager.h"
 
-Hazard::Hazard()
+Hazard::Hazard(std::string fileNameAndType)
 {
-	TextureManager::Instance()->load("../Assets/textures/Knife.png", "knife");
+	TextureManager::Instance()->load("../Assets/textures/" + fileNameAndType, fileNameAndType);
 
-	auto size = TextureManager::Instance()->getTextureSize("knife");
+	fileName = fileNameAndType;
+	auto size = TextureManager::Instance()->getTextureSize(fileName);
 	setWidth(size.x);
 	setHeight(size.y);
 
@@ -23,7 +24,7 @@ Hazard::~Hazard()
 
 void Hazard::draw()
 {
-	TextureManager::Instance()->draw("knife",
+	TextureManager::Instance()->draw(fileName,
 		getTransform()->position.x, getTransform()->position.y, 0, 255, false);
 
 }
