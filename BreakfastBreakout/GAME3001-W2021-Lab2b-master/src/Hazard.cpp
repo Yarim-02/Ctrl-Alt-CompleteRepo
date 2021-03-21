@@ -5,8 +5,8 @@ Hazard::Hazard(std::string fileNameAndType)
 {
 	TextureManager::Instance()->load("../Assets/textures/" + fileNameAndType, fileNameAndType);
 
-	fileName = fileNameAndType;
-	auto size = TextureManager::Instance()->getTextureSize(fileName);
+	m_fileName = fileNameAndType;
+	auto size = TextureManager::Instance()->getTextureSize(m_fileName);
 	setWidth(size.x);
 	setHeight(size.y);
 
@@ -24,7 +24,7 @@ Hazard::~Hazard()
 
 void Hazard::draw()
 {
-	TextureManager::Instance()->draw(fileName,
+	TextureManager::Instance()->draw(m_fileName,
 		getTransform()->position.x, getTransform()->position.y, 0, 255, false);
 
 }

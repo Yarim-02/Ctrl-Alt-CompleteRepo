@@ -75,9 +75,9 @@ void PlayScene::update()
 		m_pNonInteractiveObjects[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pNonInteractiveObjects[i]->getOffset();
 	}
 
-	for (int i = 0; i < NUM_OF_BAD_FRUIT_; i++)
+	for (int i = 0; i < NUM_OF_ENEMY_; i++)
 	{
-		m_pBadFruit[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pBadFruit[i]->getOffset();
+		m_pEnemy[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pEnemy[i]->getOffset();
 	}
 	
 	for (int i = 0; i < NUM_OF_BUTTER_; i++)
@@ -159,9 +159,9 @@ void PlayScene::update()
 		CollisionManager::HazardCheck(m_pPlayer, m_pHazard[i], m_pCamera);
 	}
 
-	for (int i = 0; i < NUM_OF_BAD_FRUIT_; i++)
+	for (int i = 0; i < NUM_OF_ENEMY_; i++)
 	{
-		CollisionManager::HazardCheck(m_pPlayer, m_pBadFruit[i], m_pCamera);
+		CollisionManager::HazardCheck(m_pPlayer, m_pEnemy[i], m_pCamera);
 	}
 
 	for (int i = 0; i < NUM_OF_BUTTER_; i++)
@@ -181,6 +181,35 @@ void PlayScene::update()
 
 	std::cout << m_pCamera->getTransform()->position.x << ", " << m_pCamera->getTransform()->position.y << std::endl;
 
+	std::cout << m_pBackground[1]->getTransform()->position.x << ", " << m_pBackground[1]->getTransform()->position.y << std::endl;
+
+	if (m_frameCounter > 5000)
+		m_frameCounter = 0;
+
+	m_frameCounter++;
+	
+	if (m_frameCounter % 3 == 0 || m_frameCounter % 3 == 1 || m_frameCounter % 3 == 2)
+	{
+		if (m_ChopTracker == false)
+		{
+			m_pHazard[2]->setOffset(m_pHazard[2]->getOffset() + (glm::vec2(0.0f, 2.0f)));
+			
+			if (m_pHazard[2]->getOffset() == glm::vec2(650.0f, 598.0f))
+			{
+				m_ChopTracker = true;
+			}
+		}
+		if (m_ChopTracker == true)
+		{
+			m_pHazard[2]->setOffset(m_pHazard[2]->getOffset() - (glm::vec2(0.0f, 2.0f)));
+
+			if (m_pHazard[2]->getOffset() == glm::vec2(650.0f, 468.0f))
+			{
+				m_ChopTracker = false;
+			}
+		}
+	}
+	
 }
 
 void PlayScene::clean()
@@ -280,7 +309,7 @@ void PlayScene::handleEvents()
 			
 			m_pCamera->getTransform()->position.y += 2;
 			std::cout << "jumping" << std::endl;
-			m_pCamera->getRigidBody()->velocity.y += 25.0f;
+			m_pCamera->getRigidBody()->velocity.y += 22.0f;
 			m_pPlayer->setGrounded(false);
 
 			SoundManager::Instance().load("../Assets/audio/sound effects/jump.wav", "jump", SOUND_SFX);
@@ -296,7 +325,7 @@ void PlayScene::start()
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
 
-	m_pBackground[0] = new Background();
+	m_pBackground[0] = new Background(); // w6768 h900
 	m_pBackground[0]->setOffset(glm::vec2(-720, -450));
 	addChild(m_pBackground[0]);
 
@@ -326,11 +355,15 @@ void PlayScene::start()
 
 	// add small platform between two, make invisible so it looks like player is standing on sink
 
-	m_pHazard[1] = new Hazard("SinkHazard.png");
+	m_pHazard[1] = new Hazard("SinkHazard.png"); // w175 h10
 	addChild(m_pHazard[1]);
 	m_pHazard[1]->setOffset(glm::vec2(2545.0f, 760.0f));
 
-	m_pNonInteractiveObjects[0] = new NonInteractiveObject("KitchenSink.png");
+	m_pHazard[2] = new Hazard("ChoppingKnife.png"); // w114 h121
+	addChild(m_pHazard[2]);
+	m_pHazard[2]->setOffset(glm::vec2(650.0f, 468.0f));
+
+	m_pNonInteractiveObjects[0] = new NonInteractiveObject("KitchenSink.png"); // w400 h200
 	addChild(m_pNonInteractiveObjects[0]);
 	m_pNonInteractiveObjects[0]->setOffset(glm::vec2(2335.0f, 570.0f));
 	
@@ -339,13 +372,13 @@ void PlayScene::start()
 	addChild(m_pPlayer);
 	
 
-	for (int i = 0; i < NUM_OF_BAD_FRUIT_; i++)
+	for (int i = 0; i < NUM_OF_ENEMY_; i++)
 	{
-		m_pBadFruit[i] = new BadFruit();
-		addChild(m_pBadFruit[i]);
+		m_pEnemy[i] = new Enemy("Jello1.png", JELLO); // w72 h100
+		addChild(m_pEnemy[i]);
 	}
-	m_pBadFruit[0]->setOffset(glm::vec2(750.0f, 600.0f));
-	m_pBadFruit[1]->setOffset(glm::vec2(4200.0f, -300.0f));
+	m_pEnemy[0]->setOffset(glm::vec2(1300.0f, 660.0f));
+	m_pEnemy[1]->setOffset(glm::vec2(4200.0f, -300.0f));
 	
 
 
@@ -358,9 +391,9 @@ void PlayScene::start()
 
 	//m_pButter->setOffset(glm::vec2(350.0f, 150.0f));
 
-	for (int i = 0; i < NUM_OF_PLATFORMS_; i++)
+	for (int i = 0; i < 11 ; i++)
 	{
-		m_pPlatform[i] = new Platform();
+		m_pPlatform[i] = new Platform("Platform.png"); // w100 h28
 		addChild(m_pPlatform[i]);
 		m_pPlatform[i]->setPlatformID(i);
 	}
@@ -377,21 +410,22 @@ void PlayScene::start()
 	m_pPlatform[9]->setOffset(glm::vec2(4500.0f, -150.0f));
 	m_pPlatform[10]->setOffset(glm::vec2(5800.0f, -150.0f));
 
+	m_pPlatform[11] = new Platform("CuttingBoard.png"); // w274 h21
+	addChild(m_pPlatform[11]);
+	m_pPlatform[11]->setPlatformID(11);
+	m_pPlatform[11]->setOffset(glm::vec2(550.0f, 729.0f));
 
-	for (int i = 0; i < NUM_OF_WALL_; i++)
-	{
-		m_pWall[i] = new Wall();
-		addChild(m_pWall[i]);
-		m_pWall[i]->setPlatformID(i);
-	}
+	m_pWall[0] = new Wall("CerealBox.png"); //w80 h310
+	addChild(m_pWall[0]);
+	m_pWall[0]->setOffset(glm::vec2(1400.0f, 440.0f));
 
-	m_pWall[0]->setOffset(glm::vec2(1400.0f, 200.0f));
-	m_pWall[1]->setOffset(glm::vec2(1700.0f, 200.0f));
-	m_pWall[2]->setOffset(glm::vec2(3850.0f,-350.0f));
+	m_pWall[1] = new Wall("Pancakes.png"); // w110 h70
+	addChild(m_pWall[1]);
+	m_pWall[1]->setOffset(glm::vec2(900.0f, 690.0f));
 
 	for (int i = 0; i < NUM_OF_FLOOR_; i++)
 	{
-		m_pFloor[i] = new Floor();
+		m_pFloor[i] = new Floor(); //w3055 h20
 		addChild(m_pFloor[i]);
 	}
 

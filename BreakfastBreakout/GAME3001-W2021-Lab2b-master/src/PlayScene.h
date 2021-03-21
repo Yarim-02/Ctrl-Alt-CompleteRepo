@@ -1,12 +1,12 @@
 #pragma once
 #ifndef __PLAY_SCENE__
 #define __PLAY_SCENE__
-#define NUM_OF_PLATFORMS_ 11
-#define NUM_OF_HAZARDS_ 2
+#define NUM_OF_PLATFORMS_ 12
+#define NUM_OF_HAZARDS_ 3
 #define NUM_OF_BUTTER_ 2
-#define NUM_OF_WALL_ 3
+#define NUM_OF_WALL_ 2
 #define NUM_OF_FLOOR_ 2
-#define NUM_OF_BAD_FRUIT_ 2
+#define NUM_OF_ENEMY_ 2
 #define NUM_OF_BACKGROUND_ 6
 #define NUM_OF_NON_INTERACTIVE_OBJECTS_ 1
 
@@ -24,8 +24,9 @@
 #include "Camera.h"
 #include "Background.h"
 #include "Wall.h"
-#include "BadFruit.h"
+#include "Enemy.h"
 #include "NonInteractiveObject.h"
+#include "EnemyType.h"
 
 class PlayScene : public Scene
 {
@@ -60,7 +61,7 @@ private:
 
 	Butter* m_pButter[NUM_OF_BUTTER_];
 
-	BadFruit* m_pBadFruit[NUM_OF_BAD_FRUIT_];
+	Enemy* m_pEnemy[NUM_OF_ENEMY_];
 
 	Camera* m_pCamera;
 
@@ -69,6 +70,8 @@ private:
 	NonInteractiveObject* m_pNonInteractiveObjects[NUM_OF_NON_INTERACTIVE_OBJECTS_];
 	
 	// UI Items
+	int m_frameCounter;
+	bool m_ChopTracker = false;
 	
 };
 

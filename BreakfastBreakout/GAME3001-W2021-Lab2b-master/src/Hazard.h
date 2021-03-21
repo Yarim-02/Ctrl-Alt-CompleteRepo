@@ -22,7 +22,7 @@ public:
 
 
 private:
-	std::string fileName;
+	std::string m_fileName;
 };
 
 #endif

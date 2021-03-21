@@ -1,11 +1,13 @@
 #include "Wall.h"
 #include "TextureManager.h"
 
-Wall::Wall()
+Wall::Wall(std::string fileNameAndType)
 {
-	TextureManager::Instance()->load("../Assets/textures/Wall.png", "wall");
+	m_fileName = fileNameAndType;
+	
+	TextureManager::Instance()->load("../Assets/textures/" + fileNameAndType, fileNameAndType);
 
-	auto size = TextureManager::Instance()->getTextureSize("wall");
+	auto size = TextureManager::Instance()->getTextureSize(m_fileName);
 	setWidth(size.x);
 	setHeight(size.y);
 
@@ -23,7 +25,7 @@ Wall::~Wall()
 
 void Wall::draw()
 {
-	TextureManager::Instance()->draw("wall",
+	TextureManager::Instance()->draw(m_fileName,
 		getTransform()->position.x, getTransform()->position.y, 0, 255, false);
 
 }

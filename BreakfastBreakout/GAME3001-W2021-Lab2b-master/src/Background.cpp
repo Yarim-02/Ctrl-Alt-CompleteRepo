@@ -4,8 +4,8 @@
 Background::Background()
 {
 	TextureManager::Instance()->load("../Assets/textures/Background2.png", "Background");
-
-	auto size = TextureManager::Instance()->getTextureSize("Background");
+	// w6768 h900
+		auto size = TextureManager::Instance()->getTextureSize("Background");
 	setWidth(size.x);
 	setHeight(size.y);
 
