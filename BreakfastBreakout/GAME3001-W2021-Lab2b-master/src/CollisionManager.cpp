@@ -114,10 +114,10 @@ bool CollisionManager::PlatformCheck(Player* object1, GameObject* object2, Camer
 	const float p2Height = object2->getHeight();
 
 	if (
-		p1.x < p2.x + p2Width &&
-		p1.x + p1Width > p2.x &&
-		p1.y < p2.y + p2Height &&
-		p1.y + p1Height > p2.y
+		p1.x < p2.x + p2Width && // if player's position.x is < object position.x + object's width, and
+		p1.x + p1Width > p2.x && // player's position.x  + player's width is > object's position.x, and
+		p1.y < p2.y + p2Height && // player's position.y is < objects y + object's height, and 
+		p1.y + p1Height > p2.y // player's y + player's height > object's y
 		)
 	{
 		
