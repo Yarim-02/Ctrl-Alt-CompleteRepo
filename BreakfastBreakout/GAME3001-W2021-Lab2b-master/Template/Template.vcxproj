@@ -203,7 +203,6 @@
     <ClCompile Include="..\src\TextureManager.cpp" />
     <ClCompile Include="..\src\Util.cpp" />
     <ClCompile Include="..\src\Wall.cpp" />
-    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EvilFruit.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -269,7 +268,6 @@
     <ClInclude Include="..\src\Transform.h" />
     <ClInclude Include="..\src\Util.h" />
     <ClInclude Include="..\src\Wall.h" />
-    <ClInclude Include="Enemy.h" />
     <ClInclude Include="EvilFruit.h" />
   </ItemGroup>
   <ItemGroup>
