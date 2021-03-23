@@ -4,11 +4,12 @@
 
 #include "DisplayObject.h"
 #include "TextureManager.h"
+#include <string>
 
 class Wall final : public DisplayObject
 {
 public:
-	Wall();
+	Wall(std::string fileNameAndType);
 	~Wall();
 
 	// Life Cycle Methods
@@ -24,6 +25,7 @@ public:
 
 private:
 	int m_platformID;
+	std::string m_fileName;
 
 };
 
