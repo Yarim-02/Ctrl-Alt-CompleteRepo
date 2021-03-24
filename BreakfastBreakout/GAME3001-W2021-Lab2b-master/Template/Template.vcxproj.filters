@@ -168,9 +168,6 @@
     <ClCompile Include="..\src\ResumeButton.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Game Objects</Filter>
-    </ClCompile>
     <ClCompile Include="EvilFruit.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
@@ -357,9 +354,6 @@
       <Filter>Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ResumeButton.h">
-      <Filter>Game Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
       <Filter>Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="EvilFruit.h">
