@@ -25,6 +25,7 @@ public:
 private:
 	std::string m_fileName;
 	EnemyType m_enemyType;
+	int m_frameCounter;
 };
 
 #endif

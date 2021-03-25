@@ -1,12 +1,12 @@
 #pragma once
 #ifndef __PLAY_SCENE__
 #define __PLAY_SCENE__
-#define NUM_OF_PLATFORMS_ 12
+#define NUM_OF_PLATFORMS_ 13
 #define NUM_OF_HAZARDS_ 3
 #define NUM_OF_BUTTER_ 2
 #define NUM_OF_WALL_ 2
 #define NUM_OF_FLOOR_ 2
-#define NUM_OF_ENEMY_ 2
+#define NUM_OF_ENEMY_ 4
 #define NUM_OF_BACKGROUND_ 6
 #define NUM_OF_NON_INTERACTIVE_OBJECTS_ 1
 
