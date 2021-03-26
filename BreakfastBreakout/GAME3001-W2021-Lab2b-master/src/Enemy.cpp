@@ -56,7 +56,7 @@ void Enemy::draw()
 		else if (m_frameCounter < 10)
 		{
 			TextureManager::Instance()->draw("mushroom2",
-				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+				getTransform()->position.x, getTransform()->position.y -3, 0, 255, false);
 			auto size = TextureManager::Instance()->getTextureSize("mushroom2.png");
 			setWidth(size.x);
 			setHeight(size.y);
@@ -64,7 +64,7 @@ void Enemy::draw()
 		else if (m_frameCounter < 15)
 		{
 			TextureManager::Instance()->draw("mushroom3",
-				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+				getTransform()->position.x, getTransform()->position.y -8, 0, 255, false);
 			auto size = TextureManager::Instance()->getTextureSize("mushroom3.png");
 			setWidth(size.x);
 			setHeight(size.y);
@@ -72,7 +72,7 @@ void Enemy::draw()
 		else if (m_frameCounter < 20)
 		{
 			TextureManager::Instance()->draw("mushroom4",
-				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+				getTransform()->position.x, getTransform()->position.y -20, 0, 255, false);
 			auto size = TextureManager::Instance()->getTextureSize("mushroom4.png");
 			setWidth(size.x);
 			setHeight(size.y);
@@ -80,7 +80,7 @@ void Enemy::draw()
 		else if (m_frameCounter < 25)
 		{
 			TextureManager::Instance()->draw("mushroom5",
-				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+				getTransform()->position.x, getTransform()->position.y -30, 0, 255, false);
 			auto size = TextureManager::Instance()->getTextureSize("mushroom5.png");
 			setWidth(size.x);
 			setHeight(size.y);
@@ -88,7 +88,7 @@ void Enemy::draw()
 		else if (m_frameCounter < 30)
 		{
 			TextureManager::Instance()->draw("mushroom6",
-				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+				getTransform()->position.x, getTransform()->position.y -43, 0, 255, false);
 			auto size = TextureManager::Instance()->getTextureSize("mushroom6.png");
 			setWidth(size.x);
 			setHeight(size.y);
@@ -96,7 +96,7 @@ void Enemy::draw()
 		else if (m_frameCounter < 35)
 		{
 			TextureManager::Instance()->draw("mushroom7",
-				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+				getTransform()->position.x, getTransform()->position.y -50, 0, 255, false);
 			auto size = TextureManager::Instance()->getTextureSize("mushroom7.png");
 			setWidth(size.x);
 			setHeight(size.y);
@@ -104,7 +104,7 @@ void Enemy::draw()
 		else if (m_frameCounter < 40)
 		{
 			TextureManager::Instance()->draw("mushroom8",
-				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+				getTransform()->position.x, getTransform()->position.y -55, 0, 255, false);
 			auto size = TextureManager::Instance()->getTextureSize("mushroom8.png");
 			setWidth(size.x);
 			setHeight(size.y);
@@ -112,7 +112,7 @@ void Enemy::draw()
 		else if (m_frameCounter < 45)
 		{
 			TextureManager::Instance()->draw("mushroom9",
-				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+				getTransform()->position.x, getTransform()->position.y -50, 0, 255, false);
 			auto size = TextureManager::Instance()->getTextureSize("mushroom9.png");
 			setWidth(size.x);
 			setHeight(size.y);
@@ -120,7 +120,7 @@ void Enemy::draw()
 		else if (m_frameCounter < 50)
 		{
 			TextureManager::Instance()->draw("mushroom10",
-				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+				getTransform()->position.x, getTransform()->position.y -34, 0, 255, false);
 			auto size = TextureManager::Instance()->getTextureSize("mushroom10.png");
 			setWidth(size.x);
 			setHeight(size.y);
@@ -128,7 +128,7 @@ void Enemy::draw()
 		else if (m_frameCounter < 55)
 		{
 			TextureManager::Instance()->draw("mushroom11",
-				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+				getTransform()->position.x, getTransform()->position.y -20, 0, 255, false);
 			auto size = TextureManager::Instance()->getTextureSize("mushroom11.png");
 			setWidth(size.x);
 			setHeight(size.y);
@@ -136,16 +136,8 @@ void Enemy::draw()
 		else if (m_frameCounter < 60)
 		{
 			TextureManager::Instance()->draw("mushroom12",
-				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+				getTransform()->position.x, getTransform()->position.y -7, 0, 255, false);
 			auto size = TextureManager::Instance()->getTextureSize("mushroom12.png");
-			setWidth(size.x);
-			setHeight(size.y);
-		}
-		else if (m_frameCounter < 65)
-		{
-			TextureManager::Instance()->draw("mushroom13",
-				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
-			auto size = TextureManager::Instance()->getTextureSize("mushroom13.png");
 			setWidth(size.x);
 			setHeight(size.y);
 		}
