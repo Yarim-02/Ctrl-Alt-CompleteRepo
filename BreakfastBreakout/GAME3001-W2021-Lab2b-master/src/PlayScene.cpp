@@ -372,13 +372,21 @@ void PlayScene::start()
 	addChild(m_pPlayer);
 	
 
-	for (int i = 0; i < NUM_OF_ENEMY_; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		m_pEnemy[i] = new Enemy("Jello1.png", JELLO); // w72 h100
 		addChild(m_pEnemy[i]);
 	}
 	m_pEnemy[0]->setOffset(glm::vec2(1300.0f, 660.0f));
 	m_pEnemy[1]->setOffset(glm::vec2(4200.0f, -300.0f));
+
+	for (int i = 2; i < 4; i++)
+	{
+		m_pEnemy[i] = new Enemy("", MUSHROOM);
+		addChild(m_pEnemy[i]);
+	}
+	m_pEnemy[2]->setOffset(glm::vec2(1500.0f, 650.0f));
+	m_pEnemy[3]->setOffset(glm::vec2(2850.0f, 650.0f));
 	
 
 
@@ -391,13 +399,13 @@ void PlayScene::start()
 
 	//m_pButter->setOffset(glm::vec2(350.0f, 150.0f));
 
-	for (int i = 0; i < 11 ; i++)
+	for (int i = 0; i < 12; i++)
 	{
 		m_pPlatform[i] = new Platform("Platform.png"); // w100 h28
 		addChild(m_pPlatform[i]);
 		m_pPlatform[i]->setPlatformID(i);
 	}
-	
+
 	m_pPlatform[0]->setOffset(glm::vec2(1050.0f, 500.0f));
 	m_pPlatform[1]->setOffset(glm::vec2(1200.0f, 400.0f));
 	m_pPlatform[2]->setOffset(glm::vec2(1950.0f, 0.0f));
@@ -409,11 +417,13 @@ void PlayScene::start()
 	m_pPlatform[8]->setOffset(glm::vec2(4300.0f, -150.0f));
 	m_pPlatform[9]->setOffset(glm::vec2(4500.0f, -150.0f));
 	m_pPlatform[10]->setOffset(glm::vec2(5800.0f, -150.0f));
+	m_pPlatform[11]->setOffset(glm::vec2(2480.0f, 729.0f));
 
-	m_pPlatform[11] = new Platform("CuttingBoard.png"); // w274 h21
-	addChild(m_pPlatform[11]);
-	m_pPlatform[11]->setPlatformID(11);
-	m_pPlatform[11]->setOffset(glm::vec2(550.0f, 729.0f));
+	m_pPlatform[12] = new Platform("CuttingBoard.png"); // w274 h21
+	addChild(m_pPlatform[12]);
+	m_pPlatform[12]->setPlatformID(12);
+	m_pPlatform[12]->setOffset(glm::vec2(550.0f, 729.0f));
+
 
 	m_pWall[0] = new Wall("CerealBox.png"); //w80 h310
 	addChild(m_pWall[0]);
