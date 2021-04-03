@@ -409,7 +409,7 @@ void PlayScene::start()
 
 	//m_pButter->setOffset(glm::vec2(350.0f, 150.0f));
 
-	for (int i = 0; i < 12; i++)
+	for (int i = 0; i < 11; i++)
 	{
 		m_pPlatform[i] = new Platform("Platform.png"); // w100 h28
 		addChild(m_pPlatform[i]);
@@ -427,6 +427,11 @@ void PlayScene::start()
 	m_pPlatform[8]->setOffset(glm::vec2(4300.0f, -150.0f));
 	m_pPlatform[9]->setOffset(glm::vec2(4500.0f, -150.0f));
 	m_pPlatform[10]->setOffset(glm::vec2(5800.0f, -150.0f));
+	
+	
+	m_pPlatform[12] = new Platform("SinkPlatform.png"); // w274 h21
+	addChild(m_pPlatform[12]);
+	m_pPlatform[12]->setPlatformID(12);
 	m_pPlatform[11]->setOffset(glm::vec2(2480.0f, 729.0f));
 
 	m_pPlatform[12] = new Platform("CuttingBoard.png"); // w274 h21
