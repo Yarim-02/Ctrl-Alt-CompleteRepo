@@ -363,15 +363,9 @@ void PlayScene::start()
 	addChild(m_pHazard[0]);
 	m_pHazard[0]->setOffset(glm::vec2(2350.0f, 760.0f));
 
-	// add small platform between two, make invisible so it looks like player is standing on sink
-
-	m_pHazard[1] = new Hazard("SinkHazard.png"); // w175 h10
+	m_pHazard[1] = new Hazard("ChoppingKnife.png"); // w114 h121
 	addChild(m_pHazard[1]);
-	m_pHazard[1]->setOffset(glm::vec2(2545.0f, 760.0f));
-
-	m_pHazard[2] = new Hazard("ChoppingKnife.png"); // w114 h121
-	addChild(m_pHazard[2]);
-	m_pHazard[2]->setOffset(glm::vec2(650.0f, 468.0f));
+	m_pHazard[1]->setOffset(glm::vec2(650.0f, 468.0f));
 
 	m_pNonInteractiveObjects[0] = new NonInteractiveObject("KitchenSink.png"); // w400 h200
 	addChild(m_pNonInteractiveObjects[0]);
@@ -428,16 +422,10 @@ void PlayScene::start()
 	m_pPlatform[9]->setOffset(glm::vec2(4500.0f, -150.0f));
 	m_pPlatform[10]->setOffset(glm::vec2(5800.0f, -150.0f));
 	
-	
-	m_pPlatform[12] = new Platform("SinkPlatform.png"); // w274 h21
-	addChild(m_pPlatform[12]);
-	m_pPlatform[12]->setPlatformID(12);
-	m_pPlatform[11]->setOffset(glm::vec2(2480.0f, 729.0f));
-
-	m_pPlatform[12] = new Platform("CuttingBoard.png"); // w274 h21
-	addChild(m_pPlatform[12]);
-	m_pPlatform[12]->setPlatformID(12);
-	m_pPlatform[12]->setOffset(glm::vec2(550.0f, 729.0f));
+	m_pPlatform[11] = new Platform("CuttingBoard.png"); // w274 h21
+	addChild(m_pPlatform[11]);
+	m_pPlatform[11]->setPlatformID(12);
+	m_pPlatform[11]->setOffset(glm::vec2(550.0f, 729.0f));
 
 
 	m_pWall[0] = new Wall("CerealBox.png"); //w80 h310
