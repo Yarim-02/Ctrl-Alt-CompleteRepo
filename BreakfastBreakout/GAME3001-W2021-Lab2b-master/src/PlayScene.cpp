@@ -181,7 +181,7 @@ void PlayScene::update()
 
 	std::cout << m_pCamera->getTransform()->position.x << ", " << m_pCamera->getTransform()->position.y << std::endl;
 
-	std::cout << m_pBackground[1]->getTransform()->position.x << ", " << m_pBackground[1]->getTransform()->position.y << std::endl;
+	//std::cout << m_pBackground[1]->getTransform()->position.x << ", " << m_pBackground[1]->getTransform()->position.y << std::endl;
 
 	if (m_frameCounter > 5000)
 		m_frameCounter = 0;

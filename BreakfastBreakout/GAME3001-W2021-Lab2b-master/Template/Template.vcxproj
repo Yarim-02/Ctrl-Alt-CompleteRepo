@@ -170,6 +170,7 @@
     <ClCompile Include="..\src\EndBG.cpp" />
     <ClCompile Include="..\src\Floor.cpp" />
     <ClCompile Include="..\src\Hazard.cpp" />
+    <ClCompile Include="..\src\Jam.cpp" />
     <ClCompile Include="..\src\LoadButton.cpp" />
     <ClCompile Include="..\src\MenuBG.cpp" />
     <ClCompile Include="..\src\NGButton.cpp" />
@@ -226,6 +227,7 @@
     <ClInclude Include="..\src\EnemyType.h" />
     <ClInclude Include="..\src\Floor.h" />
     <ClInclude Include="..\src\Hazard.h" />
+    <ClInclude Include="..\src\Jam.h" />
     <ClInclude Include="..\src\LoadButton.h" />
     <ClInclude Include="..\src\MenuBG.h" />
     <ClInclude Include="..\src\NGButton.h" />
