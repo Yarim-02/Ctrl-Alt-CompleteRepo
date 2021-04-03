@@ -31,7 +31,7 @@ Enemy::Enemy(std::string fileNameAndType, EnemyType enemyType )
 	TextureManager::Instance()->load("../Assets/textures/mushroom12.png", "mushroom12");
 	TextureManager::Instance()->load("../Assets/textures/mushroom13.png", "mushroom13");
 
-	if (enemyType != JELLO)
+	if (enemyType != JELLO && enemyType != MUSHROOM)
 	{
 		auto size = TextureManager::Instance()->getTextureSize(m_fileName);
 		setWidth(size.x);
@@ -52,7 +52,7 @@ Enemy::~Enemy()
 
 void Enemy::draw()
 {
-	if (m_enemyType != JELLO)
+	if (m_enemyType != JELLO && m_enemyType != MUSHROOM)
 		TextureManager::Instance()->draw(m_fileName,
 			getTransform()->position.x, getTransform()->position.y, 0, 255, false);
 

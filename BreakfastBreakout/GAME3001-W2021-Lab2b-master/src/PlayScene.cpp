@@ -392,7 +392,7 @@ void PlayScene::start()
 
 	for (int i = 2; i < 4; i++)
 	{
-		m_pEnemy[i] = new Enemy("", MUSHROOM);
+		m_pEnemy[i] = new Enemy("mushroom1.png", MUSHROOM);
 		addChild(m_pEnemy[i]);
 	}
 	m_pEnemy[2]->setOffset(glm::vec2(1500.0f, 690.0f));

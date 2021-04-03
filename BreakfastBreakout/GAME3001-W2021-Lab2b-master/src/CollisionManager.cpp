@@ -199,7 +199,7 @@ bool CollisionManager::HazardCheck(Player* object1, GameObject* object2, Camera*
 	const float p1Height = object1->getHeight();
 	const float p2Width = object2->getWidth();
 	const float p2Height = object2->getHeight();
-
+	
 	if (
 		p1.x < p2.x + p2Width &&
 		p1.x + p1Width > p2.x &&
