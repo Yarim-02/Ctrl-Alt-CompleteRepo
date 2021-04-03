@@ -44,9 +44,11 @@ private:
 	bool m_onRight = false;
 	bool m_bullshit;
 	bool m_butter;
+	bool m_jam;
 
 	int m_platform;
 	int m_butterTime;
+	int m_jamTime;
 	int m_frameCounter;
 
 };

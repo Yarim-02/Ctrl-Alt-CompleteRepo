@@ -68,7 +68,7 @@ void Player::draw()
 			getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
 		break;
 	case PLAYER_RUN_RIGHT:
-		if (m_frameCounter % 20 == 0|| m_frameCounter % 20 == 1|| m_frameCounter % 20 == 2)
+		if (m_frameCounter % 20 >= 0&& m_frameCounter % 20 <= 10)
 			TextureManager::Instance()->draw("walking0",
 				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
 		else
@@ -76,7 +76,7 @@ void Player::draw()
 				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
 		break;
 	case PLAYER_RUN_LEFT:
-		if (m_frameCounter % 20 == 0 || m_frameCounter % 20 == 1 || m_frameCounter % 20 == 2)
+		if (m_frameCounter % 20 >= 0 && m_frameCounter % 20 <= 10)
 			TextureManager::Instance()->draw("walking0",
 				getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
 		else
@@ -84,7 +84,7 @@ void Player::draw()
 				getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
 		break;
 	case PLAYER_BUTTER_RIGHT:
-		if (m_frameCounter % 20 == 0 || m_frameCounter % 20 == 1 || m_frameCounter % 20 == 2)
+		if (m_frameCounter % 20 >= 0 && m_frameCounter % 20 <= 10)
 			TextureManager::Instance()->draw("buttered0",
 				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
 		else
@@ -92,7 +92,7 @@ void Player::draw()
 				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
 		break;
 	case PLAYER_BUTTER_LEFT:
-		if (m_frameCounter % 20 == 0 || m_frameCounter % 20 == 1 || m_frameCounter % 20 == 2)
+		if (m_frameCounter % 20 >= 0 && m_frameCounter % 20 <= 10)
 			TextureManager::Instance()->draw("buttered0",
 				getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
 		else
@@ -126,6 +126,14 @@ void Player::update()
 
 	if(m_butter == false)
 		getRigidBody()->velocity.x = 0;
+
+	if (m_jamTime > 0)
+	{
+		m_jam = true;
+		m_jamTime -= 1;
+	}
+	else
+		m_jam = false;
 
 	if (m_frameCounter > 5000)
 		m_frameCounter = 0;
