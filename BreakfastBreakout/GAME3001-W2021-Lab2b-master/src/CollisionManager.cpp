@@ -218,6 +218,9 @@ bool CollisionManager::HazardCheck(Player* object1, GameObject* object2, Camera*
 			break;
 		case HAZARD:
 			std::cout << "hit hazard" << std::endl;
+			SoundManager::Instance().load("../Assets/audio/sound effects/splat.wav", "dead", SOUND_SFX);
+			SoundManager::Instance().playSound("dead", 0);
+			SoundManager::Instance().setSoundVolume(32);
 			camera->getTransform()->position = glm::vec2(0.0f, 0.0f);
 			TheGame::Instance()->cleanSceneState(PLAY_SCENE);
 			break;
@@ -266,6 +269,9 @@ bool CollisionManager::ButterCheck(Player* object1, Butter* object2)
 			break;
 		case BUTTER:
 			std::cout << "hit butter" << std::endl;
+			SoundManager::Instance().load("../Assets/audio/sound effects/powerup.wav", "powerup", SOUND_SFX);
+			SoundManager::Instance().playSound("powerup", 0);
+			SoundManager::Instance().setSoundVolume(32);
 			object2->setHideTimer(200);
 			object1->setButterTime(200);
 			object2->setOffset(object2->getOffset());

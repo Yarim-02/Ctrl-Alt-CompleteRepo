@@ -173,11 +173,21 @@ void PlayScene::update()
 
 	if (m_pCamera->getTransform()->position.y < -450)
 	{
+		SoundManager::Instance().load("../Assets/audio/sound effects/fall.mp3", "fall", SOUND_SFX);
+		SoundManager::Instance().playSound("fall", 0);
+		SoundManager::Instance().setSoundVolume(32);
+
 		TheGame::Instance()->cleanSceneState(PLAY_SCENE);
 	}
 
 	if (m_pCamera->getTransform()->position.x < -7700)
+	{
+		SoundManager::Instance().load("../Assets/audio/sound effects/win.wav", "win", SOUND_SFX);
+		SoundManager::Instance().playSound("win", 0);
+		SoundManager::Instance().setSoundVolume(32);
+
 		TheGame::Instance()->changeSceneState(END_SCENE);
+	}
 
 	std::cout << m_pCamera->getTransform()->position.x << ", " << m_pCamera->getTransform()->position.y << std::endl;
 
