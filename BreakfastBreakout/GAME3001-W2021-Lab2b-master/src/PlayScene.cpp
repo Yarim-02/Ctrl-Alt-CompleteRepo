@@ -395,8 +395,8 @@ void PlayScene::start()
 		m_pEnemy[i] = new Enemy("", MUSHROOM);
 		addChild(m_pEnemy[i]);
 	}
-	m_pEnemy[2]->setOffset(glm::vec2(1500.0f, 650.0f));
-	m_pEnemy[3]->setOffset(glm::vec2(2850.0f, 650.0f));
+	m_pEnemy[2]->setOffset(glm::vec2(1500.0f, 690.0f));
+	m_pEnemy[3]->setOffset(glm::vec2(2850.0f, 690.0f));
 	
 
 
