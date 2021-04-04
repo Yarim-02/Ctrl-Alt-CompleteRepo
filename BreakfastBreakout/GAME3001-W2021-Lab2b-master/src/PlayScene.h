@@ -4,11 +4,11 @@
 #define NUM_OF_PLATFORMS_ 3
 #define NUM_OF_HAZARDS_ 2
 #define NUM_OF_BUTTER_ 2
-#define NUM_OF_WALL_ 2
+#define NUM_OF_WALL_ 3
 #define NUM_OF_FLOOR_ 2
 #define NUM_OF_ENEMY_ 4
 #define NUM_OF_BACKGROUND_ 6
-#define NUM_OF_NON_INTERACTIVE_OBJECTS_ 1
+#define NUM_OF_NON_INTERACTIVE_OBJECTS_ 6
 
 #include "Scene.h"
 #include "Button.h"

@@ -342,7 +342,7 @@ void PlayScene::handleEvents()
 			
 			m_pCamera->getTransform()->position.y += 2;
 			std::cout << "jumping" << std::endl;
-			m_pCamera->getRigidBody()->velocity.y += 22.0f;
+			m_pCamera->getRigidBody()->velocity.y += 23.0f;
 			m_pPlayer->setGrounded(false);
 
 			SoundManager::Instance().load("../Assets/audio/sound effects/jump.wav", "jump", SOUND_SFX);
@@ -382,6 +382,10 @@ void PlayScene::start()
 	m_pBackground[5]->setOffset(glm::vec2(6048, -1350));
 	addChild(m_pBackground[5]);
 
+	m_pNonInteractiveObjects[0] = new NonInteractiveObject("KitchenSink.png"); // w400 h200
+	addChild(m_pNonInteractiveObjects[0]);
+	m_pNonInteractiveObjects[0]->setOffset(glm::vec2(2335.0f, 570.0f));
+	
 	m_pHazard[0] = new Hazard("SinkHazard.png");
 	addChild(m_pHazard[0]);
 	m_pHazard[0]->setOffset(glm::vec2(2350.0f, 760.0f));
@@ -390,9 +394,13 @@ void PlayScene::start()
 	addChild(m_pHazard[1]);
 	m_pHazard[1]->setOffset(glm::vec2(650.0f, 468.0f));
 
-	m_pNonInteractiveObjects[0] = new NonInteractiveObject("KitchenSink.png"); // w400 h200
-	addChild(m_pNonInteractiveObjects[0]);
-	m_pNonInteractiveObjects[0]->setOffset(glm::vec2(2335.0f, 570.0f));
+	m_pNonInteractiveObjects[3] = new NonInteractiveObject("LongShelfBrackets.png"); // w586 h61
+	addChild(m_pNonInteractiveObjects[3]);
+	m_pNonInteractiveObjects[3]->setOffset(glm::vec2(1150.0f, 214.0f));
+	
+	m_pNonInteractiveObjects[4] = new NonInteractiveObject("ExtraLongShelfBrackets.png"); // w586 h61
+	addChild(m_pNonInteractiveObjects[4]);
+	m_pNonInteractiveObjects[4]->setOffset(glm::vec2(122.0f, 434.0f));
 	
 	m_pPlayer = new Player();
 	m_pPlayer->getTransform()->position = glm::vec2(400.0f, 600.0f);
@@ -426,10 +434,14 @@ void PlayScene::start()
 
 	//m_pButter->setOffset(glm::vec2(350.0f, 150.0f));
 
-	m_pPlatform[0] = new Platform("LongShelf.png"); // w586 h80
+	m_pPlatform[0] = new Platform("LongShelf.png"); // w586 h21
 	addChild(m_pPlatform[0]);
 	m_pPlatform[0]->setPlatformID(0);
 	m_pPlatform[0]->setOffset(glm::vec2(1150.0f, 194.0f));
+
+	m_pNonInteractiveObjects[2] = new NonInteractiveObject("LongShelfShadow.png"); // w586 h37
+	addChild(m_pNonInteractiveObjects[2]);
+	m_pNonInteractiveObjects[2]->setOffset(glm::vec2(1150.0f, 215.0f));
 	
 	
 	m_pPlatform[1] = new Platform("CuttingBoard.png"); // w274 h21
@@ -437,11 +449,14 @@ void PlayScene::start()
 	m_pPlatform[1]->setPlatformID(1);
 	m_pPlatform[1]->setOffset(glm::vec2(550.0f, 729.0f));
 
-	m_pPlatform[2] = new Platform("ExtraLongShelf.png"); // w1032 h80
+	m_pPlatform[2] = new Platform("ExtraLongShelf.png"); // w1032 h20
 	addChild(m_pPlatform[2]);
 	m_pPlatform[2]->setPlatformID(2);
 	m_pPlatform[2]->setOffset(glm::vec2(122.0f, 414.0f));
 
+	m_pNonInteractiveObjects[5] = new NonInteractiveObject("ExtraLongShelfShadow.png"); // w1032 h30
+	addChild(m_pNonInteractiveObjects[5]);
+	m_pNonInteractiveObjects[5]->setOffset(glm::vec2(122, 434.0f));
 
 	m_pWall[0] = new Wall("CrackersHorizontal.png"); //w257 h110
 	addChild(m_pWall[0]);
@@ -450,6 +465,14 @@ void PlayScene::start()
 	m_pWall[1] = new Wall("CrackersVertical.png"); //w110 h257
 	addChild(m_pWall[1]);
 	m_pWall[1]->setOffset(glm::vec2(1471.0f, 383.0f));
+
+	m_pWall[2] = new Wall("LargeCupboard.png"); //w778 h565
+	addChild(m_pWall[2]);
+	m_pWall[2]->setOffset(glm::vec2(1786.0f, -139.0f));
+
+	m_pNonInteractiveObjects[1] = new NonInteractiveObject("LargeCupboardShadow.png"); // w778 h59
+	addChild(m_pNonInteractiveObjects[1]);
+	m_pNonInteractiveObjects[1]->setOffset(glm::vec2(1786.0f, 426.0f));
 
 	//m_pWall[2] = new Wall("Pancakes.png"); // w110 h70
 	//addChild(m_pWall[2]);
