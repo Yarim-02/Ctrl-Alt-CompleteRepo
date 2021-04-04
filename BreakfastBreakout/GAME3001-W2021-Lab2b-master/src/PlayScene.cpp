@@ -49,6 +49,11 @@ void PlayScene::update()
 	for (int i = 0; i < NUM_OF_PLATFORMS_; i++)
 	{
 		m_pPlatform[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pPlatform[i]->getOffset();
+
+		CollisionManager::PlatformCheck(m_pPlayer, m_pPlatform[i], m_pCamera);
+
+		if (m_pPlayer->getGrounded() == true)
+			break;
 	}
 
 	for (int i = 0; i < NUM_OF_WALL_; i++)
@@ -68,6 +73,7 @@ void PlayScene::update()
 	for (int i = 0; i < NUM_OF_HAZARDS_; i++)
 	{
 		m_pHazard[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pHazard[i]->getOffset();
+		CollisionManager::HazardCheck(m_pPlayer, m_pHazard[i], m_pCamera);
 	}
 
 	for (int i = 0; i < NUM_OF_NON_INTERACTIVE_OBJECTS_; i++)
@@ -78,20 +84,37 @@ void PlayScene::update()
 	for (int i = 0; i < NUM_OF_ENEMY_; i++)
 	{
 		m_pEnemy[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pEnemy[i]->getOffset();
+		CollisionManager::HazardCheck(m_pPlayer, m_pEnemy[i], m_pCamera);
 	}
 	
 	for (int i = 0; i < NUM_OF_BUTTER_; i++)
 	{
 		m_pButter[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pButter[i]->getOffset();
+
+		if (m_pButter[i]->getHideTimer() > 0)
+			m_pButter[i]->setOffset(glm::vec2(-1000.0f, 150.0f));
+		else
+		{
+			switch (i)
+			{
+			case 0:
+				m_pButter[i]->setOffset(glm::vec2(2300.0f, -250.0f));
+				break;
+			case 1:
+				m_pButter[i]->setOffset(glm::vec2(4520.0f, -250.0f));
+				break;
+			}
+		}
+		CollisionManager::ButterCheck(m_pPlayer, m_pButter[i]);
 	}
 
-	for (int i = 0; i < NUM_OF_PLATFORMS_; i++)
+	/*for (int i = 0; i < NUM_OF_PLATFORMS_; i++)
 	{
 		CollisionManager::PlatformCheck(m_pPlayer, m_pPlatform[i], m_pCamera);
 		
 		if (m_pPlayer->getGrounded() == true)
 			break;
-	}
+	}*/
 
 	if (m_pPlayer->getGrounded() == false)
 	{
@@ -122,24 +145,24 @@ void PlayScene::update()
 		m_pCamera->getRigidBody()->velocity.x = 0;
 
 
-	// Butter placement
-	for (int i = 0; i < NUM_OF_BUTTER_; i++)
-	{
-		if (m_pButter[i]->getHideTimer() > 0)
-			m_pButter[i]->setOffset(glm::vec2(-1000.0f, 150.0f));
-		else
-		{
-			switch (i)
-			{
-			case 0:
-				m_pButter[i]->setOffset(glm::vec2(2300.0f, -250.0f));
-				break;
-			case 1:
-				m_pButter[i]->setOffset(glm::vec2(4520.0f, -250.0f));
-				break;
-			}
-		}
-	}
+	//// Butter placement
+	//for (int i = 0; i < NUM_OF_BUTTER_; i++)
+	//{
+	//	if (m_pButter[i]->getHideTimer() > 0)
+	//		m_pButter[i]->setOffset(glm::vec2(-1000.0f, 150.0f));
+	//	else
+	//	{
+	//		switch (i)
+	//		{
+	//		case 0:
+	//			m_pButter[i]->setOffset(glm::vec2(2300.0f, -250.0f));
+	//			break;
+	//		case 1:
+	//			m_pButter[i]->setOffset(glm::vec2(4520.0f, -250.0f));
+	//			break;
+	//		}
+	//	}
+	//}
 
 	
 
@@ -154,20 +177,20 @@ void PlayScene::update()
 	else
 		m_pCamera->getRigidBody()->velocity.y -= 1.0f;
 	
-	for (int i = 0; i < NUM_OF_HAZARDS_; i++)
+	/*for (int i = 0; i < NUM_OF_HAZARDS_; i++)
 	{
 		CollisionManager::HazardCheck(m_pPlayer, m_pHazard[i], m_pCamera);
-	}
+	}*/
 
-	for (int i = 0; i < NUM_OF_ENEMY_; i++)
+	/*for (int i = 0; i < NUM_OF_ENEMY_; i++)
 	{
 		CollisionManager::HazardCheck(m_pPlayer, m_pEnemy[i], m_pCamera);
-	}
+	}*/
 
-	for (int i = 0; i < NUM_OF_BUTTER_; i++)
+	/*for (int i = 0; i < NUM_OF_BUTTER_; i++)
 	{
 		CollisionManager::ButterCheck(m_pPlayer, m_pButter[i]);
-	}
+	}*/
 
 	//std::cout << m_pPlayer->getGrounded() << std::endl;
 
@@ -202,18 +225,18 @@ void PlayScene::update()
 	{
 		if (m_ChopTracker == false)
 		{
-			m_pHazard[2]->setOffset(m_pHazard[2]->getOffset() + (glm::vec2(0.0f, 2.0f)));
+			m_pHazard[1]->setOffset(m_pHazard[1]->getOffset() + (glm::vec2(0.0f, 2.0f)));
 			
-			if (m_pHazard[2]->getOffset() == glm::vec2(650.0f, 598.0f))
+			if (m_pHazard[1]->getOffset() == glm::vec2(650.0f, 598.0f))
 			{
 				m_ChopTracker = true;
 			}
 		}
 		if (m_ChopTracker == true)
 		{
-			m_pHazard[2]->setOffset(m_pHazard[2]->getOffset() - (glm::vec2(0.0f, 2.0f)));
+			m_pHazard[1]->setOffset(m_pHazard[1]->getOffset() - (glm::vec2(0.0f, 2.0f)));
 
-			if (m_pHazard[2]->getOffset() == glm::vec2(650.0f, 468.0f))
+			if (m_pHazard[1]->getOffset() == glm::vec2(650.0f, 468.0f))
 			{
 				m_ChopTracker = false;
 			}
@@ -381,7 +404,7 @@ void PlayScene::start()
 		m_pEnemy[i] = new Enemy("Jello1.png", JELLO); // w72 h100
 		addChild(m_pEnemy[i]);
 	}
-	m_pEnemy[0]->setOffset(glm::vec2(1300.0f, 660.0f));
+	m_pEnemy[0]->setOffset(glm::vec2(2100.0f, 660.0f));
 	m_pEnemy[1]->setOffset(glm::vec2(4200.0f, -300.0f));
 
 	for (int i = 2; i < 4; i++)
@@ -389,7 +412,7 @@ void PlayScene::start()
 		m_pEnemy[i] = new Enemy("mushroom1.png", MUSHROOM);
 		addChild(m_pEnemy[i]);
 	}
-	m_pEnemy[2]->setOffset(glm::vec2(1500.0f, 690.0f));
+	m_pEnemy[2]->setOffset(glm::vec2(1000.0f, 690.0f));
 	m_pEnemy[3]->setOffset(glm::vec2(2850.0f, 690.0f));
 	
 
@@ -403,38 +426,34 @@ void PlayScene::start()
 
 	//m_pButter->setOffset(glm::vec2(350.0f, 150.0f));
 
-	for (int i = 0; i < 11; i++)
-	{
-		m_pPlatform[i] = new Platform("Platform.png"); // w100 h28
-		addChild(m_pPlatform[i]);
-		m_pPlatform[i]->setPlatformID(i);
-	}
-
-	m_pPlatform[0]->setOffset(glm::vec2(1050.0f, 500.0f));
-	m_pPlatform[1]->setOffset(glm::vec2(1200.0f, 400.0f));
-	m_pPlatform[2]->setOffset(glm::vec2(1950.0f, 0.0f));
-	m_pPlatform[3]->setOffset(glm::vec2(3750.0f, 50.0f));
-	m_pPlatform[4]->setOffset(glm::vec2(3500.0f, -150.0f));
-	m_pPlatform[5]->setOffset(glm::vec2(4000.0f, -300.0f));
-	m_pPlatform[6]->setOffset(glm::vec2(4100.0f, -250.0f));
-	m_pPlatform[7]->setOffset(glm::vec2(4200.0f, -200.0f));
-	m_pPlatform[8]->setOffset(glm::vec2(4300.0f, -150.0f));
-	m_pPlatform[9]->setOffset(glm::vec2(4500.0f, -150.0f));
-	m_pPlatform[10]->setOffset(glm::vec2(5800.0f, -150.0f));
+	m_pPlatform[0] = new Platform("LongShelf.png"); // w586 h80
+	addChild(m_pPlatform[0]);
+	m_pPlatform[0]->setPlatformID(0);
+	m_pPlatform[0]->setOffset(glm::vec2(1150.0f, 194.0f));
 	
-	m_pPlatform[11] = new Platform("CuttingBoard.png"); // w274 h21
-	addChild(m_pPlatform[11]);
-	m_pPlatform[11]->setPlatformID(12);
-	m_pPlatform[11]->setOffset(glm::vec2(550.0f, 729.0f));
+	
+	m_pPlatform[1] = new Platform("CuttingBoard.png"); // w274 h21
+	addChild(m_pPlatform[1]);
+	m_pPlatform[1]->setPlatformID(1);
+	m_pPlatform[1]->setOffset(glm::vec2(550.0f, 729.0f));
+
+	m_pPlatform[2] = new Platform("ExtraLongShelf.png"); // w1032 h80
+	addChild(m_pPlatform[2]);
+	m_pPlatform[2]->setPlatformID(2);
+	m_pPlatform[2]->setOffset(glm::vec2(122.0f, 414.0f));
 
 
-	m_pWall[0] = new Wall("CerealBox.png"); //w80 h310
+	m_pWall[0] = new Wall("CrackersHorizontal.png"); //w257 h110
 	addChild(m_pWall[0]);
-	m_pWall[0]->setOffset(glm::vec2(1400.0f, 440.0f));
+	m_pWall[0]->setOffset(glm::vec2(1400.0f, 640.0f));
 
-	m_pWall[1] = new Wall("Pancakes.png"); // w110 h70
+	m_pWall[1] = new Wall("CrackersVertical.png"); //w110 h257
 	addChild(m_pWall[1]);
-	m_pWall[1]->setOffset(glm::vec2(900.0f, 690.0f));
+	m_pWall[1]->setOffset(glm::vec2(1471.0f, 383.0f));
+
+	//m_pWall[2] = new Wall("Pancakes.png"); // w110 h70
+	//addChild(m_pWall[2]);
+	//m_pWall[2]->setOffset(glm::vec2(900.0f, 690.0f));
 
 	for (int i = 0; i < NUM_OF_FLOOR_; i++)
 	{

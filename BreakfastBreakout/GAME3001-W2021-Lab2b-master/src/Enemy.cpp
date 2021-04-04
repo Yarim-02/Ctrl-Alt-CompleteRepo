@@ -44,6 +44,8 @@ Enemy::Enemy(std::string fileNameAndType, EnemyType enemyType )
 	getRigidBody()->isColliding = false;
 	setType(HAZARD);
 
+	m_mushroomFrameCounter = 0;
+	m_jelloFrameCounter = 0;
 
 }
 
