@@ -98,7 +98,7 @@ void PlayScene::update()
 			switch (i)
 			{
 			case 0:
-				m_pButter[i]->setOffset(glm::vec2(2300.0f, -250.0f));
+				m_pButter[i]->setOffset(glm::vec2(1700.0f, 705.0f));
 				break;
 			case 1:
 				m_pButter[i]->setOffset(glm::vec2(4520.0f, -250.0f));
@@ -265,10 +265,10 @@ void PlayScene::handleEvents()
 		{
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
 			{
-				if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
-				{
+				/*if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
+				{*/
 					m_pCamera->getTransform()->position += glm::vec2(7, 0);
-				}
+				//}
 				m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
 				m_playerFacingRight = false;
 			}
@@ -277,10 +277,10 @@ void PlayScene::handleEvents()
 		{
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
 			{
-				if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
-				{
+				/*if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
+				{*/
 					m_pCamera->getRigidBody()->velocity.x += 0.5f;
-				}
+				//}
 				m_pPlayer->setAnimationState(PLAYER_BUTTER_LEFT);
 				m_playerFacingRight = false;
 			}
@@ -382,13 +382,21 @@ void PlayScene::start()
 	m_pBackground[5]->setOffset(glm::vec2(6048, -1350));
 	addChild(m_pBackground[5]);
 
+	m_pNonInteractiveObjects[10] = new NonInteractiveObject("WindowBackground.png"); // w382 h339
+	addChild(m_pNonInteractiveObjects[10]);
+	m_pNonInteractiveObjects[10]->setOffset(glm::vec2(2684.0f, 303.0f));
+
+	m_pNonInteractiveObjects[9] = new NonInteractiveObject("Window.png"); // w382 h339
+	addChild(m_pNonInteractiveObjects[9]);
+	m_pNonInteractiveObjects[9]->setOffset(glm::vec2(2684.0f, 303.0f));
+	
 	m_pNonInteractiveObjects[0] = new NonInteractiveObject("KitchenSink.png"); // w400 h200
 	addChild(m_pNonInteractiveObjects[0]);
-	m_pNonInteractiveObjects[0]->setOffset(glm::vec2(2335.0f, 570.0f));
+	m_pNonInteractiveObjects[0]->setOffset(glm::vec2(2675.0f, 570.0f));
 	
 	m_pHazard[0] = new Hazard("SinkHazard.png");
 	addChild(m_pHazard[0]);
-	m_pHazard[0]->setOffset(glm::vec2(2350.0f, 760.0f));
+	m_pHazard[0]->setOffset(glm::vec2(2690.0f, 760.0f));
 
 	m_pHazard[1] = new Hazard("ChoppingKnife.png"); // w114 h121
 	addChild(m_pHazard[1]);
@@ -401,6 +409,10 @@ void PlayScene::start()
 	m_pNonInteractiveObjects[4] = new NonInteractiveObject("ExtraLongShelfBrackets.png"); // w586 h61
 	addChild(m_pNonInteractiveObjects[4]);
 	m_pNonInteractiveObjects[4]->setOffset(glm::vec2(122.0f, 434.0f));
+
+	m_pNonInteractiveObjects[8] = new NonInteractiveObject("ExtraLongShelfBrackets.png"); // w586 h61
+	addChild(m_pNonInteractiveObjects[8]);
+	m_pNonInteractiveObjects[8]->setOffset(glm::vec2(3200.0f, 486.0f));
 	
 	m_pPlayer = new Player();
 	m_pPlayer->getTransform()->position = glm::vec2(400.0f, 600.0f);
@@ -421,42 +433,44 @@ void PlayScene::start()
 		addChild(m_pEnemy[i]);
 	}
 	m_pEnemy[2]->setOffset(glm::vec2(1000.0f, 690.0f));
-	m_pEnemy[3]->setOffset(glm::vec2(2850.0f, 690.0f));
+	m_pEnemy[3]->setOffset(glm::vec2(4150.0f, 690.0f));
 	
 
+	m_pButter[0] = new Butter(); // w75 h45
+	addChild(m_pButter[0]);
+	m_pButter[0]->setOffset(glm::vec2(1700.0f, 705.0f));
 
-
-	for (int i = 0; i < NUM_OF_BUTTER_; i++)
-	{
-		m_pButter[i] = new Butter();
-		addChild(m_pButter[i]);
-	}
-
-	//m_pButter->setOffset(glm::vec2(350.0f, 150.0f));
-
+	m_pNonInteractiveObjects[2] = new NonInteractiveObject("LongShelfShadow.png"); // w586 h37
+	addChild(m_pNonInteractiveObjects[2]);
+	m_pNonInteractiveObjects[2]->setOffset(glm::vec2(1150.0f, 214.0f));
+	
 	m_pPlatform[0] = new Platform("LongShelf.png"); // w586 h21
 	addChild(m_pPlatform[0]);
 	m_pPlatform[0]->setPlatformID(0);
 	m_pPlatform[0]->setOffset(glm::vec2(1150.0f, 194.0f));
-
-	m_pNonInteractiveObjects[2] = new NonInteractiveObject("LongShelfShadow.png"); // w586 h37
-	addChild(m_pNonInteractiveObjects[2]);
-	m_pNonInteractiveObjects[2]->setOffset(glm::vec2(1150.0f, 215.0f));
-	
 	
 	m_pPlatform[1] = new Platform("CuttingBoard.png"); // w274 h21
 	addChild(m_pPlatform[1]);
 	m_pPlatform[1]->setPlatformID(1);
 	m_pPlatform[1]->setOffset(glm::vec2(550.0f, 729.0f));
-
+	
+	m_pNonInteractiveObjects[5] = new NonInteractiveObject("ExtraLongShelfShadow.png"); // w1032 h30
+	addChild(m_pNonInteractiveObjects[5]);
+	m_pNonInteractiveObjects[5]->setOffset(glm::vec2(122.0f, 433.0f));
+	
 	m_pPlatform[2] = new Platform("ExtraLongShelf.png"); // w1032 h20
 	addChild(m_pPlatform[2]);
 	m_pPlatform[2]->setPlatformID(2);
 	m_pPlatform[2]->setOffset(glm::vec2(122.0f, 414.0f));
 
-	m_pNonInteractiveObjects[5] = new NonInteractiveObject("ExtraLongShelfShadow.png"); // w1032 h30
-	addChild(m_pNonInteractiveObjects[5]);
-	m_pNonInteractiveObjects[5]->setOffset(glm::vec2(122, 434.0f));
+	m_pNonInteractiveObjects[7] = new NonInteractiveObject("ExtraLongShelfShadow.png"); // w1032 h30
+	addChild(m_pNonInteractiveObjects[7]);
+	m_pNonInteractiveObjects[7]->setOffset(glm::vec2(3200.0f, 486.0f));
+	
+	m_pPlatform[3] = new Platform("ExtraLongShelf.png"); // w1032 h20
+	addChild(m_pPlatform[3]);
+	m_pPlatform[3]->setPlatformID(3);
+	m_pPlatform[3]->setOffset(glm::vec2(3200.0f, 466.0f));
 
 	m_pWall[0] = new Wall("CrackersHorizontal.png"); //w257 h110
 	addChild(m_pWall[0]);
@@ -466,13 +480,22 @@ void PlayScene::start()
 	addChild(m_pWall[1]);
 	m_pWall[1]->setOffset(glm::vec2(1471.0f, 383.0f));
 
-	m_pWall[2] = new Wall("LargeCupboard.png"); //w778 h565
-	addChild(m_pWall[2]);
-	m_pWall[2]->setOffset(glm::vec2(1786.0f, -139.0f));
-
 	m_pNonInteractiveObjects[1] = new NonInteractiveObject("LargeCupboardShadow.png"); // w778 h59
 	addChild(m_pNonInteractiveObjects[1]);
 	m_pNonInteractiveObjects[1]->setOffset(glm::vec2(1786.0f, 426.0f));
+	
+	m_pWall[2] = new Wall("LargeCupboard.png"); //w778 h565
+	addChild(m_pWall[2]);
+	m_pWall[2]->setOffset(glm::vec2(1786.0f, -139.0f));
+	
+	m_pNonInteractiveObjects[6] = new NonInteractiveObject("SmallCupboardShadow.png"); // w330 h58
+	addChild(m_pNonInteractiveObjects[6]);
+	m_pNonInteractiveObjects[6]->setOffset(glm::vec2(3180.0f, 269.0f));
+	
+	m_pWall[3] = new Wall("SmallCupboard.png"); //w330 h306
+	addChild(m_pWall[3]);
+	m_pWall[3]->setOffset(glm::vec2(3180.0f, -37.0f));
+
 
 	//m_pWall[2] = new Wall("Pancakes.png"); // w110 h70
 	//addChild(m_pWall[2]);
@@ -484,8 +507,8 @@ void PlayScene::start()
 		addChild(m_pFloor[i]);
 	}
 
-	m_pFloor[0]->setOffset(glm::vec2(-720.0f, 750.0f));
-	m_pFloor[1]->setOffset(glm::vec2(2735.0f, 750.0f));
+	m_pFloor[0]->setOffset(glm::vec2(-380.0f, 750.0f));
+	m_pFloor[1]->setOffset(glm::vec2(3075.0f, 750.0f));
 	
 
 
