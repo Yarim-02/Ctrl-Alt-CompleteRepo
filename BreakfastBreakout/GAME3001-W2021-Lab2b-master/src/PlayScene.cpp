@@ -243,7 +243,7 @@ void PlayScene::update()
 		}
 	}
 
-	//spice falling
+	//spice triggers
 	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[13], m_pCamera))
 	{
 		m_spice1Falling = true;
@@ -252,19 +252,128 @@ void PlayScene::update()
 	{
 		m_spice2Falling = true;
 	}
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[15], m_pCamera))
+	{
+		m_spice3Falling = true;
+	}
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[16], m_pCamera))
+	{
+		m_spice4Falling = true;
+	}
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[17], m_pCamera))
+	{
+		m_spice5Falling = true;
+	}
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[18], m_pCamera))
+	{
+		m_spice6Falling = true;
+	}
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[19], m_pCamera))
+	{
+		m_spice7Falling = true;
+	}
 
-	if ( m_spice1Falling == true)
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[20], m_pCamera))
 	{
-		m_pHazard[2]->getTransform()->position.y += 20.0f;
-		//m_pHazard[2]->getRigidBody()->velocity.y += 10.0f;
+		m_spice8Falling = true;
 	}
-	
-	if(m_spice2Falling == true)
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[21], m_pCamera))
 	{
-		m_pHazard[3]->getTransform()->position.y += 20.0f;
-		//m_pHazard[3]->getRigidBody()->velocity.y += 10.0f;
+		m_spice9Falling = true;
 	}
-	
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[22], m_pCamera))
+	{
+		m_spice10Falling = true;
+	}
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[23], m_pCamera))
+	{
+		m_spice11Falling = true;
+	}
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[24], m_pCamera))
+	{
+		m_spice12Falling = true;
+	}
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[25], m_pCamera))
+	{
+		m_spice13Falling = true;
+	}
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[26], m_pCamera))
+	{
+		m_spice14Falling = true;
+	}
+	//spice falling
+	if ( m_spice1Falling == true && m_pHazard[2]->getOffset().y < 656.0f)
+	{
+		m_pHazard[2]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[2]->setOffset(m_pHazard[2]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
+	if(m_spice2Falling == true && m_pHazard[3]->getOffset().y < 656.0f)
+	{
+
+		m_pHazard[3]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[3]->setOffset(m_pHazard[3]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
+	if (m_spice3Falling == true && m_pHazard[4]->getOffset().y < 656.0f)
+	{
+		m_pHazard[4]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[4]->setOffset(m_pHazard[4]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
+	if (m_spice4Falling == true && m_pHazard[5]->getOffset().y < 656.0f)
+	{
+		m_pHazard[5]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[5]->setOffset(m_pHazard[5]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
+	if (m_spice5Falling == true && m_pHazard[6]->getOffset().y < 656.0f)
+	{
+		m_pHazard[6]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[6]->setOffset(m_pHazard[6]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
+	if (m_spice6Falling == true && m_pHazard[7]->getOffset().y < 656.0f)
+	{
+		m_pHazard[7]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[7]->setOffset(m_pHazard[7]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
+	if (m_spice7Falling == true && m_pHazard[8]->getOffset().y < 656.0f)
+	{
+		m_pHazard[8]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[8]->setOffset(m_pHazard[8]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
+
+	if (m_spice8Falling == true && m_pHazard[9]->getOffset().y < 656.0f)
+	{
+		m_pHazard[9]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[9]->setOffset(m_pHazard[9]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
+	if (m_spice9Falling == true && m_pHazard[10]->getOffset().y < 656.0f)
+	{
+		m_pHazard[10]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[10]->setOffset(m_pHazard[10]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
+	if (m_spice10Falling == true && m_pHazard[11]->getOffset().y < 656.0f)
+	{
+		m_pHazard[11]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[11]->setOffset(m_pHazard[11]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
+	if (m_spice11Falling == true && m_pHazard[12]->getOffset().y < 656.0f)
+	{
+		m_pHazard[12]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[12]->setOffset(m_pHazard[12]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
+	if (m_spice12Falling == true && m_pHazard[13]->getOffset().y < 656.0f)
+	{
+		m_pHazard[13]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[13]->setOffset(m_pHazard[13]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
+	if (m_spice13Falling == true && m_pHazard[14]->getOffset().y < 656.0f)
+	{
+		m_pHazard[14]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[14]->setOffset(m_pHazard[14]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
+	if (m_spice14Falling == true && m_pHazard[15]->getOffset().y < 656.0f)
+	{
+		m_pHazard[15]->getRigidBody()->velocity += 10.0f;
+		m_pHazard[15]->setOffset(m_pHazard[15]->getOffset() + glm::vec2(0.0f, 5.0f));
+	}
 }
 
 void PlayScene::clean()
@@ -424,41 +533,121 @@ void PlayScene::start()
 	addChild(m_pHazard[1]);
 	m_pHazard[1]->setOffset(glm::vec2(650.0f, 468.0f));
 
-	m_pNonInteractiveObjects[13] = new NonInteractiveObject("Spice1.png"); // w40 h264 
+	//start of spice triggers
+
+	m_pNonInteractiveObjects[13] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[13]);
-	m_pNonInteractiveObjects[13]->setOffset(glm::vec2(3200.0f, 546.0f));
+	m_pNonInteractiveObjects[13]->setOffset(glm::vec2(3300.0f, 250.0f));
 	
-	m_pNonInteractiveObjects[14] = new NonInteractiveObject("Spice1.png"); // w40 h264 
+	m_pNonInteractiveObjects[14] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[14]);
-	m_pNonInteractiveObjects[14]->setOffset(glm::vec2(3240.0f, 546.0f));
+	m_pNonInteractiveObjects[14]->setOffset(glm::vec2(3360.0f, 250.0f));
+
+	m_pNonInteractiveObjects[15] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[15]);
+	m_pNonInteractiveObjects[15]->setOffset(glm::vec2(3420.0f, 250.0f));
+
+	m_pNonInteractiveObjects[16] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[16]);
+	m_pNonInteractiveObjects[16]->setOffset(glm::vec2(3480.0f, 250.0f));
+
+	m_pNonInteractiveObjects[17] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[17]);
+	m_pNonInteractiveObjects[17]->setOffset(glm::vec2(3540.0f, 250.0f));
+	
+	m_pNonInteractiveObjects[18] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[18]);
+	m_pNonInteractiveObjects[18]->setOffset(glm::vec2(3600.0f, 250.0f));
+
+	m_pNonInteractiveObjects[19] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[19]);
+	m_pNonInteractiveObjects[19]->setOffset(glm::vec2(3660.0f, 250.0f));
+
+	m_pNonInteractiveObjects[20] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[20]);
+	m_pNonInteractiveObjects[20]->setOffset(glm::vec2(3720.0f, 250.0f));
+
+	m_pNonInteractiveObjects[21] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[21]);
+	m_pNonInteractiveObjects[21]->setOffset(glm::vec2(3780.0f, 250.0f));
+
+	m_pNonInteractiveObjects[22] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[22]);
+	m_pNonInteractiveObjects[22]->setOffset(glm::vec2(3840.0f, 250.0f));
+
+	m_pNonInteractiveObjects[23] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[23]);
+	m_pNonInteractiveObjects[23]->setOffset(glm::vec2(3900.0f, 250.0f));
+
+	m_pNonInteractiveObjects[24] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[24]);
+	m_pNonInteractiveObjects[24]->setOffset(glm::vec2(3960.0f, 250.0f));
+
+	m_pNonInteractiveObjects[25] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[25]);
+	m_pNonInteractiveObjects[25]->setOffset(glm::vec2(4020.0f, 250.0f));
+
+	m_pNonInteractiveObjects[26] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[26]);
+	m_pNonInteractiveObjects[26]->setOffset(glm::vec2(4080.0f, 250.0f));
+
+	//end of spice triggers
 
 	m_pHazard[2] = new Hazard("Spice1.png"); // w40 h94	1
 	addChild(m_pHazard[2]);
-	m_pHazard[2]->setOffset(glm::vec2(3300.0f, 374.0f));
+	m_pHazard[2]->setOffset(glm::vec2(3600.0f, 374.0f));
 
 	m_pHazard[3] = new Hazard("Spice2.png"); // w40 h94	2
 	addChild(m_pHazard[3]);
-	m_pHazard[3]->setOffset(glm::vec2(3345.0f, 374.0f));
+	m_pHazard[3]->setOffset(glm::vec2(3645.0f, 374.0f));
 
 	m_pHazard[4] = new Hazard("Spice3.png"); // w40 h94	3
 	addChild(m_pHazard[4]);
-	m_pHazard[4]->setOffset(glm::vec2(3390.0f, 374.0f));
+	m_pHazard[4]->setOffset(glm::vec2(3690.0f, 374.0f));
 
 	m_pHazard[5] = new Hazard("Spice4.png"); // w40 h94	4
 	addChild(m_pHazard[5]);
-	m_pHazard[5]->setOffset(glm::vec2(3435.0f, 374.0f));
+	m_pHazard[5]->setOffset(glm::vec2(3735.0f, 374.0f));
 
 	m_pHazard[6] = new Hazard("Spice5.png"); // w40 h94	5
 	addChild(m_pHazard[6]);
-	m_pHazard[6]->setOffset(glm::vec2(3480.0f, 374.0f));
+	m_pHazard[6]->setOffset(glm::vec2(3780.0f, 374.0f));
 
 	m_pHazard[7] = new Hazard("Spice6.png"); // w40 h94	6
 	addChild(m_pHazard[7]);
-	m_pHazard[7]->setOffset(glm::vec2(3525.0f, 374.0f));
+	m_pHazard[7]->setOffset(glm::vec2(3825.0f, 374.0f));
 
 	m_pHazard[8] = new Hazard("Spice7.png"); // w40 h94	7
 	addChild(m_pHazard[8]);
-	m_pHazard[8]->setOffset(glm::vec2(3570.0f, 374.0f));
+	m_pHazard[8]->setOffset(glm::vec2(3870.0f, 374.0f));
+
+	m_pHazard[9] = new Hazard("Spice1.png"); // w40 h94	1
+	addChild(m_pHazard[9]);
+	m_pHazard[9]->setOffset(glm::vec2(3915.0f, 374.0f));
+
+	m_pHazard[10] = new Hazard("Spice2.png"); // w40 h94	2
+	addChild(m_pHazard[10]);
+	m_pHazard[10]->setOffset(glm::vec2(3960.0f, 374.0f));
+
+	m_pHazard[11] = new Hazard("Spice3.png"); // w40 h94	3
+	addChild(m_pHazard[11]);
+	m_pHazard[11]->setOffset(glm::vec2(4005.0f, 374.0f));
+
+	m_pHazard[12] = new Hazard("Spice4.png"); // w40 h94	4
+	addChild(m_pHazard[12]);
+	m_pHazard[12]->setOffset(glm::vec2(4050.0f, 374.0f));
+
+	m_pHazard[13] = new Hazard("Spice5.png"); // w40 h94	5
+	addChild(m_pHazard[13]);
+	m_pHazard[13]->setOffset(glm::vec2(4095.0f, 374.0f));
+
+	m_pHazard[14] = new Hazard("Spice6.png"); // w40 h94	6
+	addChild(m_pHazard[14]);
+	m_pHazard[14]->setOffset(glm::vec2(4140.0f, 374.0f));
+
+	m_pHazard[15] = new Hazard("Spice7.png"); // w40 h94	7
+	addChild(m_pHazard[15]);
+	m_pHazard[15]->setOffset(glm::vec2(4185.0f, 374.0f));
 
 	m_pNonInteractiveObjects[3] = new NonInteractiveObject("LongShelfBrackets.png"); // w586 h61
 	addChild(m_pNonInteractiveObjects[3]);
@@ -470,7 +659,7 @@ void PlayScene::start()
 
 	m_pNonInteractiveObjects[8] = new NonInteractiveObject("ExtraLongShelfBrackets.png"); // w586 h61
 	addChild(m_pNonInteractiveObjects[8]);
-	m_pNonInteractiveObjects[8]->setOffset(glm::vec2(3200.0f, 486.0f));
+	m_pNonInteractiveObjects[8]->setOffset(glm::vec2(3400.0f, 486.0f));
 
 	m_pNonInteractiveObjects[12] = new NonInteractiveObject("SmallShelfBracket.png"); // w139 h61
 	addChild(m_pNonInteractiveObjects[12]);
@@ -527,12 +716,12 @@ void PlayScene::start()
 
 	m_pNonInteractiveObjects[7] = new NonInteractiveObject("ExtraLongShelfShadow.png"); // w1032 h30
 	addChild(m_pNonInteractiveObjects[7]);
-	m_pNonInteractiveObjects[7]->setOffset(glm::vec2(3200.0f, 486.0f));
+	m_pNonInteractiveObjects[7]->setOffset(glm::vec2(3400.0f, 486.0f));
 	
 	m_pPlatform[3] = new Platform("ExtraLongShelf.png"); // w1032 h20
 	addChild(m_pPlatform[3]);
 	m_pPlatform[3]->setPlatformID(3);
-	m_pPlatform[3]->setOffset(glm::vec2(3200.0f, 466.0f));
+	m_pPlatform[3]->setOffset(glm::vec2(3400.0f, 466.0f));
 
 	m_pNonInteractiveObjects[11] = new NonInteractiveObject("SmallShelfShadow.png"); // w139 h 30
 	addChild(m_pNonInteractiveObjects[11]);
@@ -561,12 +750,15 @@ void PlayScene::start()
 	
 	m_pNonInteractiveObjects[6] = new NonInteractiveObject("SmallCupboardShadow.png"); // w330 h58
 	addChild(m_pNonInteractiveObjects[6]);
-	m_pNonInteractiveObjects[6]->setOffset(glm::vec2(3180.0f, 269.0f));
+	m_pNonInteractiveObjects[6]->setOffset(glm::vec2(3380.0f, 269.0f));
 	
 	m_pWall[3] = new Wall("SmallCupboard.png"); //w330 h306
 	addChild(m_pWall[3]);
-	m_pWall[3]->setOffset(glm::vec2(3180.0f, -37.0f));
+	m_pWall[3]->setOffset(glm::vec2(3380.0f, -37.0f));	
 
+	m_pWall[4] = new Wall("CrackersVertical.png"); 
+	addChild(m_pWall[4]);
+	m_pWall[4]->setOffset(glm::vec2(3140.0f, 493.0f));
 
 	//m_pWall[2] = new Wall("Pancakes.png"); // w110 h70
 	//addChild(m_pWall[2]);
