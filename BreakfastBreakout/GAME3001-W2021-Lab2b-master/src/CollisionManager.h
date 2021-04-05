@@ -12,6 +12,7 @@
 #include "Player.h"
 #include "Platform.h"
 #include "Butter.h"
+#include "Jam.h"
 #include "Camera.h"
 
 class CollisionManager
@@ -24,6 +25,7 @@ public:
 	static bool PlatformCheck(Player* object1, GameObject* object2, Camera* camera);
 	static bool HazardCheck(Player* object1, GameObject* object2, Camera* camera);
 	static bool ButterCheck(Player* object1, Butter* object2);
+	static bool JamCheck(Player* object1, Jam* object2);
 
 	static bool lineLineCheck(glm::vec2 line1_start, glm::vec2 line1_end, glm::vec2 line2_start, glm::vec2 line2_end);
 

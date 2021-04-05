@@ -3,9 +3,9 @@
 
 Jam::Jam()
 {
-	TextureManager::Instance()->load("../Assets/textures/Butter.png", "butter");
+	TextureManager::Instance()->load("../Assets/textures/Jam.png", "jam");
 
-	auto size = TextureManager::Instance()->getTextureSize("butter");
+	auto size = TextureManager::Instance()->getTextureSize("jam");
 	setWidth(size.x);
 	setHeight(size.y);
 
@@ -13,7 +13,7 @@ Jam::Jam()
 	getRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	getRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
 	getRigidBody()->isColliding = false;
-	setType(BUTTER);
+	setType(JAM);
 
 
 }
@@ -23,7 +23,7 @@ Jam::~Jam()
 
 void Jam::draw()
 {
-	TextureManager::Instance()->draw("butter",
+	TextureManager::Instance()->draw("jam",
 		getTransform()->position.x, getTransform()->position.y, 0, 255, false);
 
 }

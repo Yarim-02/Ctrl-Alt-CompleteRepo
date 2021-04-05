@@ -50,7 +50,15 @@ void PlayScene::update()
 	{
 		m_pPlatform[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pPlatform[i]->getOffset();
 
-		CollisionManager::PlatformCheck(m_pPlayer, m_pPlatform[i], m_pCamera);
+		if (CollisionManager::PlatformCheck(m_pPlayer, m_pPlatform[i], m_pCamera) == true)
+		{
+			if (m_pPlayer->getJam())
+			{
+				m_pCamera->getRigidBody()->velocity.y = 0;
+				m_pPlayer->setGrounded(true);
+			}
+
+		}
 
 		if (m_pPlayer->getGrounded() == true)
 			break;
@@ -108,6 +116,27 @@ void PlayScene::update()
 		CollisionManager::ButterCheck(m_pPlayer, m_pButter[i]);
 	}
 
+	for (int i = 0; i < NUM_OF_JAM_; i++)
+	{
+		m_pJam[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pJam[i]->getOffset();
+
+		if (m_pJam[i]->getHideTimer() > 0)
+			m_pJam[i]->setOffset(glm::vec2(-1000.0f, 150.0f));
+		else
+		{
+			switch (i)
+			{
+			case 0:
+				m_pJam[i]->setOffset(glm::vec2(650.0f, 100.0f));
+				break;
+			case 1:
+				m_pJam[i]->setOffset(glm::vec2(4520.0f, -250.0f));
+				break;
+			}
+		}
+		CollisionManager::JamCheck(m_pPlayer, m_pJam[i]);
+	}
+
 	/*for (int i = 0; i < NUM_OF_PLATFORMS_; i++)
 	{
 		CollisionManager::PlatformCheck(m_pPlayer, m_pPlatform[i], m_pCamera);
@@ -120,7 +149,15 @@ void PlayScene::update()
 	{
 		for (int i = 0; i < NUM_OF_WALL_; i++)
 		{
-			CollisionManager::PlatformCheck(m_pPlayer, m_pWall[i], m_pCamera);
+			if(CollisionManager::PlatformCheck(m_pPlayer, m_pWall[i], m_pCamera))
+			{
+				if (m_pPlayer->getJam())
+				{
+					m_pCamera->getRigidBody()->velocity.y = 0;
+					m_pPlayer->setGrounded(true);
+				}
+
+			}
 
 			if (m_pPlayer->getGrounded() == true)
 				break;
@@ -212,9 +249,10 @@ void PlayScene::update()
 		TheGame::Instance()->changeSceneState(END_SCENE);
 	}
 
-	std::cout << m_pCamera->getTransform()->position.x << ", " << m_pCamera->getTransform()->position.y << std::endl;
 
-	//std::cout << m_pBackground[1]->getTransform()->position.x << ", " << m_pBackground[1]->getTransform()->position.y << std::endl;
+	//std::cout << m_pCamera->getTransform()->position.x << ", " << m_pCamera->getTransform()->position.y << std::endl;
+
+	std::cout << m_pPlayer->getJamTime() << std::endl;
 
 	if (m_frameCounter > 5000)
 		m_frameCounter = 0;
@@ -430,6 +468,12 @@ void PlayScene::start()
 	{
 		m_pButter[i] = new Butter();
 		addChild(m_pButter[i]);
+	}
+
+	for (int i = 0; i < NUM_OF_JAM_; i++)
+	{
+		m_pJam[i] = new Jam();
+		addChild(m_pJam[i]);
 	}
 
 	//m_pButter->setOffset(glm::vec2(350.0f, 150.0f));

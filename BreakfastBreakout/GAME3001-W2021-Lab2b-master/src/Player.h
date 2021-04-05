@@ -33,6 +33,10 @@ public:
 	bool getButter();
 	void setButterTime(int time);
 	int getButterTime();
+	void setJam(bool jam);
+	bool getJam();
+	void setJamTime(int time);
+	bool getJamTime();
 	
 
 private:

@@ -4,6 +4,7 @@
 #define NUM_OF_PLATFORMS_ 3
 #define NUM_OF_HAZARDS_ 2
 #define NUM_OF_BUTTER_ 2
+#define NUM_OF_JAM_ 1
 #define NUM_OF_WALL_ 3
 #define NUM_OF_FLOOR_ 2
 #define NUM_OF_ENEMY_ 4
@@ -27,6 +28,7 @@
 #include "Enemy.h"
 #include "NonInteractiveObject.h"
 #include "EnemyType.h"
+#include "Jam.h"
 
 class PlayScene : public Scene
 {
@@ -60,6 +62,8 @@ private:
 	Hazard* m_pHazard[NUM_OF_HAZARDS_];
 
 	Butter* m_pButter[NUM_OF_BUTTER_];
+
+	Jam* m_pJam[NUM_OF_JAM_];
 
 	Enemy* m_pEnemy[NUM_OF_ENEMY_];
 

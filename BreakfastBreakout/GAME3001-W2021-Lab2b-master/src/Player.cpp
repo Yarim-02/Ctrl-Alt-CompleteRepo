@@ -243,5 +243,25 @@ int Player::getButterTime()
 	return m_butterTime;
 }
 
+void Player::setJam(bool jam)
+{
+	m_jam = jam;
+}
+
+bool Player::getJam()
+{
+	return m_jam;
+}
+
+void Player::setJamTime(int time)
+{
+	m_jamTime = time;
+}
+
+bool Player::getJamTime()
+{
+	return m_jamTime;
+}
+
 
 

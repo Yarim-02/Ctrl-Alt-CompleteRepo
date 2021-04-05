@@ -274,7 +274,59 @@ bool CollisionManager::ButterCheck(Player* object1, Butter* object2)
 			SoundManager::Instance().setSoundVolume(32);
 			object2->setHideTimer(200);
 			object1->setButterTime(200);
-			object2->setOffset(object2->getOffset());
+			//object2->setOffset(object2->getOffset());
+			break;
+
+		default:
+			break;
+		}
+
+		//std::cout << "exiting true" << std::endl;
+		return true;
+
+	}
+	else
+	{
+		return false;
+	}
+
+	return false;
+}
+
+bool CollisionManager::JamCheck(Player* object1, Jam* object2)
+{
+	// prepare relevant variables
+	const auto p1 = object1->getTransform()->position;
+	const auto p2 = object2->getTransform()->position;
+	const float p1Width = object1->getWidth();
+	const float p1Height = object1->getHeight();
+	const float p2Width = object2->getWidth();
+	const float p2Height = object2->getHeight();
+
+	if (
+		p1.x < p2.x + p2Width &&
+		p1.x + p1Width > p2.x &&
+		p1.y < p2.y + p2Height &&
+		p1.y + p1Height > p2.y
+		)
+	{
+		switch (object2->getType()) {
+		case TARGET:
+			std::cout << "Collision with Target!" << std::endl;
+			SoundManager::Instance().playSound("yay", 0);
+			break;
+		case OBSTACLE:
+			std::cout << "Collision with Obstacle!" << std::endl;
+			SoundManager::Instance().playSound("yay", 0);
+			break;
+		case JAM:
+			std::cout << "hit butter" << std::endl;
+			SoundManager::Instance().load("../Assets/audio/sound effects/powerup.wav", "powerup", SOUND_SFX);
+			SoundManager::Instance().playSound("powerup", 0);
+			SoundManager::Instance().setSoundVolume(32);
+			object2->setHideTimer(200);
+			object1->setJamTime(500);
+			//object2->setOffset(object2->getOffset());
 			break;
 
 		default:
