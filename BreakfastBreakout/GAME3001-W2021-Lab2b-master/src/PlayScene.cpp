@@ -537,59 +537,59 @@ void PlayScene::start()
 
 	m_pNonInteractiveObjects[13] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[13]);
-	m_pNonInteractiveObjects[13]->setOffset(glm::vec2(3300.0f, 250.0f));
+	m_pNonInteractiveObjects[13]->setOffset(glm::vec2(3450.0f, 250.0f));
 	
 	m_pNonInteractiveObjects[14] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[14]);
-	m_pNonInteractiveObjects[14]->setOffset(glm::vec2(3360.0f, 250.0f));
+	m_pNonInteractiveObjects[14]->setOffset(glm::vec2(3495.0f, 250.0f));
 
 	m_pNonInteractiveObjects[15] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[15]);
-	m_pNonInteractiveObjects[15]->setOffset(glm::vec2(3420.0f, 250.0f));
+	m_pNonInteractiveObjects[15]->setOffset(glm::vec2(3540.0f, 250.0f));
 
 	m_pNonInteractiveObjects[16] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[16]);
-	m_pNonInteractiveObjects[16]->setOffset(glm::vec2(3480.0f, 250.0f));
+	m_pNonInteractiveObjects[16]->setOffset(glm::vec2(3585.0f, 250.0f));
 
 	m_pNonInteractiveObjects[17] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[17]);
-	m_pNonInteractiveObjects[17]->setOffset(glm::vec2(3540.0f, 250.0f));
+	m_pNonInteractiveObjects[17]->setOffset(glm::vec2(3630.0f, 250.0f));
 	
 	m_pNonInteractiveObjects[18] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[18]);
-	m_pNonInteractiveObjects[18]->setOffset(glm::vec2(3600.0f, 250.0f));
+	m_pNonInteractiveObjects[18]->setOffset(glm::vec2(3675.0f, 250.0f));
 
-	m_pNonInteractiveObjects[19] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	m_pNonInteractiveObjects[19] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[19]);
-	m_pNonInteractiveObjects[19]->setOffset(glm::vec2(3660.0f, 250.0f));
+	m_pNonInteractiveObjects[19]->setOffset(glm::vec2(3720.0f, 250.0f));
 
-	m_pNonInteractiveObjects[20] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	m_pNonInteractiveObjects[20] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[20]);
-	m_pNonInteractiveObjects[20]->setOffset(glm::vec2(3720.0f, 250.0f));
+	m_pNonInteractiveObjects[20]->setOffset(glm::vec2(3765.0f, 250.0f));
 
-	m_pNonInteractiveObjects[21] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	m_pNonInteractiveObjects[21] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[21]);
-	m_pNonInteractiveObjects[21]->setOffset(glm::vec2(3780.0f, 250.0f));
+	m_pNonInteractiveObjects[21]->setOffset(glm::vec2(3810.0f, 250.0f));
 
-	m_pNonInteractiveObjects[22] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	m_pNonInteractiveObjects[22] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[22]);
-	m_pNonInteractiveObjects[22]->setOffset(glm::vec2(3840.0f, 250.0f));
+	m_pNonInteractiveObjects[22]->setOffset(glm::vec2(3855.0f, 250.0f));
 
-	m_pNonInteractiveObjects[23] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	m_pNonInteractiveObjects[23] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[23]);
 	m_pNonInteractiveObjects[23]->setOffset(glm::vec2(3900.0f, 250.0f));
 
-	m_pNonInteractiveObjects[24] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	m_pNonInteractiveObjects[24] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[24]);
-	m_pNonInteractiveObjects[24]->setOffset(glm::vec2(3960.0f, 250.0f));
+	m_pNonInteractiveObjects[24]->setOffset(glm::vec2(3945.0f, 250.0f));
 
-	m_pNonInteractiveObjects[25] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	m_pNonInteractiveObjects[25] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[25]);
-	m_pNonInteractiveObjects[25]->setOffset(glm::vec2(4020.0f, 250.0f));
+	m_pNonInteractiveObjects[25]->setOffset(glm::vec2(3990.0f, 250.0f));
 
-	m_pNonInteractiveObjects[26] = new NonInteractiveObject("SpiceTriggerTest.png"); // w40 h264 
+	m_pNonInteractiveObjects[26] = new NonInteractiveObject("SpiceTrigger.png"); // w40 h264 
 	addChild(m_pNonInteractiveObjects[26]);
-	m_pNonInteractiveObjects[26]->setOffset(glm::vec2(4080.0f, 250.0f));
+	m_pNonInteractiveObjects[26]->setOffset(glm::vec2(4035.0f, 250.0f));
 
 	//end of spice triggers
 
@@ -684,7 +684,7 @@ void PlayScene::start()
 		addChild(m_pEnemy[i]);
 	}
 	m_pEnemy[2]->setOffset(glm::vec2(1000.0f, 690.0f));
-	m_pEnemy[3]->setOffset(glm::vec2(4150.0f, 690.0f));
+	m_pEnemy[3]->setOffset(glm::vec2(4550.0f, 690.0f));
 	
 
 	m_pButter[0] = new Butter(); // w75 h45
