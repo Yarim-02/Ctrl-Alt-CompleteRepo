@@ -1,14 +1,14 @@
 #pragma once
 #ifndef __PLAY_SCENE__
 #define __PLAY_SCENE__
-#define NUM_OF_PLATFORMS_ 4
-#define NUM_OF_HAZARDS_ 2
+#define NUM_OF_PLATFORMS_ 5
+#define NUM_OF_HAZARDS_ 9
 #define NUM_OF_BUTTER_ 1
 #define NUM_OF_WALL_ 4
 #define NUM_OF_FLOOR_ 2
 #define NUM_OF_ENEMY_ 4
 #define NUM_OF_BACKGROUND_ 6
-#define NUM_OF_NON_INTERACTIVE_OBJECTS_ 11
+#define NUM_OF_NON_INTERACTIVE_OBJECTS_ 15
 
 #include "Scene.h"
 #include "Button.h"
@@ -72,6 +72,8 @@ private:
 	// UI Items
 	int m_frameCounter;
 	bool m_ChopTracker = false;
+	bool m_spice1Falling = false;
+	bool m_spice2Falling = false;
 	
 };
 

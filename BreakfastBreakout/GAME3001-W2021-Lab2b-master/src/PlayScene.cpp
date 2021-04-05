@@ -242,6 +242,28 @@ void PlayScene::update()
 			}
 		}
 	}
+
+	//spice falling
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[13], m_pCamera))
+	{
+		m_spice1Falling = true;
+	}
+	if (CollisionManager::HazardCheck(m_pPlayer, m_pNonInteractiveObjects[14], m_pCamera))
+	{
+		m_spice2Falling = true;
+	}
+
+	if ( m_spice1Falling == true)
+	{
+		m_pHazard[2]->getTransform()->position.y += 20.0f;
+		//m_pHazard[2]->getRigidBody()->velocity.y += 10.0f;
+	}
+	
+	if(m_spice2Falling == true)
+	{
+		m_pHazard[3]->getTransform()->position.y += 20.0f;
+		//m_pHazard[3]->getRigidBody()->velocity.y += 10.0f;
+	}
 	
 }
 
@@ -402,6 +424,42 @@ void PlayScene::start()
 	addChild(m_pHazard[1]);
 	m_pHazard[1]->setOffset(glm::vec2(650.0f, 468.0f));
 
+	m_pNonInteractiveObjects[13] = new NonInteractiveObject("Spice1.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[13]);
+	m_pNonInteractiveObjects[13]->setOffset(glm::vec2(3200.0f, 546.0f));
+	
+	m_pNonInteractiveObjects[14] = new NonInteractiveObject("Spice1.png"); // w40 h264 
+	addChild(m_pNonInteractiveObjects[14]);
+	m_pNonInteractiveObjects[14]->setOffset(glm::vec2(3240.0f, 546.0f));
+
+	m_pHazard[2] = new Hazard("Spice1.png"); // w40 h94	1
+	addChild(m_pHazard[2]);
+	m_pHazard[2]->setOffset(glm::vec2(3300.0f, 374.0f));
+
+	m_pHazard[3] = new Hazard("Spice2.png"); // w40 h94	2
+	addChild(m_pHazard[3]);
+	m_pHazard[3]->setOffset(glm::vec2(3345.0f, 374.0f));
+
+	m_pHazard[4] = new Hazard("Spice3.png"); // w40 h94	3
+	addChild(m_pHazard[4]);
+	m_pHazard[4]->setOffset(glm::vec2(3390.0f, 374.0f));
+
+	m_pHazard[5] = new Hazard("Spice4.png"); // w40 h94	4
+	addChild(m_pHazard[5]);
+	m_pHazard[5]->setOffset(glm::vec2(3435.0f, 374.0f));
+
+	m_pHazard[6] = new Hazard("Spice5.png"); // w40 h94	5
+	addChild(m_pHazard[6]);
+	m_pHazard[6]->setOffset(glm::vec2(3480.0f, 374.0f));
+
+	m_pHazard[7] = new Hazard("Spice6.png"); // w40 h94	6
+	addChild(m_pHazard[7]);
+	m_pHazard[7]->setOffset(glm::vec2(3525.0f, 374.0f));
+
+	m_pHazard[8] = new Hazard("Spice7.png"); // w40 h94	7
+	addChild(m_pHazard[8]);
+	m_pHazard[8]->setOffset(glm::vec2(3570.0f, 374.0f));
+
 	m_pNonInteractiveObjects[3] = new NonInteractiveObject("LongShelfBrackets.png"); // w586 h61
 	addChild(m_pNonInteractiveObjects[3]);
 	m_pNonInteractiveObjects[3]->setOffset(glm::vec2(1150.0f, 214.0f));
@@ -413,6 +471,10 @@ void PlayScene::start()
 	m_pNonInteractiveObjects[8] = new NonInteractiveObject("ExtraLongShelfBrackets.png"); // w586 h61
 	addChild(m_pNonInteractiveObjects[8]);
 	m_pNonInteractiveObjects[8]->setOffset(glm::vec2(3200.0f, 486.0f));
+
+	m_pNonInteractiveObjects[12] = new NonInteractiveObject("SmallShelfBracket.png"); // w139 h61
+	addChild(m_pNonInteractiveObjects[12]);
+	m_pNonInteractiveObjects[12]->setOffset(glm::vec2(1540.0f, 63.0f));
 	
 	m_pPlayer = new Player();
 	m_pPlayer->getTransform()->position = glm::vec2(400.0f, 600.0f);
@@ -472,6 +534,15 @@ void PlayScene::start()
 	m_pPlatform[3]->setPlatformID(3);
 	m_pPlatform[3]->setOffset(glm::vec2(3200.0f, 466.0f));
 
+	m_pNonInteractiveObjects[11] = new NonInteractiveObject("SmallShelfShadow.png"); // w139 h 30
+	addChild(m_pNonInteractiveObjects[11]);
+	m_pNonInteractiveObjects[11]->setOffset(glm::vec2(1540.0f, 62.0f));
+	
+	m_pPlatform[4] = new Platform("SmallShelf.png"); // w139 h24
+	addChild(m_pPlatform[4]);
+	m_pPlatform[4]->setPlatformID(4);
+	m_pPlatform[4]->setOffset(glm::vec2(1540.0f, 39.0f));
+
 	m_pWall[0] = new Wall("CrackersHorizontal.png"); //w257 h110
 	addChild(m_pWall[0]);
 	m_pWall[0]->setOffset(glm::vec2(1400.0f, 640.0f));
@@ -509,13 +580,6 @@ void PlayScene::start()
 
 	m_pFloor[0]->setOffset(glm::vec2(-380.0f, 750.0f));
 	m_pFloor[1]->setOffset(glm::vec2(3075.0f, 750.0f));
-	
-
-
-
-
-
-
 	
 	/*m_pFloor[1]->setOffset(glm::vec2(2150.0f, 0.0f));
 	m_pFloor[2]->setOffset(glm::vec2(7300.0f, -150.0f));*/

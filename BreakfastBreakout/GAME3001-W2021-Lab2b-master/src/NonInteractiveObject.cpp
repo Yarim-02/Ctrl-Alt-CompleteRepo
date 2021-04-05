@@ -17,7 +17,7 @@ NonInteractiveObject::NonInteractiveObject(std::string fileNameAndType)
 	getRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	getRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
 	getRigidBody()->isColliding = false;
-	setType(BACKGROUND);
+	setType(NON_INTERACTIVE);
 
 
 }

@@ -208,6 +208,9 @@ bool CollisionManager::HazardCheck(Player* object1, GameObject* object2, Camera*
 		)
 	{
 		switch (object2->getType()) {
+		case NON_INTERACTIVE:
+			std::cout << "Collision with Non-Interactive!" << std::endl;
+			break;
 		case TARGET:
 			std::cout << "Collision with Target!" << std::endl;
 			SoundManager::Instance().playSound("yay", 0);
