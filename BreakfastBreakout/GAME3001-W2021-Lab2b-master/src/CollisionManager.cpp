@@ -222,7 +222,7 @@ bool CollisionManager::HazardCheck(Player* object1, GameObject* object2, Camera*
 			SoundManager::Instance().playSound("dead", 0);
 			SoundManager::Instance().setSoundVolume(32);
 			camera->getTransform()->position = glm::vec2(0.0f, 0.0f);
-			TheGame::Instance()->cleanSceneState(PLAY_SCENE);
+			//TheGame::Instance()->cleanSceneState(PLAY_SCENE);
 			break;
 				
 		default:
