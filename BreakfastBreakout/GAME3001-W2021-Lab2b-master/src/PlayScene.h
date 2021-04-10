@@ -1,15 +1,17 @@
 #pragma once
 #ifndef __PLAY_SCENE__
 #define __PLAY_SCENE__
-#define NUM_OF_PLATFORMS_ 5
-#define NUM_OF_HAZARDS_ 16
+#define NUM_OF_PLATFORM_ 8
 #define NUM_OF_BUTTER_ 1
 #define NUM_OF_JAM_ 1
-#define NUM_OF_WALL_ 5
-#define NUM_OF_FLOOR_ 2
+#define NUM_OF_WALLS_ 8
+#define NUM_OF_FLOORS_ 3
 #define NUM_OF_ENEMY_ 4
 #define NUM_OF_BACKGROUND_ 6
-#define NUM_OF_NON_INTERACTIVE_OBJECTS_ 27
+#define NUM_OF_NI_OBJECTS_ 31
+#define NUM_OF_HAZARD_ 16
+#define NUM_OF_COLLECTABLE_ 3
+
 
 #include "Scene.h"
 #include "Button.h"
@@ -29,6 +31,7 @@
 #include "NonInteractiveObject.h"
 #include "EnemyType.h"
 #include "Jam.h"
+#include "Collectable.h"
 
 class PlayScene : public Scene
 {
@@ -53,13 +56,13 @@ private:
 	Player* m_pPlayer;
 	bool m_playerFacingRight;
 
-	Platform* m_pPlatform[NUM_OF_PLATFORMS_];
+	Platform* m_pPlatform[NUM_OF_PLATFORM_];
 
-	Wall* m_pWall[NUM_OF_WALL_];
+	Wall* m_pWall[NUM_OF_WALLS_];
 
-	Floor* m_pFloor[NUM_OF_FLOOR_];
+	Floor* m_pFloor[NUM_OF_FLOORS_];
 
-	Hazard* m_pHazard[NUM_OF_HAZARDS_];
+	Hazard* m_pHazard[NUM_OF_HAZARD_];
 
 	Butter* m_pButter[NUM_OF_BUTTER_];
 
@@ -71,7 +74,9 @@ private:
 
 	Background* m_pBackground[NUM_OF_BACKGROUND_];
 
-	NonInteractiveObject* m_pNonInteractiveObjects[NUM_OF_NON_INTERACTIVE_OBJECTS_];
+	NonInteractiveObject* m_pNonInteractiveObjects[NUM_OF_NI_OBJECTS_];
+
+	Collectable* m_pCollecatables[NUM_OF_COLLECTABLE_];
 	
 	// UI Items
 	int m_frameCounter;
