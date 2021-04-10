@@ -29,6 +29,8 @@ Flowers						 -		 243, 357
 Fondue						 -		 325, 316
 Fork						 -		  25, 142
 Heat						 -		 329, 255
+Jelly Donut					 -		  125, 67
+JellySquirt Frames			 -		 125, 135
 Kitchen Sink 				 -		 400, 200
 	Sink Hazard 			 -		  370, 10
 Large Cupboard				 -		 778, 565
@@ -44,6 +46,7 @@ Medium Shelf Brackets 		 -		  292, 61
 Medium Shelf Shadow 		 -		  292, 30
 Mushroom 					 -		   40, 60
 Pancakes 					 -		  110, 70	
+Panini Press				 -		 329, 350
 Small Cupboard				 -		 330, 306
 Small Cupboard Shadow 		 -		  330, 58
 Small Pan Platform			 -		   112, 4

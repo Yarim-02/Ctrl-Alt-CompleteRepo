@@ -305,7 +305,7 @@ bool CollisionManager::JamCheck(Player* object1, Jam* object2)
 
 	if (
 		p1.x < p2.x + p2Width &&
-		p1.x + p1Width > p2.x &&
+		p1.x + p1Width > p2.x&&
 		p1.y < p2.y + p2Height &&
 		p1.y + p1Height > p2.y
 		)
@@ -320,11 +320,11 @@ bool CollisionManager::JamCheck(Player* object1, Jam* object2)
 			SoundManager::Instance().playSound("yay", 0);
 			break;
 		case JAM:
-			std::cout << "hit butter" << std::endl;
+			std::cout << "hit jam" << std::endl;
 			SoundManager::Instance().load("../Assets/audio/sound effects/powerup.wav", "powerup", SOUND_SFX);
 			SoundManager::Instance().playSound("powerup", 0);
 			SoundManager::Instance().setSoundVolume(32);
-			object2->setHideTimer(200);
+			object2->setHideTimer(500);
 			object1->setJamTime(500);
 			//object2->setOffset(object2->getOffset());
 			break;
