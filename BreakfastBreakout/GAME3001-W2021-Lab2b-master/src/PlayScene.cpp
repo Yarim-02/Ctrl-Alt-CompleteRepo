@@ -521,7 +521,7 @@ void PlayScene::handleEvents()
 			
 			m_pCamera->getTransform()->position.y += 2;
 			std::cout << "jumping" << std::endl;
-			m_pCamera->getRigidBody()->velocity.y += 23.0f;
+			m_pCamera->getRigidBody()->velocity.y += 40.0f;//23.0f;
 			m_pPlayer->setGrounded(false);
 
 			SoundManager::Instance().load("../Assets/audio/sound effects/jump.wav", "jump", SOUND_SFX);
@@ -705,18 +705,31 @@ void PlayScene::start()
 	m_pNonInteractiveObjects[3]->setOffset(glm::vec2(1150.0f, 214.0f));
 	addChild(m_pNonInteractiveObjects[3]);
 
-	m_pNonInteractiveObjects[4] = new NonInteractiveObject("ExtraLongShelfBrackets.png"); // w586 h61
+	m_pNonInteractiveObjects[4] = new NonInteractiveObject("ExtraLongShelfBrackets.png"); 
 	m_pNonInteractiveObjects[4]->setOffset(glm::vec2(122.0f, 434.0f));
 	addChild(m_pNonInteractiveObjects[4]);
 
-	m_pNonInteractiveObjects[8] = new NonInteractiveObject("ExtraLongShelfBrackets.png"); // w586 h61
+	m_pNonInteractiveObjects[8] = new NonInteractiveObject("ExtraLongShelfBrackets.png"); 
 	m_pNonInteractiveObjects[8]->setOffset(glm::vec2(3400.0f, 486.0f));
 	addChild(m_pNonInteractiveObjects[8]);
 
-	m_pNonInteractiveObjects[12] = new NonInteractiveObject("SmallShelfBracket.png"); // w139 h61
+	m_pNonInteractiveObjects[12] = new NonInteractiveObject("SmallShelfBrackets.png"); 
 	m_pNonInteractiveObjects[12]->setOffset(glm::vec2(1540.0f, 63.0f));
 	addChild(m_pNonInteractiveObjects[12]);
 
+	m_pNonInteractiveObjects[33] = new NonInteractiveObject("MediumShelfBrackets.png");
+	m_pNonInteractiveObjects[33]->setOffset(glm::vec2(4508.0f, 148.0f));
+	addChild(m_pNonInteractiveObjects[33]);
+
+	m_pNonInteractiveObjects[35] = new NonInteractiveObject("MediumShelfBrackets.png");
+	m_pNonInteractiveObjects[35]->setOffset(glm::vec2(5338.0f, 148.0f));
+	addChild(m_pNonInteractiveObjects[35]);
+
+	m_pNonInteractiveObjects[38] = new NonInteractiveObject("MediumShelfBrackets.png");
+	m_pNonInteractiveObjects[38]->setOffset(glm::vec2(6150.0f, 3.0f));
+	addChild(m_pNonInteractiveObjects[38]);
+
+	
 	m_pPlatform[5] = new Platform("SmallPanPlatform.png"); 
 	m_pPlatform[5]->setPlatformID(5);
 	m_pPlatform[5]->setOffset(glm::vec2(-148.0f, 298.0f));
@@ -739,6 +752,18 @@ void PlayScene::start()
 	m_pNonInteractiveObjects[29]->setOffset(glm::vec2(6245.0f, 649.0f));
 	addChild(m_pNonInteractiveObjects[29]);
 
+	m_pPlatform[10] = new Platform("LadlePlatform.png");
+	m_pPlatform[10]->setOffset(glm::vec2(4955.0f, 169.0f));
+	addChild(m_pPlatform[10]);
+
+	m_pPlatform[11] = new Platform("LadlePlatform.png");
+	m_pPlatform[11]->setOffset(glm::vec2(5137.0f, 169.0f));
+	addChild(m_pPlatform[11]);
+
+	m_pNonInteractiveObjects[36] = new NonInteractiveObject("LadleRack.png");
+	m_pNonInteractiveObjects[36]->setOffset(glm::vec2(4900.0f, -19.0f));
+	addChild(m_pNonInteractiveObjects[36]);
+	
 	for (int i = 0; i < NUM_OF_COLLECTABLE_; i++)					// COLLECTABLES START
 	{
 		m_pCollecatables[i] = new Collectable();
@@ -752,6 +777,10 @@ void PlayScene::start()
 	m_pCollecatables[2]->setOffset(glm::vec2(-320.0f, 288.0f)); // on large frying pan
 	addChild(m_pCollecatables[2]);
 
+	m_pCollecatables[3]->setOffset(glm::vec2(6265.0f, -99.0f)); // on large frying pan
+	addChild(m_pCollecatables[3]);
+	
+
 	// COLLECTABLES END
 	
 	m_pPlayer = new Player();
@@ -760,8 +789,35 @@ void PlayScene::start()
 
 	m_pPlatform[7] = new Platform("ToasterPlatform.png"); 
 	m_pPlatform[7]->setPlatformID(7);
-	m_pPlatform[7]->setOffset(glm::vec2(6281, 700.0f));
+	m_pPlatform[7]->setOffset(glm::vec2(6281.0f, 700.0f));
 	addChild(m_pPlatform[7]);
+
+	m_pNonInteractiveObjects[32] = new NonInteractiveObject("MediumShelfShadow.png");
+	m_pNonInteractiveObjects[32]->setOffset(glm::vec2(4508.0f, 148.0f));
+	addChild(m_pNonInteractiveObjects[32]);
+
+	m_pPlatform[8] = new Platform("MediumShelf.png");
+	m_pPlatform[8]->setPlatformID(8);
+	m_pPlatform[8]->setOffset(glm::vec2(4508.0f, 126.0f));
+	addChild(m_pPlatform[8]);
+
+	m_pNonInteractiveObjects[34] = new NonInteractiveObject("MediumShelfShadow.png");
+	m_pNonInteractiveObjects[34]->setOffset(glm::vec2(5338.0f, 148.0f));
+	addChild(m_pNonInteractiveObjects[34]);
+
+	m_pPlatform[9] = new Platform("MediumShelf.png");
+	m_pPlatform[9]->setPlatformID(9);
+	m_pPlatform[9]->setOffset(glm::vec2(5338.0f, 126.0f));
+	addChild(m_pPlatform[9]);
+
+	m_pNonInteractiveObjects[37] = new NonInteractiveObject("MediumShelfShadow.png");
+	m_pNonInteractiveObjects[37]->setOffset(glm::vec2(6150.0f, 3.0f));
+	addChild(m_pNonInteractiveObjects[37]);
+
+	m_pPlatform[12] = new Platform("MediumShelf.png");
+	m_pPlatform[12]->setPlatformID(12);
+	m_pPlatform[12]->setOffset(glm::vec2(6150.0f, -19.0f));
+	addChild(m_pPlatform[12]);
 
 	m_pWall[6] = new Wall("ToasterWall.png");
 	m_pWall[6]->setOffset(glm::vec2(6245.0f, 649.0f));
@@ -790,7 +846,7 @@ void PlayScene::start()
 		addChild(m_pEnemy[i]);
 	}
 	m_pEnemy[0]->setOffset(glm::vec2(2100.0f, 660.0f));
-	m_pEnemy[1]->setOffset(glm::vec2(6200.0f, 660.0f));
+	m_pEnemy[1]->setOffset(glm::vec2(5800.0f, 660.0f));
 
 	for (int i = 2; i < 4; i++)
 	{
@@ -863,11 +919,11 @@ void PlayScene::start()
 	addChild(m_pWall[2]);
 
 	m_pNonInteractiveObjects[6] = new NonInteractiveObject("SmallCupboardShadow.png"); // w330 h58
-	m_pNonInteractiveObjects[6]->setOffset(glm::vec2(3380.0f, 269.0f));
+	m_pNonInteractiveObjects[6]->setOffset(glm::vec2(3420.0f, 269.0f));
 	addChild(m_pNonInteractiveObjects[6]);
 
 	m_pWall[3] = new Wall("SmallCupboard.png"); //w330 h306
-	m_pWall[3]->setOffset(glm::vec2(3380.0f, -37.0f));
+	m_pWall[3]->setOffset(glm::vec2(3420.0f, -37.0f));
 	addChild(m_pWall[3]);
 
 	m_pWall[4] = new Wall("CrackersVertical.png");
@@ -882,13 +938,13 @@ void PlayScene::start()
 	//addChild(m_pWall[2]);
 	//m_pWall[2]->setOffset(glm::vec2(900.0f, 690.0f));
 
-	m_pHazard[17] = new Hazard("Heat1.png");
-	m_pHazard[17]->setOffset(glm::vec2(5296.0f, 145.0f));
-	addChild(m_pHazard[17]);
-
 	m_pHazard[16] = new Hazard("PaniniPress.png");
 	m_pHazard[16]->setOffset(glm::vec2(5296.0f, 400.0f));
 	addChild(m_pHazard[16]);
+
+	m_pHazard[17] = new Hazard("Heat1.png");
+	m_pHazard[17]->setOffset(glm::vec2(5296.0f, 225.0f));
+	addChild(m_pHazard[17]);
 
 	/*m_pNonInteractiveObjects[31] = new NonInteractiveObject("JellyDonut.png");
 	m_pNonInteractiveObjects[31]->setOffset(glm::vec2(1110.0f, 683.0f));

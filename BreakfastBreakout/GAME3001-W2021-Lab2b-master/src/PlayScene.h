@@ -1,16 +1,16 @@
 #pragma once
 #ifndef __PLAY_SCENE__
 #define __PLAY_SCENE__
-#define NUM_OF_PLATFORM_ 8
+#define NUM_OF_PLATFORM_ 13
 #define NUM_OF_BUTTER_ 1
 #define NUM_OF_JAM_ 1
 #define NUM_OF_WALLS_ 9
 #define NUM_OF_FLOORS_ 3
 #define NUM_OF_ENEMY_ 4
 #define NUM_OF_BACKGROUND_ 6
-#define NUM_OF_NI_OBJECTS_ 32
+#define NUM_OF_NI_OBJECTS_ 39
 #define NUM_OF_HAZARD_ 18
-#define NUM_OF_COLLECTABLE_ 3
+#define NUM_OF_COLLECTABLE_ 4
 
 
 #include "Scene.h"
