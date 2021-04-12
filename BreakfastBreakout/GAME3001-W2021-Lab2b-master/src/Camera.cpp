@@ -25,6 +25,13 @@ void Camera::update()
 {
 	getTransform()->position += getRigidBody()->velocity;
 
+	if (getRigidBody()->velocity.x >= 1)
+		getRigidBody()->velocity.x--;
+	else if (getRigidBody()->velocity.x <= 1)
+		getRigidBody()->velocity.x++;
+	else
+		getRigidBody()->velocity.x = 0;
+
 }
 
 void Camera::draw()

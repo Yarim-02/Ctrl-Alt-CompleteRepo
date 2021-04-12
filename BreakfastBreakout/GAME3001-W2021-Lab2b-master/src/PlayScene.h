@@ -3,7 +3,7 @@
 #define __PLAY_SCENE__
 #define NUM_OF_PLATFORM_ 13
 #define NUM_OF_BUTTER_ 1
-#define NUM_OF_JAM_ 1
+#define NUM_OF_JAM_ 2
 #define NUM_OF_WALLS_ 9
 #define NUM_OF_FLOORS_ 3
 #define NUM_OF_ENEMY_ 4

@@ -143,12 +143,16 @@ bool CollisionManager::PlatformCheck(Player* object1, GameObject* object2, Camer
 				{
 					//std::cout << "worked" << std::endl;
 					object1->setGrounded(true);
+					object1->setRight(false);
+					object1->setLeft(false);
 					camera->getRigidBody()->velocity.y = 0;
 					camera->getTransform()->position.y = object1->getTransform()->position.y + object1->getHeight() - object2->getOffset().y;
 					//object1->getTransform()->position.y = object2->getTransform()->position.y - object1->getHeight();
 				}
 				else if (object1->getTransform()->position.y + camera->getRigidBody()->velocity.y >= object2->getTransform()->position.y + object2->getHeight())
 				{
+					object1->setRight(false);
+					object1->setLeft(false);
 					camera->getRigidBody()->velocity.y = 0;
 					camera->getTransform()->position.y = object1->getTransform()->position.y - object2->getOffset().y - object2->getHeight() - 3;
 					//object1->getTransform()->position.y = (object2->getTransform()->position.y + object2->getHeight());
@@ -157,6 +161,7 @@ bool CollisionManager::PlatformCheck(Player* object1, GameObject* object2, Camer
 				{
 					std::cout << "touching the left side wall" << std::endl;
 					object1->setRight(true);
+					object1->setLeft(false);
 					//object1->getTransform()->position.y = 50;
 					camera->getRigidBody()->velocity.x = 0;
 					camera->getTransform()->position.x = object1->getTransform()->position.x - object2->getOffset().x + object1->getWidth();
@@ -166,6 +171,7 @@ bool CollisionManager::PlatformCheck(Player* object1, GameObject* object2, Camer
 				{
 					std::cout << "touching the right side wall" << std::endl;
 					object1->setLeft(true);
+					object1->setRight(false);
 					//object1->getTransform()->position.y = 50;
 					camera->getRigidBody()->velocity.x = 0;
 					camera->getTransform()->position.x = object1->getTransform()->position.x - object2->getOffset().x - object2->getWidth();
@@ -181,8 +187,8 @@ bool CollisionManager::PlatformCheck(Player* object1, GameObject* object2, Camer
 	else
 	{
 		object2->getRigidBody()->isColliding = false;
-		object1->setRight(false);
-		object1->setLeft(false);
+		//object1->setRight(false);
+		//object1->setLeft(false);
 		object1->setGrounded(false);
 		return false;
 	}

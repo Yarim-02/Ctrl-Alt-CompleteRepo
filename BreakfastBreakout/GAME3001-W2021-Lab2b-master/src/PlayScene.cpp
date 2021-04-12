@@ -123,7 +123,7 @@ void PlayScene::update()
 		CollisionManager::ButterCheck(m_pPlayer, m_pButter[i]);
 	}
 
-	for (int i = 0; i < NUM_OF_JAM_; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		m_pJam[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pJam[i]->getOffset();
 
@@ -137,7 +137,7 @@ void PlayScene::update()
 				m_pJam[i]->setOffset(glm::vec2(1110.0f, 683.0f));
 				break;
 			case 1:
-				m_pJam[i]->setOffset(glm::vec2(1110.0f, 683.0f));
+				m_pJam[i]->setOffset(glm::vec2(850.0f, 467.0f));
 				break;
 			}
 		}
@@ -185,8 +185,8 @@ void PlayScene::update()
 		
 	}
 
-	if (m_pPlayer->getButter() == false)
-		m_pCamera->getRigidBody()->velocity.x = 0;
+	//if (m_pPlayer->getButter() == false)
+		//m_pCamera->getRigidBody()->velocity.x = 0;
 
 
 	//// Butter placement
@@ -257,9 +257,10 @@ void PlayScene::update()
 	}
 
 
-	std::cout << m_pCamera->getTransform()->position.x << ", " << m_pCamera->getTransform()->position.y << std::endl;
+	//std::cout << m_pCamera->getTransform()->position.x << ", " << m_pCamera->getTransform()->position.y << std::endl;
 
-	//std::cout << m_pPlayer->getJamTime() << std::endl;
+	//std::cout << m_pPlayer->getLeft() << std::endl;
+	std::cout << m_pCamera->getRigidBody()->velocity.x << std::endl;
 
 	if (m_frameCounter > 5000)
 		m_frameCounter = 0;
@@ -440,15 +441,28 @@ void PlayScene::handleEvents()
 
 	if (m_pPlayer->getLeft() == false)
 	{
-		if (m_pPlayer->getButter() == false)
+		if (m_pPlayer->getButter())
 		{
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
 			{
 				//if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
 				//{
-					m_pCamera->getTransform()->position += glm::vec2(7, 0);
+				m_pCamera->getRigidBody()->velocity.x += 0.5f;
 				//}
-				m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
+				m_pPlayer->setAnimationState(PLAYER_BUTTER_LEFT);
+				m_playerFacingRight = false;
+			}
+			
+		}
+		else if (m_pPlayer->getJam())
+		{
+			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
+			{
+				//if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
+				//{
+				m_pCamera->getTransform()->position += glm::vec2(7, 0);
+				//}
+				m_pPlayer->setAnimationState(PLAYER_JAM_LEFT);
 				m_playerFacingRight = false;
 			}
 		}
@@ -458,9 +472,9 @@ void PlayScene::handleEvents()
 			{
 				//if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
 				//{
-					m_pCamera->getRigidBody()->velocity.x += 0.5f;
+				m_pCamera->getTransform()->position += glm::vec2(7, 0);
 				//}
-				m_pPlayer->setAnimationState(PLAYER_BUTTER_LEFT);
+				m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
 				m_playerFacingRight = false;
 			}
 		}
@@ -476,7 +490,14 @@ void PlayScene::handleEvents()
 				{
 					m_pCamera->getTransform()->position -= glm::vec2(7, 0);
 				}
-				m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
+				if (m_pPlayer->getJam())
+				{
+					m_pPlayer->setAnimationState(PLAYER_JAM_RIGHT);
+				}
+				else
+				{
+					m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
+				}
 				m_playerFacingRight = true;
 			}
 		}
@@ -498,6 +519,9 @@ void PlayScene::handleEvents()
 			if(m_pPlayer->getButter())
 			m_pPlayer->setAnimationState(PLAYER_BUTTER_IDLE_RIGHT);
 			
+			else if(m_pPlayer->getJam())
+				m_pPlayer->setAnimationState(PLAYER_JAM_IDLE_RIGHT);
+
 			else
 				m_pPlayer->setAnimationState(PLAYER_IDLE_RIGHT);
 		}
@@ -505,6 +529,9 @@ void PlayScene::handleEvents()
 		{
 			if (m_pPlayer->getButter())
 				m_pPlayer->setAnimationState(PLAYER_BUTTER_IDLE_LEFT);
+
+			else if (m_pPlayer->getJam())
+				m_pPlayer->setAnimationState(PLAYER_JAM_IDLE_LEFT);
 
 			else
 				m_pPlayer->setAnimationState(PLAYER_IDLE_LEFT);
@@ -523,6 +550,14 @@ void PlayScene::handleEvents()
 			std::cout << "jumping" << std::endl;
 			m_pCamera->getRigidBody()->velocity.y += 40.0f;//23.0f;
 			m_pPlayer->setGrounded(false);
+
+			if (m_pPlayer->getJam())
+			{
+				if (m_pPlayer->getLeft())
+					m_pCamera->getRigidBody()->velocity.x -= 5.0f;
+				if (m_pPlayer->getRight())
+					m_pCamera->getRigidBody()->velocity.x += 5.0f;
+			}
 
 			SoundManager::Instance().load("../Assets/audio/sound effects/jump.wav", "jump", SOUND_SFX);
 			SoundManager::Instance().playSound("jump", 0);
@@ -954,6 +989,10 @@ void PlayScene::start()
 	m_pJam[0]->setOffset(glm::vec2(1110.0f, 683.0f));
 	m_pJam[0]->setHideTimer(-1);
 	addChild(m_pJam[0]);
+
+	m_pJam[1] = new Jam();
+
+	addChild(m_pJam[1]);
 	
 	
 	for (int i = 0; i < NUM_OF_FLOORS_; i++)
