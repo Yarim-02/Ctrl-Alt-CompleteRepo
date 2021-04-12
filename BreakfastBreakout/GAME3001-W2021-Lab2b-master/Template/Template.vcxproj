@@ -172,6 +172,7 @@
     <ClCompile Include="..\src\Floor.cpp" />
     <ClCompile Include="..\src\Hazard.cpp" />
     <ClCompile Include="..\src\Jam.cpp" />
+    <ClCompile Include="..\src\Knob.cpp" />
     <ClCompile Include="..\src\Level2.cpp" />
     <ClCompile Include="..\src\LoadButton.cpp" />
     <ClCompile Include="..\src\MenuBG.cpp" />
@@ -231,6 +232,7 @@
     <ClInclude Include="..\src\Floor.h" />
     <ClInclude Include="..\src\Hazard.h" />
     <ClInclude Include="..\src\Jam.h" />
+    <ClInclude Include="..\src\Knob.h" />
     <ClInclude Include="..\src\Level2.h" />
     <ClInclude Include="..\src\LoadButton.h" />
     <ClInclude Include="..\src\MenuBG.h" />
@@ -243,6 +245,7 @@
     <ClInclude Include="..\src\SoundType.h" />
     <ClInclude Include="..\src\SpaceShip.h" />
     <ClInclude Include="..\src\Sprite.h" />
+    <ClInclude Include="..\src\TempKnob.h" />
     <ClInclude Include="..\src\UIControl.h" />
     <ClInclude Include="..\src\DisplayObject.h" />
     <ClInclude Include="..\src\EndScene.h" />

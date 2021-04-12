@@ -186,6 +186,9 @@
     <ClCompile Include="..\src\Collectable.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Knob.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\StartScene.h">
@@ -384,6 +387,12 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Collectable.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Knob.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TempKnob.h">
       <Filter>Game Objects</Filter>
     </ClInclude>
   </ItemGroup>
