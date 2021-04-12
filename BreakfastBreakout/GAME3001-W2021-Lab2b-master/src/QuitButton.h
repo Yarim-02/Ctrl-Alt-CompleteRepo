@@ -9,7 +9,11 @@
 class QuitButton : public UIControl
 {
 public:
+<<<<<<< Updated upstream
 	explicit QuitButton(const std::string& image_path = "../Assets/textures/buttons/QuitButton2-Off-reverse.png",
+=======
+	explicit QuitButton(const std::string& image_path = "../Assets/textures/Buttons/quitButton.png",
+>>>>>>> Stashed changes
 		std::string button_name = "quitButton",
 		GameObjectType type = QUIT_BUTTON,
 		glm::vec2 position = glm::vec2(0.0f, 0.0f), bool is_centered = true);

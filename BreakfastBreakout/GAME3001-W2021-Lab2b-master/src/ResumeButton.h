@@ -9,7 +9,11 @@
 class ResumeButton : public UIControl
 {
 public:
+<<<<<<< Updated upstream
 	explicit ResumeButton(const std::string& image_path = "../Assets/textures/buttons/RulesButton2-Off.png",
+=======
+	explicit ResumeButton(const std::string& image_path = "../Assets/textures/Buttons/resumeButton.png",
+>>>>>>> Stashed changes
 		std::string button_name = "resumeButton",
 		GameObjectType type = RESUME_BUTTON,
 		glm::vec2 position = glm::vec2(0.0f, 0.0f), bool is_centered = true);

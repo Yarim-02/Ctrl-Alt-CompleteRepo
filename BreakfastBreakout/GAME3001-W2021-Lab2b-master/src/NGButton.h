@@ -9,7 +9,11 @@
 class NewGameButton : public UIControl
 {
 public:
+<<<<<<< Updated upstream
 	explicit NewGameButton(const std::string& image_path = "../Assets/textures/buttons/NewGameButton2-off.png",
+=======
+	explicit NewGameButton(const std::string& image_path = "../Assets/textures/Buttons/newGameButton.png",
+>>>>>>> Stashed changes
 		std::string button_name = "newButton",
 		GameObjectType type = NEWGAME_BUTTON,
 		glm::vec2 position = glm::vec2(0.0f, 0.0f), bool is_centered = true);

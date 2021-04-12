@@ -100,6 +100,7 @@ void StartScene::start()
 	m_pLoadButton->getTransform()->position = glm::vec2(910.0f, 700.0f);
 
 	// Quit Button
+	//
 	m_pQuitButton = new QuitButton();
 	m_pQuitButton->getTransform()->position = glm::vec2(910.0f,  850.0f);
 
