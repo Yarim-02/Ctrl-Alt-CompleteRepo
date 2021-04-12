@@ -86,7 +86,7 @@ void StartScene::start()
 	m_pResumeGameButton->addEventListener(MOUSE_OVER, [&]()->void
 		{
 			m_pResumeGameButton->setAlpha(128);
-			setEnabled(m_pKnob)
+			setEnabled(m_pKnob);
 		});
 	m_pResumeGameButton->addEventListener(MOUSE_OUT, [&]()->void
 		{
@@ -147,16 +147,16 @@ void StartScene::start()
 	//Knob
 	m_pKnob->addEventListener(CLICK, [&]()-> void
 		{
-			m_pResumeGameButton->setActive(false);
+			m_pKnob->setActive(false);
 			TheGame::Instance()->changeSceneState(PLAY_SCENE);
 		});
 	m_pKnob->addEventListener(MOUSE_OVER, [&]()->void
 		{
-			m_pResumeGameButton->setAlpha(128);
+			m_pKnob->setAlpha(128);
 		});
 	m_pKnob->addEventListener(MOUSE_OUT, [&]()->void
 		{
-			m_pResumeGameButton->setAlpha(255);
+			m_pKnob->setAlpha(255);
 		});
 	addChild(m_pKnob);
 }
