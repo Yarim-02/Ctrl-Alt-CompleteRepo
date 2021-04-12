@@ -59,19 +59,24 @@ void StartScene::start()
 
 	// New Game Button
 	m_pNewGameButton = new NewGameButton();
-	m_pNewGameButton->getTransform()->position = glm::vec2(600.0f, 700.0f);
+	m_pNewGameButton->getTransform()->position = glm::vec2(580.0f, 620.0f);
 
 	// Resume Button
 	m_pResumeGameButton = new ResumeButton();
-	m_pResumeGameButton->getTransform()->position = glm::vec2(600.0f, 800.0f);
+	m_pResumeGameButton->getTransform()->position = glm::vec2(900.0f, 620.0f);
 
 	// Load Button
 	m_pLoadButton = new LoadButton();
-	m_pLoadButton->getTransform()->position = glm::vec2(910.0f, 700.0f);
+	m_pLoadButton->getTransform()->position = glm::vec2(580.0f, 750.0f);
 
 	// Quit Button
 	m_pQuitButton = new QuitButton();
-	m_pQuitButton->getTransform()->position = glm::vec2(910.0f, 800.0f);
+	m_pQuitButton->getTransform()->position = glm::vec2(900.0f, 750.0f);
+	
+	// Rotating Knob
+	m_pKnob = new Knob();
+	m_pKnob->getTransform()->position = glm::vec2(735.0f, 690.0f);
+
 
 	//resume
 	m_pResumeGameButton->addEventListener(CLICK, [&]()-> void
@@ -138,5 +143,22 @@ void StartScene::start()
 			m_pQuitButton->setAlpha(255);
 		});
 	addChild(m_pQuitButton);
+
+	//Knob
+	m_pKnob->addEventListener(CLICK, [&]()-> void
+		{
+			m_pResumeGameButton->setActive(false);
+			TheGame::Instance()->changeSceneState(PLAY_SCENE);
+		});
+	m_pKnob->addEventListener(MOUSE_OVER, [&]()->void
+		{
+			m_pResumeGameButton->setAlpha(128);
+		});
+	m_pKnob->addEventListener(MOUSE_OUT, [&]()->void
+		{
+			m_pResumeGameButton->setAlpha(255);
+		});
+	addChild(m_pKnob);
 }
+
 

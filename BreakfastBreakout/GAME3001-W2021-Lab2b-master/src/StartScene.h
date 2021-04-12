@@ -13,6 +13,7 @@
 #include "Background.h"
 #include "MenuBG.h"
 #include "EndBG.h"
+#include "Knob.h"
 
 
 class StartScene final : public Scene
@@ -39,10 +40,10 @@ private:
 	QuitButton* m_pQuitButton;
 	NewGameButton* m_pNewGameButton;
 	ResumeButton* m_pResumeGameButton;
+	Knob* m_pKnob;
 
 	//Backgrounds
 	MenuBackground* m_pBackground;
-
 };
 
 #endif /* defined (__START_SCENE__) */

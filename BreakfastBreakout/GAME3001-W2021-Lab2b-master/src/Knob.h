@@ -1,20 +1,20 @@
 #pragma once
-#ifndef __LOAD_BUTTON__
-#define __LOAD_BUTTON__
+#ifndef __KNOB_BUTTON__
+#define __KNOB_BUTTON__
 
 #include "DisplayObject.h"
 #include <SDL.h>
 #include "UIControl.h"
 
-class LoadButton : public UIControl
+class Knob : public UIControl
 {
 public:
-	explicit LoadButton(const std::string& image_path = "../Assets/textures/buttons/LoadButton-On.png",
-		std::string button_name = "loadButton",
-		GameObjectType type = START_BUTTON,
+	explicit Knob(const std::string& image_path = "../Assets/textures/buttons/Knob.png",
+		std::string button_name = "Knob",
+		GameObjectType type = KNOB,
 		glm::vec2 position = glm::vec2(0.0f, 0.0f), bool is_centered = true);
 
-	~LoadButton();
+	~Knob();
 
 	// Life Cycle Events
 	void draw() override;
@@ -32,5 +32,5 @@ private:
 	bool m_active;
 };
 
-#endif /* defined (__LOAD_BUTTON__) */
+#endif /* defined (__KNOB_BUTTON__) */
 
