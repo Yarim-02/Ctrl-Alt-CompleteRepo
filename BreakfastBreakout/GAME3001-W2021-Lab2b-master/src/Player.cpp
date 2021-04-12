@@ -12,6 +12,8 @@ Player::Player() : m_currentAnimationState(PLAYER_IDLE_RIGHT)
 	TextureManager::Instance()->load("../Assets/textures/Player_Walking_1.png", "walking1");
 	TextureManager::Instance()->load("../Assets/textures/Buttered_Walking_0.png", "buttered0");
 	TextureManager::Instance()->load("../Assets/textures/Buttered_Walking_1.png", "buttered1");
+	TextureManager::Instance()->load("../Assets/textures/JellyToast1.png", "jam1");
+	TextureManager::Instance()->load("../Assets/textures/JellyToast2.png", "jam2");
 
 	setSpriteSheet(TextureManager::Instance()->getSpriteSheet("spritesheet"));
 
@@ -67,6 +69,14 @@ void Player::draw()
 		TextureManager::Instance()->draw("buttered0",
 			getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
 		break;
+	case PLAYER_JAM_IDLE_RIGHT:
+		TextureManager::Instance()->draw("jam1",
+			getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		break;
+	case PLAYER_JAM_IDLE_LEFT:
+		TextureManager::Instance()->draw("jam1",
+			getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
+		break;
 	case PLAYER_RUN_RIGHT:
 		if (m_frameCounter % 20 >= 0&& m_frameCounter % 20 <= 10)
 			TextureManager::Instance()->draw("walking0",
@@ -97,6 +107,22 @@ void Player::draw()
 				getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
 		else
 			TextureManager::Instance()->draw("buttered1",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
+		break;
+	case PLAYER_JAM_RIGHT:
+		if (m_frameCounter % 20 >= 0 && m_frameCounter % 20 <= 10)
+			TextureManager::Instance()->draw("jam1",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		else
+			TextureManager::Instance()->draw("jam2",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		break;
+	case PLAYER_JAM_LEFT:
+		if (m_frameCounter % 20 >= 0 && m_frameCounter % 20 <= 10)
+			TextureManager::Instance()->draw("jam1",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
+		else
+			TextureManager::Instance()->draw("jam2",
 				getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
 		break;
 	default:
