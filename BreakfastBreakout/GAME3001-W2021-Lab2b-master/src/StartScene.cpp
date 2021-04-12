@@ -77,7 +77,6 @@ void StartScene::start()
 	m_pKnob = new Knob();
 	m_pKnob->getTransform()->position = glm::vec2(735.0f, 690.0f);
 
-
 	//resume
 	m_pResumeGameButton->addEventListener(CLICK, [&]()-> void
 		{
@@ -87,6 +86,7 @@ void StartScene::start()
 	m_pResumeGameButton->addEventListener(MOUSE_OVER, [&]()->void
 		{
 			m_pResumeGameButton->setAlpha(128);
+			setEnabled(m_pKnob)
 		});
 	m_pResumeGameButton->addEventListener(MOUSE_OUT, [&]()->void
 		{
