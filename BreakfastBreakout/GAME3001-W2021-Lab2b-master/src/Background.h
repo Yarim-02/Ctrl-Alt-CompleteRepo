@@ -8,7 +8,7 @@
 class Background final : public DisplayObject
 {
 public:
-	Background();
+	Background(std::string fileNameAndType, std::string name);
 	~Background();
 
 	// Life Cycle Methods
@@ -21,7 +21,7 @@ public:
 
 
 private:
-
+	std::string fileName;
 };
 
 #endif#pragma once

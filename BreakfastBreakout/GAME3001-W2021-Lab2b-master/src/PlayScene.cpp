@@ -47,7 +47,7 @@ void PlayScene::update()
 	}*/
 
 	
-	for (int i = 0; i < NUM_OF_PLATFORM_; i++) // num of platforms
+	for (int i = 0; i < NUM_OF_PLATFORM_1_; i++) // num of platforms
 	{
 		m_pPlatform[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pPlatform[i]->getOffset();
 
@@ -66,43 +66,43 @@ void PlayScene::update()
 			break;
 	}
 
-	for (int i = 0; i < NUM_OF_WALLS_; i++) // num of walls
+	for (int i = 0; i < NUM_OF_WALL_1_; i++) // num of walls
 	{
 		m_pWall[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pWall[i]->getOffset();
 	}
 
-	for (int i = 0; i < NUM_OF_FLOORS_; i++)
+	for (int i = 0; i < NUM_OF_FLOOR_1_; i++)
 	{
 		m_pFloor[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pFloor[i]->getOffset();
 	}
-	for (int i = 0; i < NUM_OF_BACKGROUND_; i++)
+	for (int i = 0; i < NUM_OF_BACKGROUND_1_; i++)
 	{
 		m_pBackground[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pBackground[i]->getOffset();
 	}
 	
-	for (int i = 0; i < NUM_OF_HAZARD_; i++) // Num of Hazards
+	for (int i = 0; i < NUM_OF_HAZARD_1_; i++) // Num of Hazards
 	{
 		m_pHazard[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pHazard[i]->getOffset();
 		CollisionManager::HazardCheck(m_pPlayer, m_pHazard[i], m_pCamera);
 	}
 
-	for (int i = 0; i < NUM_OF_NI_OBJECTS_; i++) // Num Non-Interactive Objects
+	for (int i = 0; i < NUM_OF_NI_OBJECT_1_; i++) // Num Non-Interactive Objects
 	{
 		m_pNonInteractiveObjects[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pNonInteractiveObjects[i]->getOffset();
 	}
 
-	for (int i = 0; i < NUM_OF_COLLECTABLE_; i++) // Num of Collectables
+	for (int i = 0; i < NUM_OF_COLLECTABLE_1_; i++) // Num of Collectables
 	{
 		m_pCollecatables[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pCollecatables[i]->getOffset();
 	}
 
-	for (int i = 0; i < NUM_OF_ENEMY_; i++)
+	for (int i = 0; i < NUM_OF_ENEMY_1_; i++)
 	{
 		m_pEnemy[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pEnemy[i]->getOffset();
 		CollisionManager::HazardCheck(m_pPlayer, m_pEnemy[i], m_pCamera);
 	}
 	
-	for (int i = 0; i < NUM_OF_BUTTER_; i++)
+	for (int i = 0; i < NUM_OF_BUTTER_1_; i++)
 	{
 		m_pButter[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pButter[i]->getOffset();
 
@@ -154,7 +154,7 @@ void PlayScene::update()
 
 	if (m_pPlayer->getGrounded() == false)
 	{
-		for (int i = 0; i < NUM_OF_WALLS_; i++) //num of walls
+		for (int i = 0; i < NUM_OF_WALL_1_; i++) //num of walls
 		{
 			if(CollisionManager::PlatformCheck(m_pPlayer, m_pWall[i], m_pCamera))
 			{
@@ -175,7 +175,7 @@ void PlayScene::update()
 
 	if (m_pPlayer->getGrounded() == false)
 	{
-		for (int i = 0; i < NUM_OF_FLOORS_; i++)
+		for (int i = 0; i < NUM_OF_FLOOR_1_; i++)
 		{
 			CollisionManager::PlatformCheck(m_pPlayer, m_pFloor[i], m_pCamera);
 
@@ -572,27 +572,27 @@ void PlayScene::start()
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
 
-	m_pBackground[0] = new Background(); // w6768 h900
+	m_pBackground[0] = new Background("Background.png", "Background"); // w6768 h900
 	m_pBackground[0]->setOffset(glm::vec2(-720, -450));
 	addChild(m_pBackground[0]);
 
-	m_pBackground[1] = new Background();
+	m_pBackground[1] = new Background("Background.png", "Background");
 	m_pBackground[1]->setOffset(glm::vec2(-720, 450));
 	addChild(m_pBackground[1]);
 
-	m_pBackground[2] = new Background();
+	m_pBackground[2] = new Background("Background.png", "Background");
 	m_pBackground[2]->setOffset(glm::vec2(6048, -450));
 	addChild(m_pBackground[2]);
 
-	m_pBackground[3] = new Background();
+	m_pBackground[3] = new Background("Background.png", "Background");
 	m_pBackground[3]->setOffset(glm::vec2(6048, 450));
 	addChild(m_pBackground[3]);
 
-	m_pBackground[4] = new Background();
+	m_pBackground[4] = new Background("Background.png", "Background");
 	m_pBackground[4]->setOffset(glm::vec2(-720, -1350));
 	addChild(m_pBackground[4]);
 
-	m_pBackground[5] = new Background();
+	m_pBackground[5] = new Background("Background.png", "Background");
 	m_pBackground[5]->setOffset(glm::vec2(6048, -1350));
 	addChild(m_pBackground[5]);
 
@@ -799,7 +799,7 @@ void PlayScene::start()
 	m_pNonInteractiveObjects[36]->setOffset(glm::vec2(4900.0f, -19.0f));
 	addChild(m_pNonInteractiveObjects[36]);
 	
-	for (int i = 0; i < NUM_OF_COLLECTABLE_; i++)					// COLLECTABLES START
+	for (int i = 0; i < NUM_OF_COLLECTABLE_1_; i++)					// COLLECTABLES START
 	{
 		m_pCollecatables[i] = new Collectable();
 	}
@@ -990,12 +990,10 @@ void PlayScene::start()
 	m_pJam[0]->setHideTimer(-1);
 	addChild(m_pJam[0]);
 
-	m_pJam[1] = new Jam();
 
-	addChild(m_pJam[1]);
 	
 	
-	for (int i = 0; i < NUM_OF_FLOORS_; i++)
+	for (int i = 0; i < NUM_OF_FLOOR_1_; i++)
 	{
 		m_pFloor[i] = new Floor(); //w3055 h20
 		addChild(m_pFloor[i]);

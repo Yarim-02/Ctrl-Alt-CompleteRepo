@@ -46,7 +46,7 @@ void Level2::update()
 			break;
 	}*/
 
-	for (int i = 0; i < NUM_OF_PLATFORMS_; i++)
+	for (int i = 0; i < NUM_OF_PLATFORM_2_; i++)
 	{
 		m_pPlatform[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pPlatform[i]->getOffset();
 
@@ -64,38 +64,38 @@ void Level2::update()
 			break;
 	}
 
-	for (int i = 0; i < NUM_OF_WALL_; i++)
+	for (int i = 0; i < NUM_OF_WALL_2_; i++)
 	{
 		m_pWall[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pWall[i]->getOffset();
 	}
 
-	for (int i = 0; i < NUM_OF_FLOOR_; i++)
+	for (int i = 0; i < NUM_OF_FLOOR_2_; i++)
 	{
 		m_pFloor[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pFloor[i]->getOffset();
 	}
-	for (int i = 0; i < NUM_OF_BACKGROUND_; i++)
+	for (int i = 0; i < NUM_OF_BACKGROUND_2_; i++)
 	{
 		m_pBackground[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pBackground[i]->getOffset();
 	}
 
-	for (int i = 0; i < NUM_OF_HAZARDS_; i++)
+	for (int i = 0; i < NUM_OF_HAZARD_2_; i++)
 	{
 		m_pHazard[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pHazard[i]->getOffset();
 		CollisionManager::HazardCheck(m_pPlayer, m_pHazard[i], m_pCamera);
 	}
 
-	for (int i = 0; i < NUM_OF_NON_INTERACTIVE_OBJECTS_; i++)
+	for (int i = 0; i < NUM_OF_NI_OBJECT_2_; i++)
 	{
 		m_pNonInteractiveObjects[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pNonInteractiveObjects[i]->getOffset();
 	}
 
-	for (int i = 0; i < NUM_OF_ENEMY_; i++)
+	for (int i = 0; i < NUM_OF_ENEMY_2_; i++)
 	{
 		m_pEnemy[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pEnemy[i]->getOffset();
 		CollisionManager::HazardCheck(m_pPlayer, m_pEnemy[i], m_pCamera);
 	}
 
-	for (int i = 0; i < NUM_OF_BUTTER_; i++)
+	for (int i = 0; i < NUM_OF_BUTTER_2_; i++)
 	{
 		m_pButter[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pButter[i]->getOffset();
 
@@ -116,7 +116,7 @@ void Level2::update()
 		CollisionManager::ButterCheck(m_pPlayer, m_pButter[i]);
 	}
 
-	for (int i = 0; i < NUM_OF_JAM_; i++)
+	for (int i = 0; i < NUM_OF_JAM_2_; i++)
 	{
 		m_pJam[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pJam[i]->getOffset();
 
@@ -147,7 +147,7 @@ void Level2::update()
 
 	if (m_pPlayer->getGrounded() == false)
 	{
-		for (int i = 0; i < NUM_OF_WALL_; i++)
+		for (int i = 0; i < NUM_OF_WALL_2_; i++)
 		{
 			if (CollisionManager::PlatformCheck(m_pPlayer, m_pWall[i], m_pCamera))
 			{
@@ -168,7 +168,7 @@ void Level2::update()
 
 	if (m_pPlayer->getGrounded() == false)
 	{
-		for (int i = 0; i < NUM_OF_FLOOR_; i++)
+		for (int i = 0; i < NUM_OF_FLOOR_2_; i++)
 		{
 			CollisionManager::PlatformCheck(m_pPlayer, m_pFloor[i], m_pCamera);
 
@@ -304,10 +304,10 @@ void Level2::handleEvents()
 		{
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
 			{
-				if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
-				{
+				//if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
+				//{
 					m_pCamera->getTransform()->position += glm::vec2(7, 0);
-				}
+				//}
 				m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
 				m_playerFacingRight = false;
 			}
@@ -316,10 +316,10 @@ void Level2::handleEvents()
 		{
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
 			{
-				if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
-				{
+				//if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
+				//{
 					m_pCamera->getRigidBody()->velocity.x += 0.5f;
-				}
+				//}
 				m_pPlayer->setAnimationState(PLAYER_BUTTER_LEFT);
 				m_playerFacingRight = false;
 			}
@@ -332,10 +332,10 @@ void Level2::handleEvents()
 		{
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
 			{
-				if (m_pPlayer->getTransform()->position.x + 720.0f < m_pBackground[2]->getTransform()->position.x + 6048.0f)
-				{
+				//if (m_pPlayer->getTransform()->position.x + 720.0f < m_pBackground[2]->getTransform()->position.x + 6048.0f)
+				//{
 					m_pCamera->getTransform()->position -= glm::vec2(7, 0);
-				}
+				//}
 				m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
 				m_playerFacingRight = true;
 			}
@@ -397,28 +397,28 @@ void Level2::start()
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
 
-	m_pBackground[0] = new Background(); // w6768 h900
-	m_pBackground[0]->setOffset(glm::vec2(-720, -450));
+	m_pBackground[0] = new Background("Level2Background.png", "Level2Background"); // w6768 h900
+	m_pBackground[0]->setOffset(glm::vec2(0, -150));
 	addChild(m_pBackground[0]);
 
-	m_pBackground[1] = new Background();
-	m_pBackground[1]->setOffset(glm::vec2(-720, 450));
+	m_pBackground[1] = new Background("Level2BackgroundExtension.png", "Level2BackgroundExtension");
+	m_pBackground[1]->setOffset(glm::vec2(0, 750));
 	addChild(m_pBackground[1]);
 
-	m_pBackground[2] = new Background();
-	m_pBackground[2]->setOffset(glm::vec2(6048, -450));
+	m_pBackground[2] = new Background("Level2BackgroundExtension.png", "Level2BackgroundExtension");
+	m_pBackground[2]->setOffset(glm::vec2(-6768, 750));
 	addChild(m_pBackground[2]);
 
-	m_pBackground[3] = new Background();
-	m_pBackground[3]->setOffset(glm::vec2(6048, 450));
+	m_pBackground[3] = new Background("Level2BackgroundExtension.png", "Level2BackgroundExtension");
+	m_pBackground[3]->setOffset(glm::vec2(-6768, -150));
 	addChild(m_pBackground[3]);
 
-	m_pBackground[4] = new Background();
-	m_pBackground[4]->setOffset(glm::vec2(-720, -1350));
+	m_pBackground[4] = new Background("Level2BackgroundExtension.png", "Level2BackgroundExtension");
+	m_pBackground[4]->setOffset(glm::vec2(0, -1050));
 	addChild(m_pBackground[4]);
 
-	m_pBackground[5] = new Background();
-	m_pBackground[5]->setOffset(glm::vec2(6048, -1350));
+	m_pBackground[5] = new Background("Level2BackgroundExtension.png", "Level2BackgroundExtension");
+	m_pBackground[5]->setOffset(glm::vec2(-6768, -1050));
 	addChild(m_pBackground[5]);
 
 	m_pNonInteractiveObjects[0] = new NonInteractiveObject("KitchenSink.png"); // w400 h200
@@ -429,53 +429,47 @@ void Level2::start()
 	addChild(m_pHazard[0]);
 	m_pHazard[0]->setOffset(glm::vec2(2350.0f, 760.0f));
 
-	m_pHazard[1] = new Hazard("ChoppingKnife.png"); // w114 h121
-	addChild(m_pHazard[1]);
-	m_pHazard[1]->setOffset(glm::vec2(650.0f, 468.0f));
-
-	m_pNonInteractiveObjects[3] = new NonInteractiveObject("LongShelfBrackets.png"); // w586 h61
-	addChild(m_pNonInteractiveObjects[3]);
-	m_pNonInteractiveObjects[3]->setOffset(glm::vec2(1150.0f, 214.0f));
-
-	m_pNonInteractiveObjects[4] = new NonInteractiveObject("ExtraLongShelfBrackets.png"); // w586 h61
-	addChild(m_pNonInteractiveObjects[4]);
-	m_pNonInteractiveObjects[4]->setOffset(glm::vec2(122.0f, 434.0f));
+	m_pWall[0] = new Wall("Milk.png");
+	addChild(m_pWall[0]);
+	m_pWall[0]->setOffset(glm::vec2(1000.0f, 522.0f));
 
 	m_pPlayer = new Player();
 	m_pPlayer->getTransform()->position = glm::vec2(400.0f, 600.0f);
 	addChild(m_pPlayer);
 
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		m_pEnemy[i] = new Enemy("Jello1.png", JELLO); // w72 h100
 		addChild(m_pEnemy[i]);
 	}
 	m_pEnemy[0]->setOffset(glm::vec2(2100.0f, 660.0f));
-	m_pEnemy[1]->setOffset(glm::vec2(4200.0f, -300.0f));
+	//m_pEnemy[1]->setOffset(glm::vec2(4200.0f, -300.0f));
 
-	for (int i = 2; i < 4; i++)
-	{
-		m_pEnemy[i] = new Enemy("mushroom1.png", MUSHROOM);
-		addChild(m_pEnemy[i]);
-	}
-	m_pEnemy[2]->setOffset(glm::vec2(1000.0f, 690.0f));
-	m_pEnemy[3]->setOffset(glm::vec2(2850.0f, 690.0f));
-
-
+	//for (int i = 2; i < 4; i++)
+	//{
+	//	m_pEnemy[i] = new Enemy("mushroom1.png", MUSHROOM);
+	//	addChild(m_pEnemy[i]);
+	//}
+	//m_pEnemy[2]->setOffset(glm::vec2(1000.0f, 690.0f));
+	//m_pEnemy[3]->setOffset(glm::vec2(2850.0f, 690.0f));
 
 
-	for (int i = 0; i < NUM_OF_BUTTER_; i++)
+
+
+	for (int i = 0; i < NUM_OF_BUTTER_2_; i++)
 	{
 		m_pButter[i] = new Butter();
 		addChild(m_pButter[i]);
 	}
+	m_pButter[0]->setOffset(glm::vec2(2110.0f, 683.0f));
 
-	for (int i = 0; i < NUM_OF_JAM_; i++)
+	for (int i = 0; i < NUM_OF_JAM_2_; i++)
 	{
 		m_pJam[i] = new Jam();
 		addChild(m_pJam[i]);
 	}
+	m_pJam[0]->setOffset(glm::vec2(1110.0f, 683.0f));
 
 	//m_pButter->setOffset(glm::vec2(350.0f, 150.0f));
 
@@ -484,46 +478,12 @@ void Level2::start()
 	m_pPlatform[0]->setPlatformID(0);
 	m_pPlatform[0]->setOffset(glm::vec2(1150.0f, 194.0f));
 
-	m_pNonInteractiveObjects[2] = new NonInteractiveObject("LongShelfShadow.png"); // w586 h37
-	addChild(m_pNonInteractiveObjects[2]);
-	m_pNonInteractiveObjects[2]->setOffset(glm::vec2(1150.0f, 215.0f));
-
-
-	m_pPlatform[1] = new Platform("CuttingBoard.png"); // w274 h21
-	addChild(m_pPlatform[1]);
-	m_pPlatform[1]->setPlatformID(1);
-	m_pPlatform[1]->setOffset(glm::vec2(550.0f, 729.0f));
-
-	m_pPlatform[2] = new Platform("ExtraLongShelf.png"); // w1032 h20
-	addChild(m_pPlatform[2]);
-	m_pPlatform[2]->setPlatformID(2);
-	m_pPlatform[2]->setOffset(glm::vec2(122.0f, 414.0f));
-
-	m_pNonInteractiveObjects[5] = new NonInteractiveObject("ExtraLongShelfShadow.png"); // w1032 h30
-	addChild(m_pNonInteractiveObjects[5]);
-	m_pNonInteractiveObjects[5]->setOffset(glm::vec2(122, 434.0f));
-
-	m_pWall[0] = new Wall("CrackersHorizontal.png"); //w257 h110
-	addChild(m_pWall[0]);
-	m_pWall[0]->setOffset(glm::vec2(1400.0f, 640.0f));
-
-	m_pWall[1] = new Wall("CrackersVertical.png"); //w110 h257
-	addChild(m_pWall[1]);
-	m_pWall[1]->setOffset(glm::vec2(1471.0f, 383.0f));
-
-	m_pWall[2] = new Wall("LargeCupboard.png"); //w778 h565
-	addChild(m_pWall[2]);
-	m_pWall[2]->setOffset(glm::vec2(1786.0f, -139.0f));
-
-	m_pNonInteractiveObjects[1] = new NonInteractiveObject("LargeCupboardShadow.png"); // w778 h59
-	addChild(m_pNonInteractiveObjects[1]);
-	m_pNonInteractiveObjects[1]->setOffset(glm::vec2(1786.0f, 426.0f));
-
+	
 	//m_pWall[2] = new Wall("Pancakes.png"); // w110 h70
 	//addChild(m_pWall[2]);
 	//m_pWall[2]->setOffset(glm::vec2(900.0f, 690.0f));
 
-	for (int i = 0; i < NUM_OF_FLOOR_; i++)
+	for (int i = 0; i < NUM_OF_FLOOR_2_; i++)
 	{
 		m_pFloor[i] = new Floor(); //w3055 h20
 		addChild(m_pFloor[i]);
@@ -531,13 +491,7 @@ void Level2::start()
 
 	m_pFloor[0]->setOffset(glm::vec2(-720.0f, 750.0f));
 	m_pFloor[1]->setOffset(glm::vec2(2735.0f, 750.0f));
-
-
-
-
-
-
-
+	   	  
 
 	/*m_pFloor[1]->setOffset(glm::vec2(2150.0f, 0.0f));
 	m_pFloor[2]->setOffset(glm::vec2(7300.0f, -150.0f));*/
