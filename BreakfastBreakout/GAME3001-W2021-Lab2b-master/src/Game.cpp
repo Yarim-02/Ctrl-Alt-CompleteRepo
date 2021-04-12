@@ -105,7 +105,7 @@ void Game::start()
 
 	//TODO: temporarily commented out
 	//changeSceneState(START_SCENE);
-	changeSceneState(PLAY_SCENE);
+	changeSceneState(START_SCENE);
 }
 
 bool Game::isRunning() const
@@ -170,6 +170,10 @@ void Game::changeSceneState(const SceneState new_state)
 			m_currentScene = new PlayScene();
 			std::cout << "play scene activated" << std::endl;
 			break;
+		case LEVEL2:
+			m_currentScene = new Level2();
+			std::cout << "level 2 activated" << std::endl;
+			break;
 		case END_SCENE:
 			m_currentScene = new EndScene();
 			std::cout << "end scene activated" << std::endl;
@@ -180,6 +184,53 @@ void Game::changeSceneState(const SceneState new_state)
 		}
 	}
 	
+}
+
+void Game::cleanSceneState(const SceneState current_state)
+{
+	if (current_state == m_currentSceneState) {
+
+		// scene clean up
+		if (m_currentSceneState != NO_SCENE)
+		{
+			m_currentScene->clean();
+			std::cout << "cleaning previous scene" << std::endl;
+			FontManager::Instance()->clean();
+			std::cout << "cleaning FontManager" << std::endl;
+			TextureManager::Instance()->clean();
+			std::cout << "cleaning TextureManager" << std::endl;
+		}
+
+		m_currentScene = nullptr;
+
+		m_currentSceneState = current_state;
+
+		EventManager::Instance().reset();
+
+		switch (m_currentSceneState)
+		{
+		case START_SCENE:
+			m_currentScene = new StartScene();
+			std::cout << "start scene activated" << std::endl;
+			break;
+		case PLAY_SCENE:
+			m_currentScene = new PlayScene();
+			std::cout << "play scene activated" << std::endl;
+			break;
+		case LEVEL2:
+			m_currentScene = new Level2();
+			std::cout << "level 2 activated" << std::endl;
+			break;
+		case END_SCENE:
+			m_currentScene = new EndScene();
+			std::cout << "end scene activated" << std::endl;
+			break;
+		default:
+			std::cout << "default case activated" << std::endl;
+			break;
+		}
+	}
+
 }
 
 void Game::quit()

@@ -23,6 +23,7 @@ public:
 
 private:
 	int m_hideTimer;
+	float m_xPos;
 };
 
 #endif

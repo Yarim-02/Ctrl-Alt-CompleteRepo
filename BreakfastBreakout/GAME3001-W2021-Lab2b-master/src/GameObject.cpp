@@ -57,3 +57,13 @@ bool GameObject::isEnabled() const
 {
 	return m_enabled;
 }
+
+void GameObject::setOffset(glm::vec2 position)
+{
+	m_offset = position;
+}
+
+glm::vec2 GameObject::getOffset()
+{
+	return m_offset;
+}

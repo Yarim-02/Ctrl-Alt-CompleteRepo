@@ -3,7 +3,7 @@
 
 Floor::Floor()
 {
-	TextureManager::Instance()->load("../Assets/textures/GroundSprite.png", "ground");
+	TextureManager::Instance()->load("../Assets/textures/CounterTop1.png", "ground"); //w3055 h20
 
 	auto size = TextureManager::Instance()->getTextureSize("ground");
 	setWidth(size.x);

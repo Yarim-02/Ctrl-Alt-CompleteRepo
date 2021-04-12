@@ -8,7 +8,7 @@
 class Platform final : public DisplayObject
 {
 public:
-	Platform();
+	Platform(std::string fileNameAndType);
 	~Platform();
 
 	// Life Cycle Methods
@@ -24,6 +24,7 @@ public:
 
 private:
 	int m_platformID;
+	std::string m_fileName;
 
 };
 

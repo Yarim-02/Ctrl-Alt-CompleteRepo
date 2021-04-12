@@ -4,11 +4,12 @@
 
 #include "DisplayObject.h"
 #include "TextureManager.h"
+#include <string>
 
 class Hazard final : public DisplayObject
 {
 public:
-	Hazard();
+	Hazard(std::string fileNameAndType);
 	~Hazard();
 
 	// Life Cycle Methods
@@ -21,7 +22,7 @@ public:
 
 
 private:
-
+	std::string m_fileName;
 };
 
 #endif

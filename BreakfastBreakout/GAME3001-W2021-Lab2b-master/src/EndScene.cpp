@@ -48,18 +48,26 @@ void EndScene::handleEvents()
 
 void EndScene::start()
 {
+
+	m_pEndBackground = new EndBackground();
+	addChild(m_pEndBackground);
+
 	const SDL_Color blue = { 0, 0, 255, 255 };
-	m_label = new Label("END SCENE", "Dock51", 80, blue, glm::vec2(400.0f, 40.0f));
+	m_label = new Label("Game Over", "Consolas", 80, blue, glm::vec2(400.0f, 40.0f));
+	m_label->setParent(this);
+	addChild(m_label);
+
+	m_label = new Label("Would You Like To Play Again?", "Consolas", 20, blue, glm::vec2(290.0f, 350.0f));
 	m_label->setParent(this);
 	addChild(m_label);
 
 	// Restart Button
 	m_pRestartButton = new Button("../Assets/textures/restartButton.png", "restartButton", RESTART_BUTTON);
-	m_pRestartButton->getTransform()->position = glm::vec2(400.0f, 400.0f);
+	m_pRestartButton->getTransform()->position = glm::vec2(290.0f, 420.0f);
 	m_pRestartButton->addEventListener(CLICK, [&]()-> void
 	{
 		m_pRestartButton->setActive(false);
-		TheGame::Instance()->changeSceneState(PLAY_SCENE);
+		TheGame::Instance()->changeSceneState(START_SCENE);
 	});
 
 	m_pRestartButton->addEventListener(MOUSE_OVER, [&]()->void
@@ -73,4 +81,25 @@ void EndScene::start()
 	});
 
 	addChild(m_pRestartButton);
+
+	// Quit Button
+	m_pQuitButton = new QuitButton();
+	m_pQuitButton->getTransform()->position = glm::vec2(290.0f, 490.0f);
+	m_pQuitButton->addEventListener(CLICK, [&]()-> void
+		{
+			m_pQuitButton->setActive(false);
+			TheGame::Instance()->changeSceneState(START_SCENE);
+		});
+
+	m_pQuitButton->addEventListener(MOUSE_OVER, [&]()->void
+		{
+			m_pQuitButton->setAlpha(128);
+		});
+
+	m_pQuitButton->addEventListener(MOUSE_OUT, [&]()->void
+		{
+			m_pQuitButton->setAlpha(255);
+		});
+
+	addChild(m_pQuitButton);
 }

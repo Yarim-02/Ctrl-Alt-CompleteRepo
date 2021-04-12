@@ -41,8 +41,9 @@ void Scene::removeAllChildren()
 {
 	for (auto& count : m_displayList)
 	{
-		delete count;
-		count = nullptr;
+		
+			delete count;
+			count = nullptr;
 	}
 
 	m_displayList.clear();

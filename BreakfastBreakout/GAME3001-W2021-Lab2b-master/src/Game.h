@@ -16,6 +16,7 @@
 // Scenes
 #include "StartScene.h"
 #include "PlayScene.h"
+#include "Level2.h"
 #include "EndScene.h"
 
 #include "Config.h"
@@ -56,6 +57,7 @@ public:
 	
 	bool isRunning() const;
 	void changeSceneState(SceneState new_state);
+	void cleanSceneState(const SceneState new_state);
 	
 private:
 	Game();

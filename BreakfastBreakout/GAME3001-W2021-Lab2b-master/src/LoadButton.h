@@ -9,11 +9,7 @@
 class LoadButton : public UIControl
 {
 public:
-<<<<<<< Updated upstream
-	explicit LoadButton(const std::string& image_path = "../Assets/textures/buttons/LoadButton2-Off.png",
-=======
-	explicit LoadButton(const std::string& image_path = "../Assets/textures/Buttons/loadButton.png",
->>>>>>> Stashed changes
+	explicit LoadButton(const std::string& image_path = "../Assets/textures/loadButton.png",
 		std::string button_name = "loadButton",
 		GameObjectType type = START_BUTTON,
 		glm::vec2 position = glm::vec2(0.0f, 0.0f), bool is_centered = true);

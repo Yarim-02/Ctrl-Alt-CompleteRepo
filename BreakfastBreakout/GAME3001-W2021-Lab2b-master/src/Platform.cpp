@@ -1,11 +1,13 @@
 #include "Platform.h"
 #include "TextureManager.h"
 
-Platform::Platform()
+Platform::Platform(std::string fileNameAndType)
 {
-	TextureManager::Instance()->load("../Assets/textures/platform.png", "platform");
+	TextureManager::Instance()->load("../Assets/textures/" + fileNameAndType, fileNameAndType); // w100 h28
 
-	auto size = TextureManager::Instance()->getTextureSize("platform");
+	m_fileName = fileNameAndType;
+	
+	auto size = TextureManager::Instance()->getTextureSize(m_fileName);
 	setWidth(size.x);
 	setHeight(size.y);
 
@@ -23,7 +25,7 @@ Platform::~Platform()
 
 void Platform::draw()
 {
-	TextureManager::Instance()->draw("platform",
+	TextureManager::Instance()->draw(m_fileName,
 		getTransform()->position.x, getTransform()->position.y, 0, 255, false);
 
 }

@@ -8,6 +8,7 @@
 const int FPS = 60;
 const int DELAY_TIME = 1000.0f / FPS;
 
+
 int main(int argc, char * args[])
 {
 	Uint32 frameStart, frameTime;
@@ -19,7 +20,7 @@ int main(int argc, char * args[])
 	freopen("CON", "w", stdout);
 
 
-	TheGame::Instance()->init("SDLEngine 0.24", 100, 100, 800, 600, false);
+	TheGame::Instance()->init("SDLEngine 0.24", 100, 100, 1440, 900, false);
 
 	while (TheGame::Instance()->isRunning())
 	{
