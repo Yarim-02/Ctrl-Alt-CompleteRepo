@@ -121,16 +121,16 @@ void Level2::update()
 		m_pJam[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pJam[i]->getOffset();
 
 		if (m_pJam[i]->getHideTimer() > 0)
-			m_pJam[i]->setOffset(glm::vec2(-1000.0f, 150.0f));
+			m_pJam[i]->setOffset(glm::vec2(-1000.0f, 683.0f));
 		else
 		{
 			switch (i)
 			{
 			case 0:
-				m_pJam[i]->setOffset(glm::vec2(650.0f, 100.0f));
+				m_pJam[i]->setOffset(glm::vec2(700.0f, 683.0f));
 				break;
 			case 1:
-				m_pJam[i]->setOffset(glm::vec2(4520.0f, -250.0f));
+				m_pJam[i]->setOffset(glm::vec2(2150.0f, 683.0f));
 				break;
 			}
 		}
@@ -260,7 +260,7 @@ void Level2::update()
 
 	m_frameCounter++;
 
-	if (m_frameCounter % 3 == 0 || m_frameCounter % 3 == 1 || m_frameCounter % 3 == 2)
+	/*if (m_frameCounter % 3 == 0 || m_frameCounter % 3 == 1 || m_frameCounter % 3 == 2)
 	{
 		if (m_ChopTracker == false)
 		{
@@ -280,7 +280,7 @@ void Level2::update()
 				m_ChopTracker = false;
 			}
 		}
-	}
+	}*/
 
 }
 
@@ -421,17 +421,57 @@ void Level2::start()
 	m_pBackground[5]->setOffset(glm::vec2(-6768, -1050));
 	addChild(m_pBackground[5]);
 
-	m_pNonInteractiveObjects[0] = new NonInteractiveObject("KitchenSink.png"); // w400 h200
+	m_pNonInteractiveObjects[0] = new NonInteractiveObject("SinkHazard.png"); 
 	addChild(m_pNonInteractiveObjects[0]);
 	m_pNonInteractiveObjects[0]->setOffset(glm::vec2(2335.0f, 570.0f));
 
-	m_pHazard[0] = new Hazard("SinkHazard.png");
+	m_pHazard[0] = new Hazard("Fondue.png");
 	addChild(m_pHazard[0]);
-	m_pHazard[0]->setOffset(glm::vec2(2350.0f, 760.0f));
+	m_pHazard[0]->setOffset(glm::vec2(2535.0f, 434.0f));
 
-	m_pWall[0] = new Wall("Milk.png");
+	m_pHazard[1] = new Hazard("Water.png");
+	addChild(m_pHazard[1]);
+	m_pHazard[1]->setOffset(glm::vec2(4385.0f, 733.0f));
+
+	//Walls
+	m_pWall[0] = new Wall("VerticalMilk.png");
 	addChild(m_pWall[0]);
-	m_pWall[0]->setOffset(glm::vec2(1000.0f, 522.0f));
+	m_pWall[0]->setOffset(glm::vec2(1456.0f, 522.0f));
+	
+	m_pWall[1] = new Wall("VerticalMilk.png");
+	addChild(m_pWall[1]);
+	m_pWall[1]->setOffset(glm::vec2(2825.0f, 266.0f));
+
+	m_pWall[2] = new Wall("HorizontalMilk.png");
+	addChild(m_pWall[2]);
+	m_pWall[2]->setOffset(glm::vec2(1785.0f, 649.0f));
+
+	m_pWall[3] = new Wall("CrackersVertical.png");
+	addChild(m_pWall[3]);
+	m_pWall[3]->setOffset(glm::vec2(2825.0f, 493.0f));
+
+	m_pWall[4] = new Wall("Cup.png");
+	addChild(m_pWall[4]);
+	m_pWall[4]->setOffset(glm::vec2(4690.0f, 691.0f));
+
+	m_pWall[5] = new Wall("Flowers.png");
+	addChild(m_pWall[5]);
+	m_pWall[5]->setOffset(glm::vec2(4740.0f, 393.0f));
+
+	m_pWall[6] = new Wall("PepperMill.png");
+	addChild(m_pWall[6]);
+	m_pWall[6]->setOffset(glm::vec2(850.0f, 248.0f));
+	
+	m_pWall[7] = new Wall("PepperMill.png");
+	addChild(m_pWall[7]);
+	m_pWall[7]->setOffset(glm::vec2(2470.0f, 248.0f));
+	
+	m_pWall[8] = new Wall("PepperMill.png");
+	addChild(m_pWall[8]);
+	m_pWall[8]->setOffset(glm::vec2(3350.0f, 248.0f));
+
+	
+	
 
 	m_pPlayer = new Player();
 	m_pPlayer->getTransform()->position = glm::vec2(400.0f, 600.0f);
@@ -443,7 +483,7 @@ void Level2::start()
 		m_pEnemy[i] = new Enemy("Jello1.png", JELLO); // w72 h100
 		addChild(m_pEnemy[i]);
 	}
-	m_pEnemy[0]->setOffset(glm::vec2(2100.0f, 660.0f));
+	m_pEnemy[0]->setOffset(glm::vec2(1860.0f, 559.0f));
 	//m_pEnemy[1]->setOffset(glm::vec2(4200.0f, -300.0f));
 
 	//for (int i = 2; i < 4; i++)
@@ -469,14 +509,43 @@ void Level2::start()
 		m_pJam[i] = new Jam();
 		addChild(m_pJam[i]);
 	}
-	m_pJam[0]->setOffset(glm::vec2(1110.0f, 683.0f));
+	m_pJam[0]->setOffset(glm::vec2(1100.0f, 683.0f));
+
+	m_pJam[1]->setOffset(glm::vec2(2150.0f, 683.0f));
+
 
 	//m_pButter->setOffset(glm::vec2(350.0f, 150.0f));
+	for (int i = 0; i < 12; i++)
+	{
+		m_pPlatform[i] = new Platform("SmallPlate.png"); 
+		addChild(m_pPlatform[i]);
+		m_pPlatform[i]->setPlatformID(i);
+	}
+	m_pPlatform[0]->setOffset(glm::vec2(70.0f, 140.0f));
+	m_pPlatform[1]->setOffset(glm::vec2(1140.0f, -50.0f));
+	m_pPlatform[2]->setOffset(glm::vec2(1150.0f, 290.0f));
+	m_pPlatform[3]->setOffset(glm::vec2(1400.0f, 40.0f));
+	m_pPlatform[4]->setOffset(glm::vec2(1660.0f, 100.0f));
+	m_pPlatform[5]->setOffset(glm::vec2(2080.0f, 320.0f));
+	m_pPlatform[6]->setOffset(glm::vec2(2440.0f, 10.0f));
+	m_pPlatform[7]->setOffset(glm::vec2(3090.0f, 255.0f));
+	m_pPlatform[8]->setOffset(glm::vec2(3655.0f, 545.0f));
+	m_pPlatform[9]->setOffset(glm::vec2(3925.0f, 405.0f));
+	m_pPlatform[10]->setOffset(glm::vec2(4285.0f, 405.0f));
+	m_pPlatform[11]->setOffset(glm::vec2(4535.0f, 210.0f));
 
-	m_pPlatform[0] = new Platform("LongShelf.png"); // w586 h21
-	addChild(m_pPlatform[0]);
-	m_pPlatform[0]->setPlatformID(0);
-	m_pPlatform[0]->setOffset(glm::vec2(1150.0f, 194.0f));
+	for (int i = 12; i < 16; i++)
+	{
+		m_pPlatform[i] = new Platform("LargePlate.png"); 
+		addChild(m_pPlatform[i]);
+		m_pPlatform[i]->setPlatformID(i);
+	}
+	m_pPlatform[12]->setOffset(glm::vec2(460.0f,105.0f));
+	m_pPlatform[13]->setOffset(glm::vec2(365.0f, 285.0f));
+	m_pPlatform[14]->setOffset(glm::vec2(460.0f, 455.0f));
+	m_pPlatform[15]->setOffset(glm::vec2(1840.0f, 20.0f));
+
+
 
 	
 	//m_pWall[2] = new Wall("Pancakes.png"); // w110 h70
@@ -490,7 +559,7 @@ void Level2::start()
 	}
 
 	m_pFloor[0]->setOffset(glm::vec2(-720.0f, 750.0f));
-	m_pFloor[1]->setOffset(glm::vec2(2735.0f, 750.0f));
+	m_pFloor[1]->setOffset(glm::vec2(2335.0f, 750.0f));
 	   	  
 
 	/*m_pFloor[1]->setOffset(glm::vec2(2150.0f, 0.0f));

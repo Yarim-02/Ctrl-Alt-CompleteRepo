@@ -1,11 +1,11 @@
 #pragma once
 #ifndef __LEVEL2__
 #define __LEVEL2__
-#define NUM_OF_PLATFORM_2_ 1
-#define NUM_OF_HAZARD_2_ 1
+#define NUM_OF_PLATFORM_2_ 16
+#define NUM_OF_HAZARD_2_ 2
 #define NUM_OF_BUTTER_2_ 1
-#define NUM_OF_JAM_2_ 1
-#define NUM_OF_WALL_2_ 1
+#define NUM_OF_JAM_2_ 2
+#define NUM_OF_WALL_2_ 9
 #define NUM_OF_FLOOR_2_ 2
 #define NUM_OF_ENEMY_2_ 1
 #define NUM_OF_BACKGROUND_2_ 6

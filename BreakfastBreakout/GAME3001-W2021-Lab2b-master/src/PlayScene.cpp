@@ -247,14 +247,7 @@ void PlayScene::update()
 		//TheGame::Instance()->cleanSceneState(PLAY_SCENE);
 	}
 
-	if (m_pCamera->getTransform()->position.x < -8000)
-	{
-		SoundManager::Instance().load("../Assets/audio/sound effects/win.wav", "win", SOUND_SFX);
-		SoundManager::Instance().playSound("win", 0);
-		SoundManager::Instance().setSoundVolume(32);
-
-		TheGame::Instance()->changeSceneState(LEVEL2);
-	}
+	
 
 
 	//std::cout << m_pCamera->getTransform()->position.x << ", " << m_pCamera->getTransform()->position.y << std::endl;
@@ -423,6 +416,14 @@ void PlayScene::update()
 		}
 	}
 
+	if (m_pCamera->getTransform()->position.x < -1000)
+	{
+		SoundManager::Instance().load("../Assets/audio/sound effects/win.wav", "win", SOUND_SFX);
+		SoundManager::Instance().playSound("win", 0);
+		SoundManager::Instance().setSoundVolume(32);
+
+		TheGame::Instance()->changeSceneState(LEVEL2);
+	}
 }
 
 void PlayScene::clean()
