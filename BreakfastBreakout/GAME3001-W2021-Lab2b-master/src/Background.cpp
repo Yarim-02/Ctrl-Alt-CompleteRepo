@@ -1,11 +1,11 @@
 #include "Background.h"
 #include "TextureManager.h"
 
-Background::Background()
+Background::Background(std::string fileNameAndType, std::string name)
 {
-	TextureManager::Instance()->load("../Assets/textures/Background.png", "Background");
+	TextureManager::Instance()->load("../Assets/textures/" + fileNameAndType, name);
 	// w6768 h900
-		auto size = TextureManager::Instance()->getTextureSize("Background");
+		auto size = TextureManager::Instance()->getTextureSize(name);
 	setWidth(size.x);
 	setHeight(size.y);
 
@@ -15,7 +15,7 @@ Background::Background()
 	getRigidBody()->isColliding = false;
 	setType(BACKGROUND);
 
-
+	fileName = name;
 }
 
 Background::~Background()
@@ -23,7 +23,7 @@ Background::~Background()
 
 void Background::draw()
 {
-	TextureManager::Instance()->draw("Background",
+	TextureManager::Instance()->draw(fileName,
 		getTransform()->position.x, getTransform()->position.y, 0, 255, false);
 
 }
