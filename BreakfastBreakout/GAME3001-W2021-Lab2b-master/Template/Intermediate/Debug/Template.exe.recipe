@@ -1,11 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
-  <ProjectOutputs>
-    <ProjectOutput>
-      <FullPath>C:\Users\seans\Documents\T163\Semester1\GameProduction\GroupRepo\BreakfastBreakout\GAME3001-W2021-Lab2b-master\bin\Debug\Template.exe</FullPath>
-    </ProjectOutput>
-  </ProjectOutputs>
-  <ContentFiles />
-  <SatelliteDlls />
-  <NonRecipeFileRefs />
+  <ProjectOutputs>C:\Users\Phili\Desktop\School Stuff\GitHub\Ctrl-Alt-CompleteRepo\BreakfastBreakout\GAME3001-W2021-Lab2b-master\bin\Debug\Template.exe</ProjectOutputs>
+  <ContentFiles></ContentFiles>
+  <SatelliteDlls></SatelliteDlls>
+  <NonRecipeFileRefs></NonRecipeFileRefs>
 </Project>
