@@ -7,6 +7,11 @@
 StartScene::StartScene()
 {
 	StartScene::start();
+
+	// Menu Music
+	SoundManager::Instance().load("../Assets/audio/soundtrack/menu.mp3", "menu", SOUND_MUSIC);
+	SoundManager::Instance().playMusic("menu", -1, 0);
+	SoundManager::Instance().setMusicVolume(32);
 }
 
 StartScene::~StartScene()
@@ -81,7 +86,10 @@ void StartScene::start()
 	m_pResumeGameButton->addEventListener(CLICK, [&]()-> void
 		{
 			m_pResumeGameButton->setActive(false);
-			TheGame::Instance()->changeSceneState(PLAY_SCENE);
+			SoundManager::Instance().load("../Assets/audio/sound effects/pop.wav", "pop", SOUND_SFX);
+			SoundManager::Instance().playSound("pop", 0);
+			SoundManager::Instance().setSoundVolume(32);
+			TheGame::Instance()->changeSceneState(LEVEL2);
 		});
 	m_pResumeGameButton->addEventListener(MOUSE_OVER, [&]()->void
 		{
@@ -99,6 +107,9 @@ void StartScene::start()
 		{
 			//Go Into Saved Game State
 			m_pNewGameButton->setActive(false);
+			SoundManager::Instance().load("../Assets/audio/sound effects/pop.wav", "pop", SOUND_SFX);
+			SoundManager::Instance().playSound("pop", 0);
+			SoundManager::Instance().setSoundVolume(32);
 			TheGame::Instance()->changeSceneState(PLAY_SCENE);
 		});
 	m_pNewGameButton->addEventListener(MOUSE_OVER, [&]()->void
@@ -116,7 +127,10 @@ void StartScene::start()
 		{
 			//Go Into Saved Game State
 			m_pLoadButton->setActive(false);
-			TheGame::Instance()->changeSceneState(PLAY_SCENE);
+			SoundManager::Instance().load("../Assets/audio/sound effects/pop.wav", "pop", SOUND_SFX);
+			SoundManager::Instance().playSound("pop", 0);
+			SoundManager::Instance().setSoundVolume(32);
+			TheGame::Instance()->changeSceneState(LEVEL2);
 		});
 	m_pLoadButton->addEventListener(MOUSE_OVER, [&]()->void
 		{
@@ -132,6 +146,9 @@ void StartScene::start()
 	m_pQuitButton->addEventListener(CLICK, [&]()-> void
 		{
 			m_pQuitButton->setActive(false);
+			SoundManager::Instance().load("../Assets/audio/sound effects/pop.wav", "pop", SOUND_SFX);
+			SoundManager::Instance().playSound("pop", 0);
+			SoundManager::Instance().setSoundVolume(32);
 			TheGame::Instance()->changeSceneState(END_SCENE);
 		});
 	m_pQuitButton->addEventListener(MOUSE_OVER, [&]()->void
@@ -148,6 +165,9 @@ void StartScene::start()
 	m_pKnob->addEventListener(CLICK, [&]()-> void
 		{
 			m_pKnob->setActive(false);
+			SoundManager::Instance().load("../Assets/audio/sound effects/pop.wav", "pop", SOUND_SFX);
+			SoundManager::Instance().playSound("pop", 0);
+			SoundManager::Instance().setSoundVolume(32);
 			TheGame::Instance()->changeSceneState(PLAY_SCENE);
 		});
 	m_pKnob->addEventListener(MOUSE_OVER, [&]()->void

@@ -416,7 +416,7 @@ void PlayScene::update()
 		}
 	}
 
-	if (m_pCamera->getTransform()->position.x < -1000)
+	if (m_pCamera->getTransform()->position.x < -6000)
 	{
 		SoundManager::Instance().load("../Assets/audio/sound effects/win.wav", "win", SOUND_SFX);
 		SoundManager::Instance().playSound("win", 0);
@@ -549,7 +549,7 @@ void PlayScene::handleEvents()
 			
 			m_pCamera->getTransform()->position.y += 2;
 			std::cout << "jumping" << std::endl;
-			m_pCamera->getRigidBody()->velocity.y += 40.0f;//23.0f;
+			m_pCamera->getRigidBody()->velocity.y += 23.0f;//23.0f;
 			m_pPlayer->setGrounded(false);
 
 			if (m_pPlayer->getJam())
