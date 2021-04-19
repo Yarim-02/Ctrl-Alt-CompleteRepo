@@ -7,6 +7,11 @@
 StartScene::StartScene()
 {
 	StartScene::start();
+
+	// Menu Music
+	SoundManager::Instance().load("../Assets/audio/soundtrack/menu.mp3", "menu", SOUND_MUSIC);
+	SoundManager::Instance().playMusic("menu", -1, 0);
+	SoundManager::Instance().setMusicVolume(32);
 }
 
 StartScene::~StartScene()
