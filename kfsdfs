@@ -1,0 +1,599 @@
+[33mcommit e2fc7b8589acfb0d75dea4191bbc20c08c917f60[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: 2bfe601 745e7fb
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Mon Apr 19 18:31:04 2021 -0400
+
+    Merge pull request #15 from Yarim-02/Kenny
+    
+    Kenny
+
+[33mcommit 745e7fb4d5672b4d4b2d3d6c1ac236002f673530[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Mon Apr 19 18:20:04 2021 -0400
+
+    fixed jump height and end position. resume starts lvl 2
+
+[33mcommit 4f6112092fe532bcdccbc052a0537fce4c702517[m
+Merge: 052f1ba 2bfe601
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Mon Apr 19 17:55:54 2021 -0400
+
+    Merge branch 'main' into Kenny
+
+[33mcommit 2bfe601bfba91b2d4438c616dc9e87fe71eeea1a[m
+Merge: daac89a c445686
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Mon Apr 19 17:51:15 2021 -0400
+
+    Merge pull request #13 from Yarim-02/CallumNew
+    
+    minor changes to level 1 and 2
+
+[33mcommit c445686dd19e48a3f7fddeef0dc43ef05cfc7b0d[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Mon Apr 19 16:07:05 2021 -0400
+
+    added all platforms and and walls to level, still needs some hazards and enemies
+
+[33mcommit 052f1bab06b197b35a37866993be29eb7bf5c945[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Mon Apr 19 15:09:22 2021 -0400
+
+    implemented menu music
+
+[33mcommit 083d131627403834f0d36e6421ea88e612922b17[m
+Merge: d19a29f daac89a
+Author: Callum <cdrob@hotmail.com>
+Date:   Mon Apr 19 14:51:18 2021 -0400
+
+    Merge branch 'main' into CallumNew
+
+[33mcommit daac89af8187e7b6ecfa733fb6637c6f0954270f[m
+Merge: b95272a 39c9644
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Tue Apr 13 10:45:34 2021 -0400
+
+    Merge pull request #14 from Yarim-02/Kenny
+    
+    added menu music
+
+[33mcommit 39c96440a9d402618aee777fb929d36c2eb1c118[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Mon Apr 12 18:22:48 2021 -0400
+
+    added menu music
+
+[33mcommit d19a29ff36ebba4e55e39eb60dea865ca17f6d29[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Mon Apr 12 00:32:06 2021 -0400
+
+    minor changes to level 1 and 2
+
+[33mcommit b95272afd7c2f82bf1fee8d96860011a795d61cd[m
+Merge: 32e47db f100804
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Mon Apr 12 00:15:45 2021 -0400
+
+    Merge pull request #7 from Yarim-02/Phill
+    
+    Phill
+
+[33mcommit f1008044a7c1f182e6a9bd0df36fbfe10636d551[m
+Author: Philip <philip.henderson@hotmail.com>
+Date:   Sun Apr 11 23:41:36 2021 -0400
+
+    quick fix
+
+[33mcommit 3d12665c46a7ce9fe22d82c9afa71a8d86f75822[m
+Author: Philip <philip.henderson@hotmail.com>
+Date:   Sun Apr 11 23:39:18 2021 -0400
+
+    Knob Template Class Created
+
+[33mcommit e47088a571fb86d873346d1c2e2bcc160833db7a[m
+Merge: ef94179 32e47db
+Author: Philip <philip.henderson@hotmail.com>
+Date:   Sun Apr 11 23:38:53 2021 -0400
+
+    updating from main
+
+[33mcommit ef941795db139ad85fc443b015b4a60ec7363d83[m
+Author: Philip <philip.henderson@hotmail.com>
+Date:   Sun Apr 11 22:51:13 2021 -0400
+
+    Fixed Buttons and created Knob
+
+[33mcommit 32e47dbe9059ac8f735dba82fb12877e7c0f2ce8[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Sun Apr 11 22:07:21 2021 -0400
+
+    Touched up jam
+
+[33mcommit 4d03764a12673809d0c3b5744a89afe3d9bb95a0[m
+Merge: f9fac57 56c9b81
+Author: Philip <philip.henderson@hotmail.com>
+Date:   Sun Apr 11 21:49:09 2021 -0400
+
+    Merge branch 'main' into Phill
+
+[33mcommit f9fac5716a6b2a1662918bdc0ec23ceaee0f2d7b[m
+Author: Philip <philip.henderson@hotmail.com>
+Date:   Sun Apr 11 21:12:30 2021 -0400
+
+    quick update
+    
+    attempting to figure out why textures arnt being merged
+
+[33mcommit 2485e86101bdd150a001ad451c9ad2134cde6afc[m
+Author: Philip <philip.henderson@hotmail.com>
+Date:   Sun Apr 11 21:02:47 2021 -0400
+
+    Fixed Button
+    
+     names and textures
+
+[33mcommit 56c9b8149abeba386016634eb67203968c712049[m
+Merge: 53678e1 88b20db
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Sun Apr 11 20:10:17 2021 -0400
+
+    Merge pull request #12 from Yarim-02/CallumNew
+    
+    Callum new
+
+[33mcommit 88b20dba64e4fb779ec5832ac65b0e888b1ad371[m[33m ([m[1;31morigin/CallumNew[m[33m, [m[1;32mcallum[m[33m)[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Sat Apr 10 17:19:29 2021 -0400
+
+    Placed more objects
+
+[33mcommit bce5cf90e8ab3d42d1596ff9359e79ed7e78e09c[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Sat Apr 10 15:03:59 2021 -0400
+
+    adding more objects
+
+[33mcommit 27a94a37c35859adbeeb999556cfc9b8797a5634[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Sat Apr 10 12:20:36 2021 -0400
+
+    added level 2 assets to textures folder, update readme file with dimensions
+
+[33mcommit 0ef68a5f7739e61cd814b5f96085e7efb6a7164a[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Sat Apr 10 02:03:32 2021 -0400
+
+    nearly done level 1, added Collectable class, toaster end point,  more finalized assets,  added list of texture dimensions and debug notes in readme file
+
+[33mcommit a283d6d1768968eb5d9c777b87de2c8066fb3135[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Tue Apr 6 16:48:39 2021 -0400
+
+    merged more platforms, walls, spice hazard. changed some for loops in update to actual number instead of NUM_OF values from playscene.h
+
+[33mcommit 53678e1af9d3e0d7872a949a5fb4e5d2131f432c[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Tue Apr 6 10:31:20 2021 -0400
+
+    Added level 2
+
+[33mcommit 33b0995efd07d8f405358151bf3340ba6cd5629a[m
+Merge: 65571b6 b0e888d
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Tue Apr 6 10:10:30 2021 -0400
+
+    Merge pull request #11 from Yarim-02/Kenny
+    
+    added level 2 bgm
+
+[33mcommit b0e888d5311402db6074775db004b85d8ea8de39[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Tue Apr 6 01:37:16 2021 -0400
+
+    added level 2 bgm
+
+[33mcommit 65571b6f15db5c0745e9176533fd5d8738ef3a5e[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Mon Apr 5 17:37:04 2021 -0400
+
+    Added Jam but missing animations
+
+[33mcommit 8ac6ac999ebbf835741eaa483078243d0c8fe0ed[m
+Merge: a2e2048 df4f224
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Sun Apr 4 13:28:56 2021 -0400
+
+    Merge pull request #10 from Yarim-02/Callum
+    
+    Callum
+
+[33mcommit df4f2245451e8a59f5770e0b8bc68590b965e882[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Sat Apr 3 21:59:46 2021 -0400
+
+    separated shelf platforms into three parts, shelf, brackets, shadow, specifically ordered so player is in front of brackets but behind shadow
+
+[33mcommit a9d66e5b78d74e08326d08aa1147aa7aa031bbc9[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Sat Apr 3 20:13:13 2021 -0400
+
+    trying to reduce redundant for loops for enemies, hazards, butter in playScene update. More changes to level design
+
+[33mcommit 94c181f4794f4c8164f08b12072c9f12069e06ab[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Sat Apr 3 18:38:07 2021 -0400
+
+    resized sink hazard, removed platform, player must use butter to jump over
+
+[33mcommit 5706baa116b7984ddf0c16f4dd98e7499941d21c[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Sat Apr 3 18:27:05 2021 -0400
+
+    changed startmenu texture, updated position
+
+[33mcommit 8210259e64d476d384ffe0bc85536738e7103617[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Sat Apr 3 18:04:20 2021 -0400
+
+    fixed mushrooms not triggering player death
+
+[33mcommit 42c52825c8dbeb90edb7e1d6a3f7ddf59c674ae4[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Sat Apr 3 17:34:21 2021 -0400
+
+    nothing
+
+[33mcommit 02ee9860b7a6938fad2255c970acbd447e49132e[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Sat Apr 3 17:13:36 2021 -0400
+
+    added jello animation, resized/adjusted mushroom
+
+[33mcommit a2e204808bfa1c7bc84dbcf9a72a82986e41916e[m
+Merge: 69003f7 27e05ed
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Sat Apr 3 03:26:58 2021 -0400
+
+    Merge pull request #9 from Yarim-02/Kenny
+    
+    Kenny
+
+[33mcommit 27e05ed25a01e6f81bb688e8111109e947328333[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Sat Apr 3 03:24:08 2021 -0400
+
+    implemented powerup and death sfx
+
+[33mcommit 5cb85ac6af047f1d5ed5195c985e1f601fe3ea15[m
+Merge: a3c9853 69003f7
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Sat Apr 3 02:47:34 2021 -0400
+
+    Merge branch 'main' into Kenny
+
+[33mcommit 69003f7777f43f8a792b19c2d45724fd25f17fbc[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Sat Apr 3 01:20:25 2021 -0400
+
+    Touched Up Player Animation
+
+[33mcommit 7cd12353fb328ce157ae5aed191e9fb89fe9b582[m
+Merge: 19f4fbe d5c8d21
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Thu Mar 25 23:36:59 2021 -0400
+
+    Merge pull request #8 from Yarim-02/Eddie
+    
+    Eddie
+
+[33mcommit d5c8d21d59fd67041758f6781a8f6669e51cd7f2[m
+Author: EddieAdel <aeddie2001@gmail.com>
+Date:   Thu Mar 25 20:27:15 2021 -0400
+
+    mushroom animation touch up
+
+[33mcommit 094b648a1a6752107a6dc2ec19609ae9d8a4be85[m
+Author: EddieAdel <aeddie2001@gmail.com>
+Date:   Thu Mar 25 13:17:54 2021 -0400
+
+    added mushroom assets and animation
+    
+    animation still needs to be reworked
+
+[33mcommit a3c9853e3702101f63f56c8113a4807337dfe891[m
+Merge: 06dbc58 19f4fbe
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Wed Mar 24 10:30:01 2021 -0400
+
+    Merge branch 'main' into Kenny
+
+[33mcommit 19f4fbe4e58039bc16f42ffe31647c2b900744c8[m
+Merge: 2ff825c 8684551
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Wed Mar 24 10:28:42 2021 -0400
+
+    Merge branch 'main' of https://github.com/Yarim-02/Ctrl-Alt-CompleteRepo into main
+
+[33mcommit 9b5966470e17847fa9789c35df26ceb90fe0b03f[m
+Author: Philip <philip.henderson@hotmail.com>
+Date:   Tue Mar 23 20:00:55 2021 -0400
+
+    More Button Work
+    
+    new buttons arranged properly
+
+[33mcommit 5a255805118800654d7f05ecdca9648a706ebb2b[m
+Author: Philip <philip.henderson@hotmail.com>
+Date:   Tue Mar 23 16:47:29 2021 -0400
+
+    Button Tests
+    
+    different colors and styles
+
+[33mcommit 26653635b56b9878206192c6c157ce3894c2a955[m
+Author: Philip <philip.henderson@hotmail.com>
+Date:   Tue Mar 23 14:43:17 2021 -0400
+
+    Update README.md
+
+[33mcommit 06dbc583720101ebe49e5db2194fa2940ac67b82[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Tue Mar 23 14:07:24 2021 -0400
+
+    tested version update
+
+[33mcommit 5e25bf5f9ba88fdef0bd29e7b9611e22f1a0ab82[m
+Merge: 2ff825c 8684551
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Tue Mar 23 14:02:49 2021 -0400
+
+    Merge branch 'main' of https://github.com/Yarim-02/Ctrl-Alt-CompleteRepo into main
+
+[33mcommit 8684551a9acb01f9dbcd2d19aa8ac6b875e47ee7[m
+Merge: 6e66664 3e9623a
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Tue Mar 23 13:59:09 2021 -0400
+
+    Merge pull request #6 from Yarim-02/Callum
+    
+    Callum
+
+[33mcommit 3e9623a9af2f91ab9a901484c692d899fc0a7755[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Tue Mar 23 13:57:07 2021 -0400
+
+    .
+
+[33mcommit 2ff825c41507e4b89b0ce7d852e34d33f824a837[m
+Merge: 6e66664 e8210ed
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Tue Mar 23 13:35:51 2021 -0400
+
+    Merge pull request #5 from Yarim-02/Callum
+    
+    Callum
+
+[33mcommit e8210ed494e28937157cc83e016f95c75fec2a72[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Sun Mar 21 17:01:52 2021 -0400
+
+    added Jello texture, changed bad_fruit to enemy class, updated more classes to take filename arguments, added ChoppingKnife moving hazard, frameCounter to playscene, edited more textures, lowered jump height a bit
+
+[33mcommit f8cfc7be8fb8c03e0d980e08f73e5076f2de2763[m
+Author: Callum <cdrob@hotmail.com>
+Date:   Sat Mar 20 18:32:49 2021 -0400
+
+    added  NonInteractiveObject class, changed hazard to take file name argument, changed various textures, added basic implementation to stop player/camera going past edge of background
+
+[33mcommit 6e666645873b976aa6429cd43ab9f448c7e3cc52[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Sun Mar 14 22:54:59 2021 -0400
+
+    Alpha!
+
+[33mcommit ca267e25802fa24fbb4845ed1282a0c39751b3eb[m
+Merge: 6f0b41d a436e3a
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Sun Mar 14 19:29:18 2021 -0400
+
+    Merge pull request #4 from Yarim-02/Kenny
+    
+    Kenny
+
+[33mcommit a436e3ae4ac1a21a649dde21fdce2865e3abd2a6[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Sun Mar 14 19:11:43 2021 -0400
+
+    renamed sound files. implemented bgm and jumping sfx
+
+[33mcommit c0624b914eb4f8c44b978ef7ff02c2f5ff6d59a0[m
+Merge: 2710fa7 6f0b41d
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Sun Mar 14 17:55:38 2021 -0400
+
+    Merge branch 'main' into Kenny
+
+[33mcommit 6f0b41d98d8615c6fdd95a5a8b664b9491514010[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Sun Mar 14 17:23:39 2021 -0400
+
+    Added Phill's changes
+
+[33mcommit c68dcb0d697b35e33fc98b426713edf4c83b4429[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Sun Mar 14 16:54:56 2021 -0400
+
+    added cereal boxes
+
+[33mcommit 2710fa767d7616e490cb13da5bb466fd5aed0cbe[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Wed Mar 10 19:20:14 2021 -0500
+
+    testing to see if code works
+
+[33mcommit f7a0ec16560d9a150768897f7c8fcd0e98788b2b[m
+Merge: c92b206 9670ab0
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Wed Mar 10 19:17:45 2021 -0500
+
+    Merge branch 'main' into Kenny
+
+[33mcommit c92b206fa379de760f47cdcc7c1992b7b71139a4[m
+Merge: 74563fd 4a01d8c
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Wed Mar 10 19:17:18 2021 -0500
+
+    Merge branch 'Kenny' of https://github.com/Yarim-02/Ctrl-Alt-CompleteRepo into Kenny
+
+[33mcommit 9670ab00af7bdf924820200785bd28f9b8b9f4fd[m
+Merge: 0f6cca7 4a01d8c
+Author: CTHamma <37721588+CTHamma@users.noreply.github.com>
+Date:   Wed Mar 10 18:22:31 2021 -0500
+
+    Merge pull request #3 from Yarim-02/Kenny
+    
+    Kenny
+
+[33mcommit 0f6cca76c82e9718b9f1611771819983bd779a20[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Wed Mar 10 14:04:48 2021 -0500
+
+    Added Callum's background and falling off the floor
+
+[33mcommit 74563fdd8fee40577f5d1e7b4fe9a66edb6d60fe[m
+Author: Mellow-Max <72469159+Mellow-Max@users.noreply.github.com>
+Date:   Mon Mar 8 12:04:45 2021 -0500
+
+    tuned jumping and added a clean scene for when player dies
+
+[33mcommit 65d35894db71584d0d0dc5d08da8d399d7878071[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Fri Mar 5 12:08:19 2021 -0500
+
+    Resized game window
+
+[33mcommit 4a01d8c1384f10ff470abf6ade33e4b53bebee7c[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Wed Feb 17 12:09:49 2021 -0500
+
+    replaced soundtrack
+
+[33mcommit 73457c59c9d0d10b330beae89c56dab5e3fc0909[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Wed Feb 17 02:10:34 2021 -0500
+
+    re-added soundtrack
+
+[33mcommit e1a0a63d6a73f808fccfc65e3a9de32be3ac487a[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Wed Feb 17 02:09:45 2021 -0500
+
+    temp delete soundtrack
+
+[33mcommit 61e1b67c63a2e439c554fe09c4ad260b5edf6a62[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Tue Feb 16 20:29:17 2021 -0500
+
+    Added moving camera
+
+[33mcommit da433fb68f11dfa1760d2e1c024671c4657d972c[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Mon Feb 15 02:25:30 2021 -0500
+
+    Fixed platform collision
+
+[33mcommit f2c44aef500e00cd582e2c86f403f360d4629b60[m
+Merge: 9b23f70 b9e1a9e
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Mon Feb 15 01:51:35 2021 -0500
+
+    Merge pull request #2 from Yarim-02/Kenny
+    
+    Audio Stuff
+
+[33mcommit b9e1a9ead295cde0491c0e0668f2fec112a88149[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Mon Feb 8 18:34:20 2021 -0500
+
+    removed two test.txt files
+
+[33mcommit c4aee4a9e9cc3547914e1e5c39a2f8f6a5dbe972[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Wed Feb 3 21:44:31 2021 -0500
+
+    Added SFX. Removed Unity Demo
+
+[33mcommit 7c1da68598af5b14009a187aae3f400d52f71c89[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Wed Feb 3 18:31:55 2021 -0500
+
+    Added Splatpack sound effects
+
+[33mcommit 67465be55d84b76ce8e854f16bbb8cdb359e49df[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Wed Feb 3 18:28:01 2021 -0500
+
+    Merge branch 'main' of https://github.com/Yarim-02/Ctrl-Alt-CompleteRepo into main
+
+[33mcommit 9b23f70de638accf2e6ede630393c1673569de7b[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Tue Feb 2 10:53:26 2021 -0500
+
+    Hopefuly added .sln
+
+[33mcommit 9df1aa3c5144a138c47e3d3d8e76b6030248d308[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Tue Feb 2 10:33:45 2021 -0500
+
+    Added first playable
+
+[33mcommit 7bbe95c45ed7abfa8606baf46fd99b2c9f0e31b9[m
+Author: Kenny <kennyh@t2p0films.ca>
+Date:   Thu Nov 26 15:11:58 2020 -0500
+
+    Create test.txt
+
+[33mcommit 294b417fceca96a52c4440179abf9869c1085b7b[m
+Author: root <root@DESKTOP-3KULAHD.localdomain>
+Date:   Wed Nov 25 20:49:21 2020 -0500
+
+    Second game demo version
+
+[33mcommit 23abe4b72c84efccd7cb11c98ba0b2d9121e0e3f[m
+Author: Sean <sean.sukman@gmail.com>
+Date:   Thu Nov 19 14:24:30 2020 -0500
+
+    First demo version
+
+[33mcommit c8d69e4c49c027adabe51587b59a6cb6e8b4d630[m
+Author: Sean <sean.sukman@gmail.com>
+Date:   Thu Nov 19 14:16:39 2020 -0500
+
+    Third test commit
+
+[33mcommit cadfec120ab50810cac3d067abe393b5c03cb898[m
+Author: Sean <sean.sukman@gmail.com>
+Date:   Thu Nov 19 13:59:58 2020 -0500
+
+    test commit 2
+
+[33mcommit 5435ca3ca8d7e906f1a6bddf9abde9ac4318b111[m
+Merge: 3ab82e2 6843fed
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Thu Nov 19 13:31:04 2020 -0500
+
+    Merge pull request #1 from Yarim-02/master
+    
+    Test commit
+
+[33mcommit 6843fed074201c9ad3143fa7b425180563b039a3[m
+Author: Sean <sean.sukman@gmail.com>
+Date:   Thu Nov 19 13:27:21 2020 -0500
+
+    Test commit
+
+[33mcommit 3ab82e22d0f8b083ef947daf923869e64dfd89f0[m
+Author: Yarim-02 <72024903+Yarim-02@users.noreply.github.com>
+Date:   Thu Nov 19 13:00:58 2020 -0500
+
+    Initial commit

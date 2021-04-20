@@ -416,6 +416,22 @@ void PlayScene::update()
 		}
 	}
 
+	if (m_pPlayer->getButter() != true)
+	{
+		if (m_pCamera->getRigidBody()->velocity.x > 1)
+		{
+			std::cout << "slowing" << std::endl;
+			m_pCamera->getRigidBody()->velocity.x -= 0.05;
+		}
+		else if (m_pCamera->getRigidBody()->velocity.x < -1)
+		{
+			std::cout << "slowing" << std::endl;
+			m_pCamera->getRigidBody()->velocity.x += 0.05;
+		}
+		else
+			m_pCamera->getRigidBody()->velocity.x = 0;
+	}
+
 	if (m_pCamera->getTransform()->position.x < -6000)
 	{
 		SoundManager::Instance().load("../Assets/audio/sound effects/win.wav", "win", SOUND_SFX);

@@ -164,7 +164,7 @@ void Level2::update()
 		}
 	}
 
-
+	
 
 	if (m_pPlayer->getGrounded() == false)
 	{
@@ -178,8 +178,22 @@ void Level2::update()
 
 	}
 
-	if (m_pPlayer->getButter() == false)
+	if (m_pPlayer->getButter() != true)
+	{
+		if (m_pCamera->getRigidBody()->velocity.x > 1)
+		{
+			std::cout << "slowing" << std::endl;
+			m_pCamera->getRigidBody()->velocity.x -= 0.05;
+		}			
+		else if (m_pCamera->getRigidBody()->velocity.x < -1)
+		{
+			std::cout << "slowing" << std::endl;
+			m_pCamera->getRigidBody()->velocity.x += 0.05;
+		}
+		else
 		m_pCamera->getRigidBody()->velocity.x = 0;
+	}
+		
 
 
 	//// Butter placement
@@ -300,15 +314,28 @@ void Level2::handleEvents()
 
 	if (m_pPlayer->getLeft() == false)
 	{
-		if (m_pPlayer->getButter() == false)
+		if (m_pPlayer->getButter())
 		{
 			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
 			{
 				//if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
 				//{
-					m_pCamera->getTransform()->position += glm::vec2(7, 0);
+				m_pCamera->getRigidBody()->velocity.x += 0.5f;
 				//}
-				m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
+				m_pPlayer->setAnimationState(PLAYER_BUTTER_LEFT);
+				m_playerFacingRight = false;
+			}
+
+		}
+		else if (m_pPlayer->getJam())
+		{
+			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
+			{
+				//if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
+				//{
+				m_pCamera->getTransform()->position += glm::vec2(7, 0);
+				//}
+				m_pPlayer->setAnimationState(PLAYER_JAM_LEFT);
 				m_playerFacingRight = false;
 			}
 		}
@@ -318,14 +345,13 @@ void Level2::handleEvents()
 			{
 				//if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
 				//{
-					m_pCamera->getRigidBody()->velocity.x += 0.5f;
+				m_pCamera->getTransform()->position += glm::vec2(7, 0);
 				//}
-				m_pPlayer->setAnimationState(PLAYER_BUTTER_LEFT);
+				m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
 				m_playerFacingRight = false;
 			}
 		}
 	}
-
 	if (m_pPlayer->getRight() == false)
 	{
 		if (m_pPlayer->getButter() == false)
@@ -336,7 +362,14 @@ void Level2::handleEvents()
 				//{
 					m_pCamera->getTransform()->position -= glm::vec2(7, 0);
 				//}
-				m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
+				if (m_pPlayer->getJam())
+				{
+					m_pPlayer->setAnimationState(PLAYER_JAM_RIGHT);
+				}
+				else
+				{
+					m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
+				}
 				m_playerFacingRight = true;
 			}
 		}
@@ -358,6 +391,9 @@ void Level2::handleEvents()
 			if (m_pPlayer->getButter())
 				m_pPlayer->setAnimationState(PLAYER_BUTTER_IDLE_RIGHT);
 
+			else if (m_pPlayer->getJam())
+				m_pPlayer->setAnimationState(PLAYER_JAM_IDLE_RIGHT);
+
 			else
 				m_pPlayer->setAnimationState(PLAYER_IDLE_RIGHT);
 		}
@@ -365,6 +401,9 @@ void Level2::handleEvents()
 		{
 			if (m_pPlayer->getButter())
 				m_pPlayer->setAnimationState(PLAYER_BUTTER_IDLE_LEFT);
+
+			else if (m_pPlayer->getJam())
+				m_pPlayer->setAnimationState(PLAYER_JAM_IDLE_LEFT);
 
 			else
 				m_pPlayer->setAnimationState(PLAYER_IDLE_LEFT);
@@ -383,6 +422,14 @@ void Level2::handleEvents()
 			std::cout << "jumping" << std::endl;
 			m_pCamera->getRigidBody()->velocity.y += 23.0f;
 			m_pPlayer->setGrounded(false);
+
+			if (m_pPlayer->getJam())
+			{
+				if (m_pPlayer->getLeft())
+					m_pCamera->getRigidBody()->velocity.x -= 5.0f;
+				if (m_pPlayer->getRight())
+					m_pCamera->getRigidBody()->velocity.x += 5.0f;
+			}
 
 			SoundManager::Instance().load("../Assets/audio/sound effects/jump.wav", "jump", SOUND_SFX);
 			SoundManager::Instance().playSound("jump", 0);
