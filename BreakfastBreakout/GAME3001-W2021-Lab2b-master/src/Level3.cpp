@@ -372,7 +372,7 @@ void Level3::update()
 		SoundManager::Instance().playSound("win", 0);
 		SoundManager::Instance().setSoundVolume(32);
 
-		TheGame::Instance()->changeSceneState(START_SCENE);
+		TheGame::Instance()->changeSceneState(END_SCENE);
 	}
 
 
