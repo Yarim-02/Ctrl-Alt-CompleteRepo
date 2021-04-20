@@ -142,7 +142,7 @@ void Level3::update()
 			m_pLeaves[18]->setOffset(glm::vec2(6500.0f, -1800.0f));
 
 			m_pBird->setActive(false);
-			m_pBird->setOffset(glm::vec2(800, 600));
+			m_pBird->setOffset(glm::vec2(800, 500));
 		}
 			//std::cout << "hitting" << std::endl;
 	}
@@ -310,7 +310,7 @@ void Level3::update()
 		m_pLeaves[18]->setOffset(glm::vec2(6500.0f, -1800.0f));
 
 		m_pBird->setActive(false);
-		m_pBird->setOffset(glm::vec2(800, 600));
+		m_pBird->setOffset(glm::vec2(800, 500));
 
 	}
 
@@ -342,7 +342,7 @@ void Level3::update()
 	if (m_pCamera->getTransform()->position.x <= -6000 && m_pCamera->getTransform()->position.x >= -6050)
 	{
 		m_pBird->setActive(false);
-		m_pBird->setOffset(glm::vec2(6500, 600));
+		m_pBird->setOffset(glm::vec2(6500, 500));
 		m_pCage->setActive(true);
 		SoundManager::Instance().playSound("bird", 0);
 	}
@@ -372,7 +372,7 @@ void Level3::update()
 		SoundManager::Instance().playSound("win", 0);
 		SoundManager::Instance().setSoundVolume(32);
 
-		TheGame::Instance()->changeSceneState(END_SCENE);
+		TheGame::Instance()->changeSceneState(START_SCENE);
 	}
 
 
@@ -768,7 +768,7 @@ void Level3::start()
 
 	m_pBird = new Bird();
 	addChild(m_pBird);
-	m_pBird->setOffset(glm::vec2(800, 600));
+	m_pBird->setOffset(glm::vec2(800, 500));
 
 	m_pCage = new Cage();
 	addChild(m_pCage);

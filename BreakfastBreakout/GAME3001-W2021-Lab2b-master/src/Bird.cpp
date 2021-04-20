@@ -3,12 +3,24 @@
 
 Bird::Bird()
 {
-	TextureManager::Instance()->load("../Assets/textures/BirdCopy.png", "bird"); // w100 h28
+	TextureManager::Instance()->load("../Assets/textures/Bird1.png", "bird1"); 
+	TextureManager::Instance()->load("../Assets/textures/Bird2.png", "bird2"); 
+	TextureManager::Instance()->load("../Assets/textures/Bird3png", "bird3"); 
+	TextureManager::Instance()->load("../Assets/textures/Bird4.png", "bird4"); 
+	TextureManager::Instance()->load("../Assets/textures/Bird5.png", "bird5"); 
+	TextureManager::Instance()->load("../Assets/textures/Bird6.png", "bird6"); 
+	TextureManager::Instance()->load("../Assets/textures/Bird7.png", "bird7"); 
+	TextureManager::Instance()->load("../Assets/textures/Bird8.png", "bird8"); 
+	TextureManager::Instance()->load("../Assets/textures/Bird9.png", "bird9"); 
+	TextureManager::Instance()->load("../Assets/textures/Bird10.png", "bird10"); 
+	TextureManager::Instance()->load("../Assets/textures/Bird11.png", "bird11"); 
+	TextureManager::Instance()->load("../Assets/textures/Bird12.png", "bird12"); 
+	TextureManager::Instance()->load("../Assets/textures/Bird13.png", "bird13"); 
 
 
 	//auto size = TextureManager::Instance()->getTextureSize("../Assets/textures/Leaf.png");
 	setWidth(300);
-	setHeight(165);
+	setHeight(275);
 
 	m_active = false;
 
@@ -26,9 +38,79 @@ Bird::~Bird()
 
 void Bird::draw()
 {
-	TextureManager::Instance()->draw("bird",
-		getTransform()->position.x, getTransform()->position.y, 0, 255, false);
-
+	if (m_active)
+	{
+		if (m_animationFrame < 3)
+		{
+			TextureManager::Instance()->draw("bird1",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		}
+		else if (m_animationFrame < 6)
+		{
+			TextureManager::Instance()->draw("bird2",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		}
+		else if (m_animationFrame < 9)
+		{
+			TextureManager::Instance()->draw("bird3",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		}
+		else if (m_animationFrame < 12)
+		{
+			TextureManager::Instance()->draw("bird4",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		}
+		else if (m_animationFrame < 15)
+		{
+			TextureManager::Instance()->draw("bird5",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		}
+		else if (m_animationFrame < 18)
+		{
+			TextureManager::Instance()->draw("bird6",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		}
+		else if (m_animationFrame < 21)
+		{
+			TextureManager::Instance()->draw("bird7",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		}
+		else if (m_animationFrame < 24)
+		{
+			TextureManager::Instance()->draw("bird8",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		}
+		else if (m_animationFrame < 27)
+		{
+			TextureManager::Instance()->draw("bird9",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		}
+		else if (m_animationFrame < 30)
+		{
+			TextureManager::Instance()->draw("bird10",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		}
+		else if (m_animationFrame < 33)
+		{
+			TextureManager::Instance()->draw("bird11",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		}
+		else if (m_animationFrame < 36)
+		{
+			TextureManager::Instance()->draw("bird12",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		}
+		else if (m_animationFrame < 39)
+		{
+			TextureManager::Instance()->draw("bird13",
+				getTransform()->position.x, getTransform()->position.y, 0, 255, false);
+		}
+	}
+	else
+	{
+		TextureManager::Instance()->draw("bird9",
+			getTransform()->position.x, getTransform()->position.y, 0, 255, false, SDL_FLIP_HORIZONTAL);
+	}
 }
 
 void Bird::update()
@@ -39,6 +121,10 @@ void Bird::update()
 			setOffset(glm::vec2(getOffset().x, -1560));
 
 		setOffset(glm::vec2(getOffset().x, getOffset().y + 2));
+
+		if (m_animationFrame > 38)
+			m_animationFrame = 0;
+		m_animationFrame++;
 	}
 }
 

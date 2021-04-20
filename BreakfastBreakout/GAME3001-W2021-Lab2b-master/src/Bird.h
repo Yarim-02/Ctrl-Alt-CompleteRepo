@@ -27,6 +27,7 @@ public:
 
 private:
 	int m_platformID;
+	int m_animationFrame;
 	bool m_active;
 	std::string m_fileName;
 

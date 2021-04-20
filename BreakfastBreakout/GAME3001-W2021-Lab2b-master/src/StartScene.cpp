@@ -164,11 +164,11 @@ void StartScene::start()
 	//Knob
 	m_pKnob->addEventListener(CLICK, [&]()-> void
 		{
-			m_pKnob->setActive(false);
+			/*m_pKnob->setActive(false);
 			SoundManager::Instance().load("../Assets/audio/sound effects/pop.wav", "pop", SOUND_SFX);
 			SoundManager::Instance().playSound("pop", 0);
 			SoundManager::Instance().setSoundVolume(32);
-			TheGame::Instance()->changeSceneState(LEVEL2);
+			TheGame::Instance()->changeSceneState(LEVEL3);*/
 		});
 	m_pKnob->addEventListener(MOUSE_OVER, [&]()->void
 		{
