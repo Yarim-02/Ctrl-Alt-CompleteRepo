@@ -21,9 +21,12 @@ public:
 	int getPlatformID();
 	void setPlatformID(int IDNum);
 
+	void setActive(bool state);
+
 
 private:
 	int m_platformID;
+	bool m_active;
 	std::string m_fileName;
 
 };

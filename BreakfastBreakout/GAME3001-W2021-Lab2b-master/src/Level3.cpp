@@ -13,7 +13,7 @@ Level3::Level3()
 	Level3::start();
 
 	// Background Music
-	SoundManager::Instance().load("../Assets/audio/soundtrack/diners_den.mp3", "BGM_table", SOUND_MUSIC);
+	
 	SoundManager::Instance().playMusic("BGM_table", -1, 0);
 	SoundManager::Instance().setMusicVolume(32);
 }
@@ -90,18 +90,66 @@ void Level3::update()
 
 	m_pBackground[0]->getTransform()->position = m_pCamera->getTransform()->position + m_pBackground[0]->getOffset();
 
-	for (int i = 0; i < NUM_OF_HAZARD_2_; i++)
+	/*for (int i = 0; i < NUM_OF_HAZARD_2_; i++)
 	{
 		m_pHazard[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pHazard[i]->getOffset();
 		CollisionManager::HazardCheck(m_pPlayer, m_pHazard[i], m_pCamera);
-	}
+	}*/
 
 	for (int i = 0; i < NUM_OF_NI_OBJECT_2_; i++)
 	{
 		m_pNonInteractiveObjects[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pNonInteractiveObjects[i]->getOffset();
 	}
 
-	for (int i = 0; i < NUM_OF_ENEMY_2_; i++)
+	if (m_pBird->getActive() == false)
+	{
+		m_pBird->getTransform()->position = m_pCamera->getTransform()->position + m_pBird->getOffset();
+	}
+	else
+	{
+		//std::cout << "checking" << std::endl;
+		if (CollisionManager::HazardCheck(m_pPlayer, m_pBird, m_pCamera) == true)
+		{ 
+			SoundManager::Instance().playSound("bird", 0);
+			SoundManager::Instance().setSoundVolume(32);
+
+			m_pCamera->getTransform()->position.y = 0;
+			m_pCamera->getTransform()->position.x = 200;
+
+			for (int i = 0; i < NUM_OF_LEAVES; i++)
+			{
+				m_pLeaves[i]->setActive(false);
+			}
+
+			m_pLeaves[0]->setOffset(glm::vec2(1100.0f, 200.0f));
+			m_pLeaves[1]->setOffset(glm::vec2(1500.0f, -50.0f));
+			m_pLeaves[2]->setOffset(glm::vec2(1900.0f, -300.0f));
+			m_pLeaves[3]->setOffset(glm::vec2(2300.0f, -550.0f));
+			m_pLeaves[4]->setOffset(glm::vec2(2700.0f, -800.0f));
+			m_pLeaves[5]->setOffset(glm::vec2(3300.0f, -700.0f));
+			m_pLeaves[6]->setOffset(glm::vec2(3500.0f, -900.0f));
+			m_pLeaves[7]->setOffset(glm::vec2(4000.0f, -800.0f));
+			m_pLeaves[8]->setOffset(glm::vec2(4300.0f, -1000.0f));
+			m_pLeaves[9]->setOffset(glm::vec2(4000.0f, -1300.0f));
+			m_pLeaves[10]->setOffset(glm::vec2(4300.0f, -1600.0f));
+			m_pLeaves[11]->setOffset(glm::vec2(4800.0f, -1700.0f));
+			m_pLeaves[12]->setOffset(glm::vec2(5100.0f, -2000.0f));
+			m_pLeaves[13]->setOffset(glm::vec2(5400.0f, -2300.0f));
+			m_pLeaves[14]->setOffset(glm::vec2(5700.0f, -2600.0f));
+			m_pLeaves[15]->setOffset(glm::vec2(5900.0f, -2400.0f));
+			m_pLeaves[16]->setOffset(glm::vec2(6100.0f, -2200.0f));
+			m_pLeaves[17]->setOffset(glm::vec2(6300.0f, -2000.0f));
+			m_pLeaves[18]->setOffset(glm::vec2(6500.0f, -1800.0f));
+
+			m_pBird->setActive(false);
+			m_pBird->setOffset(glm::vec2(800, 600));
+		}
+			//std::cout << "hitting" << std::endl;
+	}
+
+	m_pCage->getTransform()->position = m_pCamera->getTransform()->position + m_pCage->getOffset();
+
+	/*for (int i = 0; i < NUM_OF_ENEMY_2_; i++)
 	{
 		m_pEnemy[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pEnemy[i]->getOffset();
 		CollisionManager::HazardCheck(m_pPlayer, m_pEnemy[i], m_pCamera);
@@ -126,7 +174,7 @@ void Level3::update()
 			}
 		}
 		CollisionManager::ButterCheck(m_pPlayer, m_pButter[i]);
-	}
+	}*/
 
 	/*for (int i = 0; i < NUM_OF_JAM_2_; i++)
 	{
@@ -228,7 +276,43 @@ void Level3::update()
 	//}
 
 
+	if (m_pCamera->getTransform()->position.y <= -300)
+	{
+		SoundManager::Instance().playSound("fall", 0);
+		SoundManager::Instance().setSoundVolume(32);
 
+		m_pCamera->getTransform()->position.y = 0;
+		m_pCamera->getTransform()->position.x = 200;	
+
+		for (int i = 0; i < NUM_OF_LEAVES; i++)
+		{
+			m_pLeaves[i]->setActive(false);
+		}
+
+		m_pLeaves[0]->setOffset(glm::vec2(1100.0f, 200.0f));
+		m_pLeaves[1]->setOffset(glm::vec2(1500.0f, -50.0f));
+		m_pLeaves[2]->setOffset(glm::vec2(1900.0f, -300.0f));
+		m_pLeaves[3]->setOffset(glm::vec2(2300.0f, -550.0f));
+		m_pLeaves[4]->setOffset(glm::vec2(2700.0f, -800.0f));
+		m_pLeaves[5]->setOffset(glm::vec2(3300.0f, -700.0f));
+		m_pLeaves[6]->setOffset(glm::vec2(3500.0f, -900.0f));
+		m_pLeaves[7]->setOffset(glm::vec2(4000.0f, -800.0f));
+		m_pLeaves[8]->setOffset(glm::vec2(4300.0f, -1000.0f));
+		m_pLeaves[9]->setOffset(glm::vec2(4000.0f, -1300.0f));
+		m_pLeaves[10]->setOffset(glm::vec2(4300.0f, -1600.0f));
+		m_pLeaves[11]->setOffset(glm::vec2(4800.0f, -1700.0f));
+		m_pLeaves[12]->setOffset(glm::vec2(5100.0f, -2000.0f));
+		m_pLeaves[13]->setOffset(glm::vec2(5400.0f, -2300.0f));
+		m_pLeaves[14]->setOffset(glm::vec2(5700.0f, -2600.0f));
+		m_pLeaves[15]->setOffset(glm::vec2(5900.0f, -2400.0f));
+		m_pLeaves[16]->setOffset(glm::vec2(6100.0f, -2200.0f));
+		m_pLeaves[17]->setOffset(glm::vec2(6300.0f, -2000.0f));
+		m_pLeaves[18]->setOffset(glm::vec2(6500.0f, -1800.0f));
+
+		m_pBird->setActive(false);
+		m_pBird->setOffset(glm::vec2(800, 600));
+
+	}
 
 	if (m_pPlayer->getGrounded() == true)
 	{
@@ -238,6 +322,30 @@ void Level3::update()
 	}
 	else
 		m_pCamera->getRigidBody()->velocity.y -= 1.0f;
+
+	if (m_pCamera->getTransform()->position.x <= 0 && m_pCamera->getTransform()->position.x >= -50)
+	{
+		
+		for (int i = 0; i < NUM_OF_LEAVES; i++)
+		{
+			m_pLeaves[i]->setActive(true);
+		}
+
+		if (m_pBird->getActive() == false)
+		{
+			SoundManager::Instance().playSound("bird", 0);
+			m_pBird->setActive(true);
+			m_pBird->getTransform()->position = glm::vec2(100.0f, 500.0f);
+		}
+	}
+
+	if (m_pCamera->getTransform()->position.x <= -6000 && m_pCamera->getTransform()->position.x >= -6050)
+	{
+		m_pBird->setActive(false);
+		m_pBird->setOffset(glm::vec2(6500, 600));
+		m_pCage->setActive(true);
+		SoundManager::Instance().playSound("bird", 0);
+	}
 
 	/*for (int i = 0; i < NUM_OF_HAZARDS_; i++)
 	{
@@ -256,18 +364,11 @@ void Level3::update()
 
 	//std::cout << m_pPlayer->getGrounded() << std::endl;
 
-	if (m_pCamera->getTransform()->position.y < -450)
-	{
-		SoundManager::Instance().load("../Assets/audio/sound effects/fall.mp3", "fall", SOUND_SFX);
-		SoundManager::Instance().playSound("fall", 0);
-		SoundManager::Instance().setSoundVolume(32);
+	
 
-		TheGame::Instance()->cleanSceneState(LEVEL2);
-	}
-
-	if (m_pCamera->getTransform()->position.x < -4700)
+	if (m_pCamera->getTransform()->position.x < -6500)
 	{
-		SoundManager::Instance().load("../Assets/audio/sound effects/win.wav", "win", SOUND_SFX);
+		
 		SoundManager::Instance().playSound("win", 0);
 		SoundManager::Instance().setSoundVolume(32);
 
@@ -357,6 +458,8 @@ void Level3::handleEvents()
 				//if (m_pPlayer->getTransform()->position.x - 720.0f > m_pFloor[0]->getTransform()->position.x)
 				//{
 				m_pCamera->getTransform()->position += glm::vec2(7, 0);
+				if (m_pBird->getActive() == true)
+					m_pBird->getTransform()->position.x += 2;
 				//}
 				m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
 				m_playerFacingRight = false;
@@ -379,6 +482,9 @@ void Level3::handleEvents()
 				}
 				else
 				{
+					if (m_pBird->getActive() == true)
+						m_pBird->getTransform()->position.x += 0.1f;
+
 					m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
 				}
 				m_playerFacingRight = true;
@@ -419,6 +525,9 @@ void Level3::handleEvents()
 			else
 				m_pPlayer->setAnimationState(PLAYER_IDLE_LEFT);
 		}
+
+		if (m_pBird->getActive() == true)
+			m_pBird->getTransform()->position.x += 0.7;
 	}
 
 
@@ -455,8 +564,14 @@ void Level3::start()
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
 
+	SoundManager::Instance().load("../Assets/audio/soundtrack/out_n_about.mp3", "BGM_table", SOUND_MUSIC);
+	SoundManager::Instance().load("../Assets/audio/sound effects/jump.wav", "jump", SOUND_SFX);
+	SoundManager::Instance().load("../Assets/audio/sound effects/fall.mp3", "fall", SOUND_SFX);
+	SoundManager::Instance().load("../Assets/audio/sound effects/win.wav", "win", SOUND_SFX);
+	SoundManager::Instance().load("../Assets/audio/sound effects/Bird.mp3", "bird", SOUND_SFX);
+
 	m_pBackground[0] = new Background("OutsideBackground.png", "Level3Background"); // w6768 h900
-	m_pBackground[0]->setOffset(glm::vec2(0, -150));
+	m_pBackground[0]->setOffset(glm::vec2(-500, -1000));
 	addChild(m_pBackground[0]);
 
 	/*m_pBackground[1] = new Background("Level2BackgroundExtension.png", "Level2BackgroundExtension");
@@ -483,13 +598,13 @@ void Level3::start()
 	addChild(m_pNonInteractiveObjects[0]);
 	m_pNonInteractiveObjects[0]->setOffset(glm::vec2(2335.0f, 570.0f));
 
-	m_pHazard[0] = new Hazard("Fondue.png");
+	/*m_pHazard[0] = new Hazard("Fondue.png");
 	addChild(m_pHazard[0]);
 	m_pHazard[0]->setOffset(glm::vec2(2535.0f, 434.0f));
 
 	m_pHazard[1] = new Hazard("Water.png");
 	addChild(m_pHazard[1]);
-	m_pHazard[1]->setOffset(glm::vec2(4385.0f, 733.0f));
+	m_pHazard[1]->setOffset(glm::vec2(4385.0f, 733.0f));*/
 
 	//Walls
 	/*m_pWall[0] = new Wall("VerticalMilk.png");
@@ -536,12 +651,12 @@ void Level3::start()
 	addChild(m_pPlayer);
 
 
-	for (int i = 0; i < 1; i++)
+	/*for (int i = 0; i < 1; i++)
 	{
 		m_pEnemy[i] = new Enemy("Jello1.png", JELLO); // w72 h100
 		addChild(m_pEnemy[i]);
 	}
-	m_pEnemy[0]->setOffset(glm::vec2(1860.0f, 559.0f));
+	m_pEnemy[0]->setOffset(glm::vec2(1860.0f, 559.0f));*/
 	//m_pEnemy[1]->setOffset(glm::vec2(4200.0f, -300.0f));
 
 	//for (int i = 2; i < 4; i++)
@@ -555,12 +670,12 @@ void Level3::start()
 
 
 
-	for (int i = 0; i < NUM_OF_BUTTER_2_; i++)
+	/*for (int i = 0; i < NUM_OF_BUTTER_2_; i++)
 	{
 		m_pButter[i] = new Butter();
 		addChild(m_pButter[i]);
 	}
-	m_pButter[0]->setOffset(glm::vec2(2110.0f, 683.0f));
+	m_pButter[0]->setOffset(glm::vec2(2110.0f, 683.0f));*/
 
 	/*for (int i = 0; i < NUM_OF_JAM_2_; i++)
 	{
@@ -577,10 +692,25 @@ void Level3::start()
 		addChild(m_pLeaves[i]);		
 	}
 
-	m_pLeaves[0]->setOffset(glm::vec2(700.0f, 200.0f));
-	m_pLeaves[1]->setOffset(glm::vec2(1100.0f, -50.0f));
-	m_pLeaves[2]->setOffset(glm::vec2(1500.0f, -300.0f));
-	m_pLeaves[3]->setOffset(glm::vec2(1900.0f, -550.0f));
+	m_pLeaves[0]->setOffset(glm::vec2(1100.0f, 200.0f));
+	m_pLeaves[1]->setOffset(glm::vec2(1500.0f, -50.0f));
+	m_pLeaves[2]->setOffset(glm::vec2(1900.0f, -300.0f));
+	m_pLeaves[3]->setOffset(glm::vec2(2300.0f, -550.0f));
+	m_pLeaves[4]->setOffset(glm::vec2(2700.0f, -800.0f));
+	m_pLeaves[5]->setOffset(glm::vec2(3300.0f, -700.0f));
+	m_pLeaves[6]->setOffset(glm::vec2(3500.0f, -900.0f));
+	m_pLeaves[7]->setOffset(glm::vec2(4000.0f, -800.0f));
+	m_pLeaves[8]->setOffset(glm::vec2(4300.0f, -1000.0f));
+	m_pLeaves[9]->setOffset(glm::vec2(4000.0f, -1300.0f));
+	m_pLeaves[10]->setOffset(glm::vec2(4300.0f, -1600.0f));
+	m_pLeaves[11]->setOffset(glm::vec2(4800.0f, -1700.0f));
+	m_pLeaves[12]->setOffset(glm::vec2(5100.0f, -2000.0f));
+	m_pLeaves[13]->setOffset(glm::vec2(5400.0f, -2300.0f));
+	m_pLeaves[14]->setOffset(glm::vec2(5700.0f, -2600.0f));
+	m_pLeaves[15]->setOffset(glm::vec2(5900.0f, -2400.0f));
+	m_pLeaves[16]->setOffset(glm::vec2(6100.0f, -2200.0f));
+	m_pLeaves[17]->setOffset(glm::vec2(6300.0f, -2000.0f));
+	m_pLeaves[18]->setOffset(glm::vec2(6500.0f, -1800.0f));
 
 
 	//m_pButter->setOffset(glm::vec2(350.0f, 150.0f));
@@ -627,15 +757,24 @@ void Level3::start()
 		addChild(m_pFloor[i]);
 	}
 
-	m_pFloor[0]->setOffset(glm::vec2(-720.0f, 750.0f));
-	m_pFloor[1]->setOffset(glm::vec2(2335.0f, 750.0f));
+	m_pFloor[0]->setOffset(glm::vec2(-1720.0f, 750.0f));
+	m_pFloor[1]->setOffset(glm::vec2(6500.0f, 750.0f));
+
+	m_pBird = new Bird();
+	addChild(m_pBird);
+	m_pBird->setOffset(glm::vec2(800, 600));
+
+	m_pCage = new Cage();
+	addChild(m_pCage);
+	m_pCage->setOffset(glm::vec2(6500, -500));
+
 
 
 	/*m_pFloor[1]->setOffset(glm::vec2(2150.0f, 0.0f));
 	m_pFloor[2]->setOffset(glm::vec2(7300.0f, -150.0f));*/
 
 	m_pCamera = new Camera();
-	m_pCamera->getTransform()->position = glm::vec2(0.0f, 0.0f);
+	m_pCamera->getTransform()->position = glm::vec2(200.0f, 0.0f);
 
 }
 

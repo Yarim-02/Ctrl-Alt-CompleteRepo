@@ -94,6 +94,13 @@ void PlayScene::update()
 	for (int i = 0; i < NUM_OF_COLLECTABLE_1_; i++) // Num of Collectables
 	{
 		m_pCollecatables[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pCollecatables[i]->getOffset();
+		if (CollisionManager::HazardCheck(m_pPlayer, m_pCollecatables[i], m_pCamera) == true)
+		{
+			SoundManager::Instance().load("../Assets/audio/sound effects/Collectable.mp3", "collectable", SOUND_SFX);
+			SoundManager::Instance().playSound("collectable", 0);
+			SoundManager::Instance().setSoundVolume(32);
+			m_pCollecatables[i]->setOffset(glm::vec2(1000, 1000));
+		}
 	}
 
 	for (int i = 0; i < NUM_OF_ENEMY_1_; i++)
@@ -123,7 +130,7 @@ void PlayScene::update()
 		CollisionManager::ButterCheck(m_pPlayer, m_pButter[i]);
 	}
 
-	for (int i = 0; i < 2; i++)
+	/*for (int i = 0; i < 2; i++)
 	{
 		m_pJam[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pJam[i]->getOffset();
 
@@ -142,7 +149,7 @@ void PlayScene::update()
 			}
 		}
 		CollisionManager::JamCheck(m_pPlayer, m_pJam[i]);
-	}
+	}*/
 
 	/*for (int i = 0; i < NUM_OF_PLATFORMS_; i++)
 	{
@@ -208,7 +215,7 @@ void PlayScene::update()
 	//	}
 	//}
 
-	
+	m_pButterBar->getTransform()->position.x = m_pPlayer->getButterTime()-500;
 
 	//std::cout << m_pPlayer->getCurPlatform() << std::endl;
 
@@ -770,7 +777,7 @@ void PlayScene::start()
 	addChild(m_pNonInteractiveObjects[12]);
 
 	m_pNonInteractiveObjects[33] = new NonInteractiveObject("MediumShelfBrackets.png");
-	m_pNonInteractiveObjects[33]->setOffset(glm::vec2(4508.0f, 148.0f));
+	m_pNonInteractiveObjects[33]->setOffset(glm::vec2(4508.0f, 238.0f));
 	addChild(m_pNonInteractiveObjects[33]);
 
 	m_pNonInteractiveObjects[35] = new NonInteractiveObject("MediumShelfBrackets.png");
@@ -845,12 +852,12 @@ void PlayScene::start()
 	addChild(m_pPlatform[7]);
 
 	m_pNonInteractiveObjects[32] = new NonInteractiveObject("MediumShelfShadow.png");
-	m_pNonInteractiveObjects[32]->setOffset(glm::vec2(4508.0f, 148.0f));
+	m_pNonInteractiveObjects[32]->setOffset(glm::vec2(4508.0f, 238.0f));
 	addChild(m_pNonInteractiveObjects[32]);
 
 	m_pPlatform[8] = new Platform("MediumShelf.png");
 	m_pPlatform[8]->setPlatformID(8);
-	m_pPlatform[8]->setOffset(glm::vec2(4508.0f, 126.0f));
+	m_pPlatform[8]->setOffset(glm::vec2(4508.0f, 216.0f));
 	addChild(m_pPlatform[8]);
 
 	m_pNonInteractiveObjects[34] = new NonInteractiveObject("MediumShelfShadow.png");
@@ -1002,10 +1009,10 @@ void PlayScene::start()
 	m_pNonInteractiveObjects[31]->setOffset(glm::vec2(1110.0f, 683.0f));
 	addChild(m_pNonInteractiveObjects[31]);*/
 
-	m_pJam[0] = new Jam();
+	/*m_pJam[0] = new Jam();
 	m_pJam[0]->setOffset(glm::vec2(1110.0f, 683.0f));
 	m_pJam[0]->setHideTimer(-1);
-	addChild(m_pJam[0]);
+	addChild(m_pJam[0]);*/
 
 
 	
@@ -1022,6 +1029,11 @@ void PlayScene::start()
 
 	/*m_pFloor[1]->setOffset(glm::vec2(2150.0f, 0.0f));
 	m_pFloor[2]->setOffset(glm::vec2(7300.0f, -150.0f));*/
+
+	m_pButterBar = new ButterBar();
+	addChild(m_pButterBar);
+	m_pButterBar->getTransform()->position.y = 100;
+	m_pButterBar->getTransform()->position.x = -200;
 
 	m_pCamera = new Camera();
 	m_pCamera->getTransform()->position = glm::vec2(0.0f, 0.0f);

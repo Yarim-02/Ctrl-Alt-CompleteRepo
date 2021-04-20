@@ -85,6 +85,9 @@ bool CollisionManager::AABBCheck(GameObject* object1, GameObject* object2)
 			case PLATFORM:
 				std::cout << "hit platform" << std::endl;
 				break;
+			case BIRD:
+				std::cout << "hit bird" << std::endl;
+				break;
 			default:
 				
 				break;
@@ -213,6 +216,7 @@ bool CollisionManager::HazardCheck(Player* object1, GameObject* object2, Camera*
 		p1.y + p1Height > p2.y
 		)
 	{
+		//std::cout << "hit bird" << std::endl;
 		switch (object2->getType()) {
 		case TARGET:
 			std::cout << "Collision with Target!" << std::endl;
@@ -229,6 +233,12 @@ bool CollisionManager::HazardCheck(Player* object1, GameObject* object2, Camera*
 			SoundManager::Instance().setSoundVolume(32);
 			camera->getTransform()->position = glm::vec2(0.0f, 0.0f);
 			//TheGame::Instance()->cleanSceneState(PLAY_SCENE);
+			break;
+		case BIRD:
+			std::cout << "hit bird" << std::endl;
+			break;
+		case COLLECTABLE:
+			std::cout << "hit collectable" << std::endl;
 			break;
 				
 		default:
@@ -330,8 +340,8 @@ bool CollisionManager::JamCheck(Player* object1, Jam* object2)
 			SoundManager::Instance().load("../Assets/audio/sound effects/powerup.wav", "powerup", SOUND_SFX);
 			SoundManager::Instance().playSound("powerup", 0);
 			SoundManager::Instance().setSoundVolume(32);
-			object2->setHideTimer(500);
-			object1->setJamTime(500);
+			object2->setHideTimer(200);
+			object1->setJamTime(200);
 			//object2->setOffset(object2->getOffset());
 			break;
 

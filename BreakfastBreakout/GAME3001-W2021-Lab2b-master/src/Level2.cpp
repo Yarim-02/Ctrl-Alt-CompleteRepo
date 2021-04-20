@@ -134,7 +134,10 @@ void Level2::update()
 				break;
 			}
 		}
-		CollisionManager::JamCheck(m_pPlayer, m_pJam[i]);
+		if (CollisionManager::JamCheck(m_pPlayer, m_pJam[i]) == true)
+		{
+			m_pJamBar->getTransform()->position.x = 0;
+		}
 	}
 
 	/*for (int i = 0; i < NUM_OF_PLATFORMS_; i++)
@@ -194,7 +197,9 @@ void Level2::update()
 		m_pCamera->getRigidBody()->velocity.x = 0;
 	}
 		
-
+	m_pButterBar->getTransform()->position.x = m_pPlayer->getButterTime() - 500;
+	if(m_pPlayer->getJam() == true)
+	m_pJamBar->getTransform()->position.x -= 2.5f;
 
 	//// Butter placement
 	//for (int i = 0; i < NUM_OF_BUTTER_; i++)
@@ -260,12 +265,12 @@ void Level2::update()
 		SoundManager::Instance().playSound("win", 0);
 		SoundManager::Instance().setSoundVolume(32);
 
-		TheGame::Instance()->changeSceneState(END_SCENE);
+		TheGame::Instance()->changeSceneState(LEVEL3);
 	}
 
 
-	std::cout << m_pCamera->getTransform()->position.x << ", " << m_pCamera->getTransform()->position.y << std::endl;
-	std::cout << "level 2" << std::endl;
+	//std::cout << m_pCamera->getTransform()->position.x << ", " << m_pCamera->getTransform()->position.y << std::endl;
+	std::cout << m_pPlayer->getJamTime() << std::endl;
 
 	//std::cout << m_pPlayer->getJamTime() << std::endl;
 
@@ -444,9 +449,7 @@ void Level2::start()
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
 
-	m_pBackground[0] = new Background("Level2Background.png", "Level2Background"); // w6768 h900
-	m_pBackground[0]->setOffset(glm::vec2(0, -150));
-	addChild(m_pBackground[0]);
+	
 
 	m_pBackground[1] = new Background("Level2BackgroundExtension.png", "Level2BackgroundExtension");
 	m_pBackground[1]->setOffset(glm::vec2(0, 750));
@@ -467,6 +470,10 @@ void Level2::start()
 	m_pBackground[5] = new Background("Level2BackgroundExtension.png", "Level2BackgroundExtension");
 	m_pBackground[5]->setOffset(glm::vec2(-6768, -1050));
 	addChild(m_pBackground[5]);
+
+	m_pBackground[0] = new Background("Level2Background.png", "Level2Background"); // w6768 h900
+	m_pBackground[0]->setOffset(glm::vec2(0, -150));
+	addChild(m_pBackground[0]);
 
 	m_pNonInteractiveObjects[0] = new NonInteractiveObject("SinkHazard.png"); 
 	addChild(m_pNonInteractiveObjects[0]);
@@ -611,6 +618,18 @@ void Level2::start()
 
 	/*m_pFloor[1]->setOffset(glm::vec2(2150.0f, 0.0f));
 	m_pFloor[2]->setOffset(glm::vec2(7300.0f, -150.0f));*/
+
+	m_pJamBar = new JamBar();
+	addChild(m_pJamBar);
+	m_pJamBar->getTransform()->position.y = 100;
+	m_pJamBar->getTransform()->position.x = -500;
+
+	m_pButterBar = new ButterBar();
+	addChild(m_pButterBar);
+	m_pButterBar->getTransform()->position.y = 100;
+	m_pButterBar->getTransform()->position.x = -200;
+
+	
 
 	m_pCamera = new Camera();
 	m_pCamera->getTransform()->position = glm::vec2(0.0f, 0.0f);

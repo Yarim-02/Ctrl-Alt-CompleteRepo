@@ -10,7 +10,7 @@
 #define NUM_OF_ENEMY_2_ 1
 #define NUM_OF_BACKGROUND_2_ 1
 #define NUM_OF_NI_OBJECT_2_ 1
-#define NUM_OF_LEAVES 4
+#define NUM_OF_LEAVES 19
 
 #include "Scene.h"
 #include "Button.h"
@@ -31,6 +31,8 @@
 #include "EnemyType.h"
 #include "Jam.h"
 #include "Leaf.h";
+#include "Bird.h"
+#include "Cage.h"
 
 class Level3 : public Scene
 {
@@ -63,13 +65,17 @@ private:
 
 	Floor* m_pFloor[NUM_OF_FLOOR_2_];
 
-	Hazard* m_pHazard[NUM_OF_HAZARD_2_];
+	Bird* m_pBird;
 
-	Butter* m_pButter[NUM_OF_BUTTER_2_];
+	Cage* m_pCage;
+
+	//Hazard* m_pHazard[NUM_OF_HAZARD_2_];
+
+	//Butter* m_pButter[NUM_OF_BUTTER_2_];
 
 	//Jam* m_pJam[NUM_OF_JAM_2_];
 
-	Enemy* m_pEnemy[NUM_OF_ENEMY_2_];
+	//Enemy* m_pEnemy[NUM_OF_ENEMY_2_];
 
 	Camera* m_pCamera;
 

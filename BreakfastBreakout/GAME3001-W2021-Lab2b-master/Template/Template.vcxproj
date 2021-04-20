@@ -162,6 +162,9 @@
     <ClCompile Include="..\include\IMGUI\imgui_widgets.cpp" />
     <ClCompile Include="..\include\IMGUI_SDL\imgui_sdl.cpp" />
     <ClCompile Include="..\src\Background.cpp" />
+    <ClCompile Include="..\src\Bird.cpp" />
+    <ClCompile Include="..\src\ButterBar.cpp" />
+    <ClCompile Include="..\src\Cage.cpp" />
     <ClCompile Include="..\src\Collectable.cpp" />
     <ClCompile Include="..\src\Enemy.cpp" />
     <ClCompile Include="..\src\Butter.cpp" />
@@ -172,6 +175,7 @@
     <ClCompile Include="..\src\Floor.cpp" />
     <ClCompile Include="..\src\Hazard.cpp" />
     <ClCompile Include="..\src\Jam.cpp" />
+    <ClCompile Include="..\src\JamBar.cpp" />
     <ClCompile Include="..\src\Knob.cpp" />
     <ClCompile Include="..\src\Leaf.cpp" />
     <ClCompile Include="..\src\Level2.cpp" />
@@ -221,6 +225,9 @@
     <ClInclude Include="..\include\IMGUI_SDL\imgui_sdl.h" />
     <ClInclude Include="..\src\Animation.h" />
     <ClInclude Include="..\src\Background.h" />
+    <ClInclude Include="..\src\Bird.h" />
+    <ClInclude Include="..\src\ButterBar.h" />
+    <ClInclude Include="..\src\Cage.h" />
     <ClInclude Include="..\src\Collectable.h" />
     <ClInclude Include="..\src\Enemy.h" />
     <ClInclude Include="..\src\Butter.h" />
@@ -234,6 +241,7 @@
     <ClInclude Include="..\src\Floor.h" />
     <ClInclude Include="..\src\Hazard.h" />
     <ClInclude Include="..\src\Jam.h" />
+    <ClInclude Include="..\src\JamBar.h" />
     <ClInclude Include="..\src\Knob.h" />
     <ClInclude Include="..\src\Leaf.h" />
     <ClInclude Include="..\src\Level2.h" />

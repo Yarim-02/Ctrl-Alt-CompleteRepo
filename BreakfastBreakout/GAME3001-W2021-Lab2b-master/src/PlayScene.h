@@ -32,6 +32,7 @@
 #include "EnemyType.h"
 #include "Jam.h"
 #include "Collectable.h"
+#include "ButterBar.h"
 
 class PlayScene : public Scene
 {
@@ -66,7 +67,9 @@ private:
 
 	Butter* m_pButter[NUM_OF_BUTTER_1_];
 
-	Jam* m_pJam[NUM_OF_JAM_1_];
+	ButterBar* m_pButterBar;
+
+	//Jam* m_pJam[NUM_OF_JAM_1_];
 
 	Enemy* m_pEnemy[NUM_OF_ENEMY_1_];
 

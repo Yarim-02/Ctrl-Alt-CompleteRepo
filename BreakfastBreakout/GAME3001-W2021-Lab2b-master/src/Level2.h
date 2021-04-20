@@ -29,6 +29,8 @@
 #include "NonInteractiveObject.h"
 #include "EnemyType.h"
 #include "Jam.h"
+#include "ButterBar.h"
+#include "JamBar.h"
 
 class Level2 : public Scene
 {
@@ -62,6 +64,9 @@ private:
 	Hazard* m_pHazard[NUM_OF_HAZARD_2_];
 
 	Butter* m_pButter[NUM_OF_BUTTER_2_];
+
+	ButterBar* m_pButterBar;
+	JamBar* m_pJamBar;
 
 	Jam* m_pJam[NUM_OF_JAM_2_];
 

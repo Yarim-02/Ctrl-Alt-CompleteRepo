@@ -10,6 +10,8 @@ Leaf::Leaf()
 	setWidth(226);
 	setHeight(68);
 
+	m_active = false;
+
 	getTransform()->position = glm::vec2(400.0f, 300.0f);
 	getRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	getRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
@@ -31,10 +33,13 @@ void Leaf::draw()
 
 void Leaf::update()
 {
+	if(m_active)
+	{
 	if (getOffset().y >= 750)
-		setOffset(glm::vec2(getOffset().x, -1000));
+		setOffset(glm::vec2(getOffset().x, -1560));
 
 	setOffset(glm::vec2(getOffset().x, getOffset().y + 2));
+	}
 }
 
 void Leaf::clean()
@@ -49,4 +54,9 @@ int Leaf::getPlatformID()
 void Leaf::setPlatformID(int IDNum)
 {
 	m_platformID = IDNum;
+}
+
+void Leaf::setActive(bool state)
+{
+	m_active = state;
 }
