@@ -140,6 +140,18 @@ void Level2::update()
 		}
 	}
 
+	for (int i = 0; i < NUM_OF_COLLECTABLE_2_; i++) // Num of Collectables
+	{
+		m_pCollecatables[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pCollecatables[i]->getOffset();
+		if (CollisionManager::HazardCheck(m_pPlayer, m_pCollecatables[i], m_pCamera) == true)
+		{
+			SoundManager::Instance().load("../Assets/audio/sound effects/Collectable.mp3", "collectable", SOUND_SFX);
+			SoundManager::Instance().playSound("collectable", 0);
+			SoundManager::Instance().setSoundVolume(32);
+			m_pCollecatables[i]->setOffset(glm::vec2(1000, 1000));
+		}
+	}
+
 	/*for (int i = 0; i < NUM_OF_PLATFORMS_; i++)
 	{
 		CollisionManager::PlatformCheck(m_pPlayer, m_pPlatform[i], m_pCamera);
@@ -524,8 +536,18 @@ void Level2::start()
 	addChild(m_pWall[8]);
 	m_pWall[8]->setOffset(glm::vec2(3350.0f, 248.0f));
 
-	
-	
+	for (int i = 0; i < NUM_OF_COLLECTABLE_2_; i++)					// COLLECTABLES START
+	{
+		m_pCollecatables[i] = new Collectable();
+	}
+	m_pCollecatables[0]->setOffset(glm::vec2(70.0f, 70.0f)); // on small shelf
+	addChild(m_pCollecatables[0]);
+
+	m_pCollecatables[1]->setOffset(glm::vec2(1140.0f, -120.0f)); // on small cupboard
+	addChild(m_pCollecatables[1]);
+
+	m_pCollecatables[2]->setOffset(glm::vec2(3100.0f, 180.0f)); // on small cupboard
+	addChild(m_pCollecatables[2]);
 
 	m_pPlayer = new Player();
 	m_pPlayer->getTransform()->position = glm::vec2(400.0f, 600.0f);

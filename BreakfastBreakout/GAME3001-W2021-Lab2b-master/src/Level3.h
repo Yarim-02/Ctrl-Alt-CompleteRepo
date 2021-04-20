@@ -8,7 +8,7 @@
 #define NUM_OF_WALL_2_ 9
 #define NUM_OF_FLOOR_2_ 2
 #define NUM_OF_ENEMY_2_ 1
-#define NUM_OF_BACKGROUND_2_ 1
+#define NUM_OF_BACKGROUND_2_ 2
 #define NUM_OF_NI_OBJECT_2_ 1
 #define NUM_OF_LEAVES 19
 

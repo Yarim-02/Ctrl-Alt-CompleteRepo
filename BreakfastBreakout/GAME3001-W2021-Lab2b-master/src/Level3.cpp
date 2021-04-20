@@ -366,7 +366,7 @@ void Level3::update()
 
 	
 
-	if (m_pCamera->getTransform()->position.x < -6500)
+	if (m_pCamera->getTransform()->position.x < -6250)
 	{
 		
 		SoundManager::Instance().playSound("win", 0);
@@ -570,9 +570,15 @@ void Level3::start()
 	SoundManager::Instance().load("../Assets/audio/sound effects/win.wav", "win", SOUND_SFX);
 	SoundManager::Instance().load("../Assets/audio/sound effects/Bird.mp3", "bird", SOUND_SFX);
 
+	m_pBackground[1] = new Background("OutsideBackgroundExtended.png", "extended"); // w6768 h900
+	m_pBackground[1]->setOffset(glm::vec2(-500, -2000));
+	addChild(m_pBackground[1]);
+
 	m_pBackground[0] = new Background("OutsideBackground.png", "Level3Background"); // w6768 h900
 	m_pBackground[0]->setOffset(glm::vec2(-500, -1000));
 	addChild(m_pBackground[0]);
+
+	
 
 	/*m_pBackground[1] = new Background("Level2BackgroundExtension.png", "Level2BackgroundExtension");
 	m_pBackground[1]->setOffset(glm::vec2(0, 750));

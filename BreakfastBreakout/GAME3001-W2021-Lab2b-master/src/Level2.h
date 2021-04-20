@@ -10,6 +10,7 @@
 #define NUM_OF_ENEMY_2_ 1
 #define NUM_OF_BACKGROUND_2_ 6
 #define NUM_OF_NI_OBJECT_2_ 1
+#define NUM_OF_COLLECTABLE_2_ 3
 
 #include "Scene.h"
 #include "Button.h"
@@ -31,6 +32,7 @@
 #include "Jam.h"
 #include "ButterBar.h"
 #include "JamBar.h"
+#include "Collectable.h"
 
 class Level2 : public Scene
 {
@@ -77,6 +79,8 @@ private:
 	Background* m_pBackground[NUM_OF_BACKGROUND_2_];
 
 	NonInteractiveObject* m_pNonInteractiveObjects[NUM_OF_NI_OBJECT_2_];
+
+	Collectable* m_pCollecatables[NUM_OF_COLLECTABLE_2_];
 
 	// UI Items
 	int m_frameCounter;

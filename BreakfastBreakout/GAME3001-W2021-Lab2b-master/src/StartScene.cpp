@@ -68,15 +68,15 @@ void StartScene::start()
 
 	// Resume Button
 	m_pResumeGameButton = new ResumeButton();
-	m_pResumeGameButton->getTransform()->position = glm::vec2(900.0f, 620.0f);
+	m_pResumeGameButton->getTransform()->position = glm::vec2(-1000.0f, 620.0f);
 
 	// Load Button
 	m_pLoadButton = new LoadButton();
-	m_pLoadButton->getTransform()->position = glm::vec2(580.0f, 750.0f);
+	m_pLoadButton->getTransform()->position = glm::vec2(-1080.0f, 750.0f);
 
 	// Quit Button
 	m_pQuitButton = new QuitButton();
-	m_pQuitButton->getTransform()->position = glm::vec2(900.0f, 750.0f);
+	m_pQuitButton->getTransform()->position = glm::vec2(900.0f, 620.0f);
 	
 	// Rotating Knob
 	m_pKnob = new Knob();
@@ -149,7 +149,7 @@ void StartScene::start()
 			SoundManager::Instance().load("../Assets/audio/sound effects/pop.wav", "pop", SOUND_SFX);
 			SoundManager::Instance().playSound("pop", 0);
 			SoundManager::Instance().setSoundVolume(32);
-			TheGame::Instance()->changeSceneState(END_SCENE);
+			TheGame::Instance()->quit();
 		});
 	m_pQuitButton->addEventListener(MOUSE_OVER, [&]()->void
 		{
@@ -168,7 +168,7 @@ void StartScene::start()
 			SoundManager::Instance().load("../Assets/audio/sound effects/pop.wav", "pop", SOUND_SFX);
 			SoundManager::Instance().playSound("pop", 0);
 			SoundManager::Instance().setSoundVolume(32);
-			TheGame::Instance()->changeSceneState(PLAY_SCENE);
+			TheGame::Instance()->changeSceneState(LEVEL2);
 		});
 	m_pKnob->addEventListener(MOUSE_OVER, [&]()->void
 		{

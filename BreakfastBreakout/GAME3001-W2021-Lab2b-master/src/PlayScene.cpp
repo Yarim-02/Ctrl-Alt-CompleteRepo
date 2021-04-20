@@ -830,14 +830,14 @@ void PlayScene::start()
 	m_pCollecatables[0]->setOffset(glm::vec2(1579.0f, -41.0f)); // on small shelf
 	addChild(m_pCollecatables[0]);
 
-	m_pCollecatables[1]->setOffset(glm::vec2(3514.0f, -117.0f)); // on small cupboard
+	m_pCollecatables[1]->setOffset(glm::vec2(-320.0f, 288.0f)); // on small cupboard
 	addChild(m_pCollecatables[1]);
 
-	m_pCollecatables[2]->setOffset(glm::vec2(-320.0f, 288.0f)); // on large frying pan
+	/*m_pCollecatables[2]->setOffset(glm::vec2(-320.0f, 288.0f)); // on large frying pan
 	addChild(m_pCollecatables[2]);
 
 	m_pCollecatables[3]->setOffset(glm::vec2(6265.0f, -99.0f)); // on large frying pan
-	addChild(m_pCollecatables[3]);
+	addChild(m_pCollecatables[3]);*/
 	
 
 	// COLLECTABLES END

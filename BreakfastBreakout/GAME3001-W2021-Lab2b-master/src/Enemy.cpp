@@ -59,6 +59,12 @@ Enemy::Enemy(std::string fileNameAndType, EnemyType enemyType )
 		setWidth(size.x);
 		setHeight(size.y);
 	}
+	if (m_enemyType == JELLO)
+	{
+		auto size = TextureManager::Instance()->getTextureSize("Jello1.png");
+		setWidth(size.x);
+		setHeight(size.y);
+	}
 
 	m_mushroomFrameCounter = 0;
 	m_jelloFrameCounter = 0;

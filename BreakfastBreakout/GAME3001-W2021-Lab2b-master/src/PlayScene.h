@@ -10,7 +10,7 @@
 #define NUM_OF_BACKGROUND_1_ 6
 #define NUM_OF_NI_OBJECT_1_ 39
 #define NUM_OF_HAZARD_1_ 18
-#define NUM_OF_COLLECTABLE_1_ 4
+#define NUM_OF_COLLECTABLE_1_ 2
 
 
 #include "Scene.h"
