@@ -173,7 +173,9 @@
     <ClCompile Include="..\src\Hazard.cpp" />
     <ClCompile Include="..\src\Jam.cpp" />
     <ClCompile Include="..\src\Knob.cpp" />
+    <ClCompile Include="..\src\Leaf.cpp" />
     <ClCompile Include="..\src\Level2.cpp" />
+    <ClCompile Include="..\src\Level3.cpp" />
     <ClCompile Include="..\src\LoadButton.cpp" />
     <ClCompile Include="..\src\MenuBG.cpp" />
     <ClCompile Include="..\src\NGButton.cpp" />
@@ -233,7 +235,9 @@
     <ClInclude Include="..\src\Hazard.h" />
     <ClInclude Include="..\src\Jam.h" />
     <ClInclude Include="..\src\Knob.h" />
+    <ClInclude Include="..\src\Leaf.h" />
     <ClInclude Include="..\src\Level2.h" />
+    <ClInclude Include="..\src\Level3.h" />
     <ClInclude Include="..\src\LoadButton.h" />
     <ClInclude Include="..\src\MenuBG.h" />
     <ClInclude Include="..\src\NGButton.h" />

@@ -17,6 +17,7 @@
 #include "StartScene.h"
 #include "PlayScene.h"
 #include "Level2.h"
+#include "Level3.h"
 #include "EndScene.h"
 
 #include "Config.h"

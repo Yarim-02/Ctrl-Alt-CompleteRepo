@@ -27,6 +27,7 @@ private:
 	EnemyType m_enemyType;
 	int m_mushroomFrameCounter;
 	int m_jelloFrameCounter;
+	glm::vec2 size;
 };
 
 #endif

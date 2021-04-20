@@ -189,6 +189,12 @@
     <ClCompile Include="..\src\Knob.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Level3.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Leaf.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\StartScene.h">
@@ -393,6 +399,12 @@
       <Filter>Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\TempKnob.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Level3.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Leaf.h">
       <Filter>Game Objects</Filter>
     </ClInclude>
   </ItemGroup>

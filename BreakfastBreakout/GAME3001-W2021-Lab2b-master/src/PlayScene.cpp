@@ -253,7 +253,7 @@ void PlayScene::update()
 	//std::cout << m_pCamera->getTransform()->position.x << ", " << m_pCamera->getTransform()->position.y << std::endl;
 
 	//std::cout << m_pPlayer->getLeft() << std::endl;
-	std::cout << m_pCamera->getRigidBody()->velocity.x << std::endl;
+	//std::cout << m_pCamera->getRigidBody()->velocity.x << std::endl;
 
 	if (m_frameCounter > 5000)
 		m_frameCounter = 0;

@@ -7,6 +7,7 @@ enum SceneState
 	START_SCENE,
 	PLAY_SCENE,
 	LEVEL2,
+	LEVEL3,
 	END_SCENE,
 	NUM_OF_SCENES
 };
