@@ -3,7 +3,7 @@
 
 EndBackground::EndBackground()
 {
-	TextureManager::Instance()->load("../Assets/textures/endBG.png", "endBG");
+	TextureManager::Instance()->load("../Assets/textures/EscapeScreen.png", "endBG");
 
 	auto size = TextureManager::Instance()->getTextureSize("endBG");
 	setWidth(size.x);
