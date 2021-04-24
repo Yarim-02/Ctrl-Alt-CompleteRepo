@@ -96,7 +96,7 @@ void PlayScene::update()
 		m_pCollecatables[i]->getTransform()->position = m_pCamera->getTransform()->position + m_pCollecatables[i]->getOffset();
 		if (CollisionManager::HazardCheck(m_pPlayer, m_pCollecatables[i], m_pCamera) == true)
 		{
-			SoundManager::Instance().load("../Assets/audio/sound effects/Collectable.mp3", "collectable", SOUND_SFX);
+			SoundManager::Instance().load("../Assets/audio/sound effects/tag_collect.wav", "collectable", SOUND_SFX);
 			SoundManager::Instance().playSound("collectable", 0);
 			SoundManager::Instance().setSoundVolume(32);
 			m_pCollecatables[i]->setOffset(glm::vec2(1000, 1000));
@@ -251,7 +251,6 @@ void PlayScene::update()
 		SoundManager::Instance().playSound("fall", 0);
 		SoundManager::Instance().setSoundVolume(32);
 		m_pCamera->getTransform()->position = glm::vec2(0.0f, 0.0f);
-		//TheGame::Instance()->cleanSceneState(PLAY_SCENE);
 	}
 
 	
